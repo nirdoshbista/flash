@@ -1,0 +1,99 @@
+; Report & Chart data for ECD/PPC
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "ECD/PPC Enrollment"
+
+[prereq]
+prereq1title = "ECD Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported (Excluding Religious) | Government Supported (Including Religious) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Institutional (All) | Madrassas | Gumbas | Ashrams | Religious (All) | Community"
+prereq1clauses ="mast_school_type.ecd>0|mast_school_type.ecd=1|mast_school_type.ecd=2|mast_school_type.ecd=3 | mast_school_type.ecd=4 | (mast_school_type.ecd=1 or mast_school_type.ecd=2 or mast_school_type.ecd=3 or mast_school_type.ecd=4 or mast_school_type.ecd=12) | (mast_school_type.ecd=1 or mast_school_type.ecd=2 or mast_school_type.ecd=3 or mast_school_type.ecd=4 or mast_school_type.ecd=8 or mast_school_type.ecd=9 or mast_school_type.ecd=10 or mast_school_type.ecd=12) | mast_school_type.ecd=5 | mast_school_type.ecd=6 | (mast_school_type.ecd=4 or mast_school_type.ecd=5 or mast_school_type.ecd=6)| mast_school_type.ecd=7 | mast_school_type.ecd=8 | mast_school_type.ecd=9 | mast_school_type.ecd=10 | (mast_school_type.ecd=8 or mast_school_type.ecd=9 or mast_school_type.ecd=10) | mast_school_type.ecd=12"
+
+
+prereq2title = "Year"
+prereq2options = "2065|2064|2063|2062"
+prereq2clauses = "mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063|mast_schoollist.sch_year=2062 and mast_school_type.sch_year=2062"
+
+[tableheader]
+row1 = "Code / Name [3,2] | Ward [3,1] | Location [3,1] | A/C No [3,1] | School Based ECDs [3,1]| Community Based ECDs [3,1]| ECD/PPC Only [3,1]| Total ECD/PPCs [3,1]| ECD #1 [8]| ECD #2 [8]|ECD #3 [8]|ECD #4 [8]|ECD #5 [8]|ECD #6 [8]|ECD #7 [8]|ECD #8 [8]|ECD #9 [8]|ECD #10 [8]"
+row2 = "Total [2] | Dalit [2] | Janjati [2] | Type [2]|Total [2] | Dalit [2] | Janjati [2] | Type [2]|Total [2] | Dalit [2] | Janjati [2] | Type [2]|Total [2] | Dalit [2] | Janjati [2] | Type [2]|Total [2] | Dalit [2] | Janjati [2] | Type [2]|Total [2] | Dalit [2] | Janjati [2] | Type [2]|Total [2] | Dalit [2] | Janjati [2] | Type [2]|Total [2] | Dalit [2] | Janjati [2] | Type [2]|Total [2] | Dalit [2] | Janjati [2] | Type [2]|Total [2] | Dalit [2] | Janjati [2] | Type [2]"
+row3 = "G |T | G | T | G | T | SB | CB |G |T | G | T | G | T | SB | CB |G |T | G | T | G | T | SB | CB |G |T | G | T | G | T | SB | CB |G |T | G | T | G | T | SB | CB |G |T | G | T | G | T | SB | CB |G |T | G | T | G | T | SB | CB |G |T | G | T | G | T | SB | CB |G |T | G | T | G | T | SB | CB |G |T | G | T | G | T | SB | CB"
+
+
+[row]
+datacheck = "select distinct(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) left join ecdppc_enroll using (sch_num, sch_year) where mast_schoollist.flash2=1 and mast_school_type.ecd>0"
+
+query1 = "select (mast_schoollist.wardno) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1"
+
+query2 = "select (mast_schoollist.location) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1"
+
+query3 = "select count(mast_schoollist.account_no) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_enroll using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1"
+
+query4 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where ecdppc_info.ecd_type=1"
+
+query5 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=2"
+
+query6 = "select count(sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and (mast_school_type.ecd>0 and mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=0)"
+
+query7 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and (ecdppc_info.ecd_type>0)"
+
+query8 = "select sum(tot_enroll_total_f), sum(tot_enroll_total_t), sum(tot_enroll_dalit_f), sum(tot_enroll_dalit_t), sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_t) from ecdppc_enroll left join mast_school_type using (sch_num, sch_year) left join mast_schoollist using (sch_num, sch_year) where mast_schoollist.flash2=1 and (ecdppc_enroll.ecd_num=1)"
+
+query9 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=1 and ecdppc_info.ecd_num=1"
+
+query10 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=2 and ecdppc_info.ecd_num=1"
+
+query11 = "select sum(tot_enroll_total_f), sum(tot_enroll_total_t), sum(tot_enroll_dalit_f), sum(tot_enroll_dalit_t), sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_t) from ecdppc_enroll left join mast_school_type using (sch_num, sch_year) left join mast_schoollist using (sch_num, sch_year) where mast_schoollist.flash2=1 and (ecdppc_enroll.ecd_num=2)"
+
+query12 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=1 and ecdppc_info.ecd_num=2"
+
+query13 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=2 and ecdppc_info.ecd_num=2"
+
+query14 = "select sum(tot_enroll_total_f), sum(tot_enroll_total_t), sum(tot_enroll_dalit_f), sum(tot_enroll_dalit_t), sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_t) from ecdppc_enroll left join mast_school_type using (sch_num, sch_year) left join mast_schoollist using (sch_num, sch_year) where mast_schoollist.flash2=1 and (ecdppc_enroll.ecd_num=3)"
+
+query15 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=1 and ecdppc_info.ecd_num=3"
+
+query16 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=2 and ecdppc_info.ecd_num=3"
+
+query17 = "select sum(tot_enroll_total_f), sum(tot_enroll_total_t), sum(tot_enroll_dalit_f), sum(tot_enroll_dalit_t), sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_t) from ecdppc_enroll left join mast_school_type using (sch_num, sch_year) left join mast_schoollist using (sch_num, sch_year) where mast_schoollist.flash2=1 and (ecdppc_enroll.ecd_num=4)"
+
+query18 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=1 and ecdppc_info.ecd_num=4"
+
+query19 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=2 and ecdppc_info.ecd_num=4"
+
+query20 = "select sum(tot_enroll_total_f), sum(tot_enroll_total_t), sum(tot_enroll_dalit_f), sum(tot_enroll_dalit_t), sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_t) from ecdppc_enroll left join mast_school_type using (sch_num, sch_year) left join mast_schoollist using (sch_num, sch_year) where mast_schoollist.flash2=1 and (ecdppc_enroll.ecd_num=5)"
+
+query21 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=1 and ecdppc_info.ecd_num=5"
+
+query22 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=2 and ecdppc_info.ecd_num=5"
+
+query23 = "select sum(tot_enroll_total_f), sum(tot_enroll_total_t), sum(tot_enroll_dalit_f), sum(tot_enroll_dalit_t), sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_t) from ecdppc_enroll left join mast_school_type using (sch_num, sch_year) left join mast_schoollist using (sch_num, sch_year) where mast_schoollist.flash2=1 and (ecdppc_enroll.ecd_num=6)"
+
+query24 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=1 and ecdppc_info.ecd_num=6"
+
+query25 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=2 and ecdppc_info.ecd_num=6"
+
+query26 = "select sum(tot_enroll_total_f), sum(tot_enroll_total_t), sum(tot_enroll_dalit_f), sum(tot_enroll_dalit_t), sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_t) from ecdppc_enroll left join mast_school_type using (sch_num, sch_year) left join mast_schoollist using (sch_num, sch_year) where mast_schoollist.flash2=1 and (ecdppc_enroll.ecd_num=7)"
+
+query27 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=1 and ecdppc_info.ecd_num=7"
+
+query28 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=2 and ecdppc_info.ecd_num=7"
+
+query29 = "select sum(tot_enroll_total_f), sum(tot_enroll_total_t), sum(tot_enroll_dalit_f), sum(tot_enroll_dalit_t), sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_t) from ecdppc_enroll left join mast_school_type using (sch_num, sch_year) left join mast_schoollist using (sch_num, sch_year) where mast_schoollist.flash2=1 and (ecdppc_enroll.ecd_num=8)"
+
+query30 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=1 and ecdppc_info.ecd_num=8"
+
+query31 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=2 and ecdppc_info.ecd_num=8"
+
+query32 = "select sum(tot_enroll_total_f), sum(tot_enroll_total_t), sum(tot_enroll_dalit_f), sum(tot_enroll_dalit_t), sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_t) from ecdppc_enroll left join mast_school_type using (sch_num, sch_year) left join mast_schoollist using (sch_num, sch_year) where mast_schoollist.flash2=1 and (ecdppc_enroll.ecd_num=9)"
+
+query33 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=1 and ecdppc_info.ecd_num=9"
+
+query34 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=2 and ecdppc_info.ecd_num=9"
+
+query35 = "select sum(tot_enroll_total_f), sum(tot_enroll_total_t), sum(tot_enroll_dalit_f), sum(tot_enroll_dalit_t), sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_t) from ecdppc_enroll left join mast_school_type using (sch_num, sch_year) left join mast_schoollist using (sch_num, sch_year) where mast_schoollist.flash2=1 and (ecdppc_enroll.ecd_num=10)"
+
+query36 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=1 and ecdppc_info.ecd_num=10"
+
+query37 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_info using (sch_num, sch_year) where mast_schoollist.flash2=1 and ecdppc_info.ecd_type=2 and ecdppc_info.ecd_num=10"

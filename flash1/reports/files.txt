@@ -1,0 +1,318 @@
+./headmaster/headmaster.rpt
+./headmaster/headmaster_status.rpt
+./electives/electives.rpt
+./text_books/textbooks.rpt
+./text_books/text_books_class2.rpt
+./text_books/text_books_class5.rpt
+./text_books/text_books.rpt
+./text_books/text_books_class3.rpt
+./text_books/text_books_class1.rpt
+./text_books/text_books_class1_5.rpt
+./text_books/text_books_class4.rpt
+./support/male_headmaster.rpt
+./support/female_headmaster.rpt
+./support/support.rpt
+./alternate_school/alternate_school_by_social_group.rpt
+./alternate_school/alternate_school_by_class.rpt
+./alternate_school/alternate_school.rpt
+./teaching_methods/teaching_methods.rpt
+./other_physical/chair.rpt
+./other_physical/computer_room.rpt
+./other_physical/staff_room.rpt
+./other_physical/library.rpt
+./other_physical/land.rpt
+./other_physical/table.rpt
+./other_physical/building_rooms.rpt
+./other_physical/other_Physical.rpt
+./other_physical/desk.rpt
+./other_physical/store.rpt
+./enrollment/lsec_sec_janjati_enr_by_class.rpt
+./enrollment/tot_enr_by_class_teacher.rpt
+./enrollment/tot_enr_by_class_grade.rpt
+./enrollment/janjati_enr_by_class_age.rpt
+./enrollment/tot_enr_by_class_age.rpt
+./enrollment/current_year/lower_secondary/repeaters/lsec_tot_social_groups.rpt
+./enrollment/current_year/lower_secondary/repeaters/lsec_repeaters.rpt
+./enrollment/current_year/lower_secondary/repeaters/lsec_others_repeaters.rpt
+./enrollment/current_year/lower_secondary/repeaters/lsec_janjati_repeaters.rpt
+./enrollment/current_year/lower_secondary/repeaters/lsec_dalit_repeaters.rpt
+./enrollment/current_year/lower_secondary/enrollment/lsec_janjatis.rpt
+./enrollment/current_year/lower_secondary/enrollment/lsec_tot_social_status.rpt
+./enrollment/current_year/lower_secondary/enrollment/lsec_others_enr.rpt
+./enrollment/current_year/lower_secondary/enrollment/lsec_janjati_enr.rpt
+./enrollment/current_year/lower_secondary/enrollment/lsec_dalit_enr.rpt
+./enrollment/current_year/lower_secondary/enrollment/lsec_tot_enr.rpt
+./enrollment/current_year/lower_secondary/transfers/lsec_tot_social_groups.rpt
+./enrollment/current_year/lower_secondary/transfers/lsec_others_transfer.rpt
+./enrollment/current_year/lower_secondary/transfers/lsec_dalit_transfer.rpt
+./enrollment/current_year/lower_secondary/transfers/lsec_transfer.rpt
+./enrollment/current_year/lower_secondary/transfers/lsec_janjati_transfer.rpt
+./enrollment/current_year/lower_secondary/new_enrollment/lsec_tot_social_groups.rpt
+./enrollment/current_year/lower_secondary/new_enrollment/lsec_dalit_new_enrollment.rpt
+./enrollment/current_year/lower_secondary/new_enrollment/lsec_new_enrollment.rpt
+./enrollment/current_year/lower_secondary/new_enrollment/lsec_others_new_enrollment.rpt
+./enrollment/current_year/lower_secondary/new_enrollment/lsec_janjati_new_enrollment.rpt
+./enrollment/current_year/primary/repeaters/pr_dalit_repeater.rpt
+./enrollment/current_year/primary/repeaters/pri_tot_social_groups.rpt
+./enrollment/current_year/primary/repeaters/pr_janjati_repeater.rpt
+./enrollment/current_year/primary/repeaters/Copy of pr_repeater.rpt
+./enrollment/current_year/primary/repeaters/pr_repeater.rpt
+./enrollment/current_year/primary/repeaters/pr_others_repeater.rpt
+./enrollment/current_year/primary/enrollment/pri_tot_social_status.rpt
+./enrollment/current_year/primary/enrollment/pr_janjatis.rpt
+./enrollment/current_year/primary/enrollment/pr_tot_enr.rpt
+./enrollment/current_year/primary/enrollment/pr_dalit_enr.rpt
+./enrollment/current_year/primary/enrollment/pr_others_enr.rpt
+./enrollment/current_year/primary/enrollment/pr_janjati_enr.rpt
+./enrollment/current_year/primary/transfers/pri_tot_social_groups.rpt
+./enrollment/current_year/primary/transfers/pr_transfer.rpt
+./enrollment/current_year/primary/transfers/pr_others_transfer.rpt
+./enrollment/current_year/primary/transfers/pr_dalit_transfer.rpt
+./enrollment/current_year/primary/transfers/pr_janjati_transfer.rpt
+./enrollment/current_year/primary/pr_tot_enr_rep_tra.rpt
+./enrollment/current_year/primary/new_enrollment/pr_janjati_new_enrollment.rpt
+./enrollment/current_year/primary/new_enrollment/pri_tot_social_groups.rpt
+./enrollment/current_year/primary/new_enrollment/pr_others_new_enrollment.rpt
+./enrollment/current_year/primary/new_enrollment/pr_new_enrollment.rpt
+./enrollment/current_year/primary/new_enrollment/pr_dalit_new_enrollment.rpt
+./enrollment/current_year/secondary/repeaters/sec_others_repeaters.rpt
+./enrollment/current_year/secondary/repeaters/sec_dalit_repeaters.rpt
+./enrollment/current_year/secondary/repeaters/sec_repeaters.rpt
+./enrollment/current_year/secondary/repeaters/sec_tot_social_groups.rpt
+./enrollment/current_year/secondary/repeaters/sec_janjati_repeaters.rpt
+./enrollment/current_year/secondary/enrollment/sec_janjati_enr.rpt
+./enrollment/current_year/secondary/enrollment/sec_dalit_enr.rpt
+./enrollment/current_year/secondary/enrollment/sec_tot_enr.rpt
+./enrollment/current_year/secondary/enrollment/sec_others_enr.rpt
+./enrollment/current_year/secondary/enrollment/sec_janjatis.rpt
+./enrollment/current_year/secondary/enrollment/sec_tot_social_status.rpt
+./enrollment/current_year/secondary/transfers/sec_janjati_transfer.rpt
+./enrollment/current_year/secondary/transfers/sec_others_transfer.rpt
+./enrollment/current_year/secondary/transfers/sec_dalit_transfer.rpt
+./enrollment/current_year/secondary/transfers/sec_tot_social_groups.rpt
+./enrollment/current_year/secondary/transfers/sec_transfer.rpt
+./enrollment/current_year/secondary/new_enrollment/sec_others_new_enrollment.rpt
+./enrollment/current_year/secondary/new_enrollment/sec_new_enrollment.rpt
+./enrollment/current_year/secondary/new_enrollment/sec_dalit_new_enrollment.rpt
+./enrollment/current_year/secondary/new_enrollment/sec_janjati_new_enrollment.rpt
+./enrollment/current_year/secondary/new_enrollment/sec_tot_social_groups.rpt
+./enrollment/current_year/higher_secondary/hsec_total_passed_details.rpt
+./enrollment/current_year/higher_secondary/hsec_current_details.rpt
+./enrollment/current_year/higher_secondary/hsec_last_details.rpt
+./enrollment/current_year/higher_secondary/hsec_sch/hsec_Incentive_ students_scholarship.rpt
+./enrollment/current_year/higher_secondary/hsec_sch/hsec_others_ students_scholarship.rpt
+./enrollment/current_year/higher_secondary/hsec_sch/hsec_scholarship.rpt
+./enrollment/current_year/higher_secondary/hsec_sch/hsec_loan_ students_scholarship.rpt
+./enrollment/current_year/higher_secondary/hsec_sch/hsec_enroll_ students_scholarship.rpt
+./enrollment/student_classroom.rpt
+./enrollment/student_app_teachers.rpt
+./enrollment/tot_enr_by_caste.rpt
+./enrollment/lsec_sec_tot_enr_by_class.rpt
+./enrollment/dalit_enr_by_class.rpt
+./enrollment/dalit_enr_by_class_age.rpt
+./enrollment/dalit_only.rpt
+./enrollment/pr_tot_enr_app_ratio.rpt
+./enrollment/janjati_enr_by_class.rpt
+./enrollment/student_by_grade_extras.rpt
+./enrollment/lsec_sec_dalit_enr_by_class.rpt
+./enrollment/janjatis_details.rpt
+./enrollment/teacher_by_grade.rpt
+./enrollment/tot_enr_by_class_teachers.rpt
+./enrollment/tot_enr_by_class.rpt
+./enrollment/last_year/lower_secondary/passed/last_lsec_tot_Passed.rpt
+./enrollment/last_year/lower_secondary/passed/last_lsec_tot_social_status_Passed.rpt
+./enrollment/last_year/lower_secondary/passed/last_lsec_dalit_Passed.rpt
+./enrollment/last_year/lower_secondary/passed/last_lsec_others_Passed.rpt
+./enrollment/last_year/lower_secondary/passed/last_lsec_janjati_Passed.rpt
+./enrollment/last_year/lower_secondary/enrollment/last_lsec_others_enr.rpt
+./enrollment/last_year/lower_secondary/enrollment/last_lsec_janjati_enr.rpt
+./enrollment/last_year/lower_secondary/enrollment/last_lsec_dalit_enr.rpt
+./enrollment/last_year/lower_secondary/enrollment/last_lsec_tot_social_status.rpt
+./enrollment/last_year/lower_secondary/enrollment/last_lsec_tot_enr.rpt
+./enrollment/last_year/lower_secondary/exam_appearance/last_lsec_dalit_app.rpt
+./enrollment/last_year/lower_secondary/exam_appearance/last_lsec_tot_app.rpt
+./enrollment/last_year/lower_secondary/exam_appearance/last_lsec_janjati_app.rpt
+./enrollment/last_year/lower_secondary/exam_appearance/last_lsec_others_app.rpt
+./enrollment/last_year/lower_secondary/exam_appearance/last_lsec_tot_social_status.rpt
+./enrollment/last_year/lower_secondary/enrollment_exam/lsec_janjati_enr_app_pas_class.rpt
+./enrollment/last_year/lower_secondary/enrollment_exam/lsec_others_enr_app_pas_class.rpt
+./enrollment/last_year/lower_secondary/enrollment_exam/lsec_dalit_enr_app_pas_class.rpt
+./enrollment/last_year/lower_secondary/enrollment_exam/lsec_total_enr_app_pas_class.rpt
+./enrollment/last_year/lower_secondary/lsec_total_enr_app_pas_class_grp.rpt
+./enrollment/last_year/primary/retention.rpt
+./enrollment/last_year/primary/passed/last_pr_others_Passed.rpt
+./enrollment/last_year/primary/passed/last_pr_janjati_Passed.rpt
+./enrollment/last_year/primary/passed/last_pri_tot_social_status_Passed.rpt
+./enrollment/last_year/primary/passed/last_pr_tot_Passed.rpt
+./enrollment/last_year/primary/passed/last_pr_dalit_Passed.rpt
+./enrollment/last_year/primary/enrollment/last_pr_dalit_enr.rpt
+./enrollment/last_year/primary/enrollment/last_pr_janjati_enr.rpt
+./enrollment/last_year/primary/enrollment/last_pr_tot_enr.rpt
+./enrollment/last_year/primary/enrollment/last_pr_others_enr.rpt
+./enrollment/last_year/primary/enrollment/last_pr_tot_social_status.rpt
+./enrollment/last_year/primary/exam_appearance/last_pri_tot_social_status.rpt
+./enrollment/last_year/primary/exam_appearance/last_pr_janjati_app.rpt
+./enrollment/last_year/primary/exam_appearance/last_pr_tot_app.rpt
+./enrollment/last_year/primary/exam_appearance/last_pr_dalit_app.rpt
+./enrollment/last_year/primary/exam_appearance/last_pr_others_app.rpt
+./enrollment/last_year/primary/pr_total_enr_app_pas_class_grp.rpt
+./enrollment/last_year/primary/enrollment_exam/pr_others_enr_app_pas_class.rpt
+./enrollment/last_year/primary/enrollment_exam/pr_total_enr_app_pas_class.rpt
+./enrollment/last_year/primary/enrollment_exam/pr_dalit_enr_app_pas_class.rpt
+./enrollment/last_year/primary/enrollment_exam/pr_janjati_enr_app_pas_class.rpt
+./enrollment/last_year/Secondary/passed/last_sec_dalit_Passed.rpt
+./enrollment/last_year/Secondary/passed/last_sec_others_Passed.rpt
+./enrollment/last_year/Secondary/passed/last_sec_tot_social_status_Passed.rpt
+./enrollment/last_year/Secondary/passed/last_sec_janjati_Passed.rpt
+./enrollment/last_year/Secondary/passed/last_sec_tot_Passed.rpt
+./enrollment/last_year/Secondary/enrollment/last_sec_tot_social_status.rpt
+./enrollment/last_year/Secondary/enrollment/last_sec_dalit_enr.rpt
+./enrollment/last_year/Secondary/enrollment/last_sec_janjati_enr.rpt
+./enrollment/last_year/Secondary/enrollment/last_sec_others_enr.rpt
+./enrollment/last_year/Secondary/enrollment/last_sec_tot_enr.rpt
+./enrollment/last_year/Secondary/exam_appearance/last_sec_tot_social_status.rpt
+./enrollment/last_year/Secondary/exam_appearance/last_sec_others_app.rpt
+./enrollment/last_year/Secondary/exam_appearance/last_sec_tot_app.rpt
+./enrollment/last_year/Secondary/exam_appearance/last_sec_janjati_app.rpt
+./enrollment/last_year/Secondary/exam_appearance/last_sec_dalit_app.rpt
+./enrollment/last_year/Secondary/sec_total_enr_app_pas_class_grp.rpt
+./enrollment/last_year/Secondary/enrollment_exam/sec_dalit_enr_app_pas_class.rpt
+./enrollment/last_year/Secondary/enrollment_exam/sec_total_enr_app_pas_class.rpt
+./enrollment/last_year/Secondary/enrollment_exam/sec_others_enr_app_pas_class.rpt
+./enrollment/last_year/Secondary/enrollment_exam/sec_janjati_enr_app_pas_class.rpt
+./enrollment/last_year/higher_secondary/hsec_last_details.rpt
+./enrollment/last_year/higher_secondary/hsec_last_others_details.rpt
+./enrollment/pr_tot_enr_app_ratio_social.rpt
+./agewise/lower_secondary/Class 6/dalit.rpt
+./agewise/lower_secondary/Class 6/total.rpt
+./agewise/lower_secondary/Class 6/janjati.rpt
+./agewise/lower_secondary/lsec_janjati_enroll_age.rpt
+./agewise/lower_secondary/lsec_dalit_enroll_age.rpt
+./agewise/lower_secondary/Class 8/dalit.rpt
+./agewise/lower_secondary/Class 8/total.rpt
+./agewise/lower_secondary/Class 8/janjati.rpt
+./agewise/lower_secondary/Class 7/dalit.rpt
+./agewise/lower_secondary/Class 7/total.rpt
+./agewise/lower_secondary/Class 7/janjati.rpt
+./agewise/lower_secondary/lsec_total_enroll_age.rpt
+./agewise/primary/Class 5/dalit.rpt
+./agewise/primary/Class 5/total.rpt
+./agewise/primary/Class 5/janjati.rpt
+./agewise/primary/pr_total_enroll_age.rpt
+./agewise/primary/Class 4/dalit.rpt
+./agewise/primary/Class 4/total.rpt
+./agewise/primary/Class 4/janjati.rpt
+./agewise/primary/Class 2/dalit.rpt
+./agewise/primary/Class 2/total.rpt
+./agewise/primary/Class 2/janjati.rpt
+./agewise/primary/pr_janjati_enroll_age.rpt
+./agewise/primary/pr_dalit_enroll_age.rpt
+./agewise/primary/net_new_enrollment/dalit.rpt
+./agewise/primary/net_new_enrollment/total.rpt
+./agewise/primary/net_new_enrollment/janjati.rpt
+./agewise/primary/Class 3/dalit.rpt
+./agewise/primary/Class 3/total.rpt
+./agewise/primary/Class 3/janjati.rpt
+./agewise/primary/Class 1/dalit.rpt
+./agewise/primary/Class 1/total.rpt
+./agewise/primary/Class 1/janjati.rpt
+./agewise/secondary/sec_dalit_enroll_age.rpt
+./agewise/secondary/class 10/agewise_sec_level_Total_janjati_class10.rpt
+./agewise/secondary/class 10/agewise_sec_level_class10.rpt
+./agewise/secondary/class 10/agewise_sec_level_Total_dalit_class10.rpt
+./agewise/secondary/sec_janjati_enroll_age.rpt
+./agewise/secondary/sec_total_enroll_age.rpt
+./agewise/secondary/class 9/dalit.rpt
+./agewise/secondary/class 9/total.rpt
+./agewise/secondary/class 9/janjati.rpt
+./agewise/higher_secondary/hsec_dalit_enroll_age.rpt
+./agewise/higher_secondary/class 12/dalit.rpt
+./agewise/higher_secondary/class 12/total.rpt
+./agewise/higher_secondary/class 12/janjati.rpt
+./agewise/higher_secondary/class 11/dalit.rpt
+./agewise/higher_secondary/class 11/total.rpt
+./agewise/higher_secondary/class 11/janjati.rpt
+./agewise/higher_secondary/hsec_total_enroll_age.rpt
+./agewise/higher_secondary/hsec_janjati_enroll_age.rpt
+./physical/playground.rpt
+./physical/compound.rpt
+./physical/electricity.rpt
+./physical/water.rpt
+./physical/Physical_extras.rpt
+./physical/health.rpt
+./physical/other_Physical.rpt
+./physical/urinal.rpt
+./physical/Physical.rpt
+./physical/toilet.rpt
+./student_tracking/student_tracking.rpt
+./non_teaching_staff/teaching_and_nonteaching_staff_f1.rpt
+./non_teaching_staff/non_teaching_staff_f1.rpt
+./school/school_by_grade.rpt
+./school/schools_entered.rpt
+./school/school_by_type.rpt
+./school/school_by_grade_extra.rpt
+./school/community_ecd.rpt
+./school/school_by_level_extra.rpt
+./school/school_by_level.rpt
+./school/ecd_information.rpt
+./ecd_ppc/ecd_facilitator.rpt
+./ecd_ppc/ecd_ppc_agewise.rpt
+./ecd_ppc/afterecd.rpt
+./ecd_ppc/ecd_ppc_extra.rpt
+./ecd_ppc/ecd_ppc.rpt
+./disability/lsec_disabled.rpt
+./disability/ecd_disabled.rpt
+./disability/hsec_disabled.rpt
+./disability/sec_disabled.rpt
+./disability/pr_disabled.rpt
+./sop_fsp/sop_fsp_facilitators.rpt
+./sop_fsp/agewise/sop_fsp_fem_agewise.rpt
+./sop_fsp/agewise/sop_fsp_male_agewise.rpt
+./sop_fsp/agewise/sop_fsp_tot_agewise.rpt
+./sop_fsp/sop_fsp.rpt
+./sop_fsp/sop_fsp_students.rpt
+./teachers/headmaster/headmaster.rpt
+./teachers/pr_teacher_details/pr_teacher_details.rpt
+./teachers/pr_teacher_details/pr_teacher_qualification/pr_janjati_teacher_qualification_details.rpt
+./teachers/pr_teacher_details/pr_teacher_qualification/pr_dalit_teacher_qualification_details.rpt
+./teachers/pr_teacher_details/pr_teacher_qualification/pr_teacher_qualification_details.rpt
+./teachers/pr_teacher_details/pr_teacher_status/pr_janjati_teacher_status_details.rpt
+./teachers/pr_teacher_details/pr_teacher_status/pr_dalit_teacher_status_details.rpt
+./teachers/pr_teacher_details/pr_teacher_status/pr_teacher_status_details.rpt
+./teachers/pr_teacher_details/pr_teacher_training_details/tot_training_details.rpt
+./teachers/pr_teacher_details/pr_teacher_training_details/dalit_training_details.rpt
+./teachers/pr_teacher_details/pr_teacher_training_details/janjati_training_details.rpt
+./teachers/lsec_teacher_details/lsec_teacher_status/lsec_janjati_teacher_status_details.rpt
+./teachers/lsec_teacher_details/lsec_teacher_status/lsec_dalit_teacher_status_details.rpt
+./teachers/lsec_teacher_details/lsec_teacher_status/lsec_teacher_status_details.rpt
+./teachers/lsec_teacher_details/lsec_teacher_qualification/lsec_teacher_qualification_details.rpt
+./teachers/lsec_teacher_details/lsec_teacher_qualification/lsec_dalit_teacher_qualification_details.rpt
+./teachers/lsec_teacher_details/lsec_teacher_qualification/lsec_janjati_teacher_qualification_details.rpt
+./teachers/lsec_teacher_details/lsec_teacher_details.rpt
+./teachers/lsec_teacher_details/lsec_teacher_training_details/tot_training_details.rpt
+./teachers/lsec_teacher_details/lsec_teacher_training_details/dalit_training_details.rpt
+./teachers/lsec_teacher_details/lsec_teacher_training_details/janjati_training_details.rpt
+./teachers/sec_teacher_details/sec_teacher_details.rpt
+./teachers/sec_teacher_details/sec_teacher_qualification/sec_dalit_teacher_qualification_details.rpt
+./teachers/sec_teacher_details/sec_teacher_qualification/sec_teacher_qualification_details.rpt
+./teachers/sec_teacher_details/sec_teacher_qualification/sec_janjati_teacher_qualification_details.rpt
+./teachers/sec_teacher_details/sec_teacher_status/sec_dalit_teacher_status_details.rpt
+./teachers/sec_teacher_details/sec_teacher_status/sec_teacher_status_details.rpt
+./teachers/sec_teacher_details/sec_teacher_status/sec_janjati_teacher_status_details.rpt
+./teachers/sec_teacher_details/sec_teacher_training_details/tot_training_details.rpt
+./teachers/sec_teacher_details/sec_teacher_training_details/dalit_training_details.rpt
+./teachers/sec_teacher_details/sec_teacher_training_details/janjati_training_details.rpt
+./teachers/hsec_teacher_details/hsec_teacher_qualification_details.rpt
+./teachers/hsec_teacher_details/hsec_teacher_details.rpt
+./teachers/hsec_teacher_details/hsec_training_details.rpt
+./teachers/hsec_teacher_details/hsec_teacher_status_details.rpt
+./teachers/total_teacher_details.rpt
+./languages/languages_class3.rpt
+./languages/languages.rpt
+./languages/languages_class4.rpt
+./languages/languages_class5.rpt
+./languages/languages_class1.rpt
+./languages/languages_class2.rpt
+./finance/finance_expn_f1.rpt
+./finance/finance_f1.rpt
+./finance/finance_income_f1.rpt

@@ -1,0 +1,4 @@
+Primary Enrollment and Agewise Details,primary/
+Lower Secondary Enrollment and Agewise Details,lower_secondary/
+Secondary Enrollment and Agewise Details,secondary/
+Higher Secondary Enrollment and Agewise Details,higher_secondary/

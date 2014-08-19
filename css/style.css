@@ -1,0 +1,404 @@
+/* css for student tracking entry system */
+
+body {
+	background-color: inherit; /* background color */
+	color: inherit; /* text color */
+	font-family: Verdana, Arial, Helvetica, sans-serif; /* font name */
+	font-size: xx-small; /* font size */
+	margin: 10px 10px 10px 10px; /* top right bottom left */
+}
+
+select, textarea, input {
+    font-family:      Verdana, Arial, Helvetica, sans-serif;
+    font-size:        xx-small;
+}
+
+
+input:disabled{
+	color:#000;
+}
+
+input:focus{
+	background: #ffc;
+}
+
+select:focus{
+background: #ffc;
+}
+
+a:active {
+
+}
+
+a:link {
+
+}
+
+a:visited {
+
+}
+
+/* main table */
+.ewTable {
+	color: inherit; /* text color */
+	font-family: Verdana, Arial, Helvetica, sans-serif;; /* font name */
+	font-size: xx-small; /* font size */
+	border: 0px outset; /* border */
+	border-collapse: collapse;
+}
+
+/* main table data cells */
+.ewTable td {
+	padding: 4px; /* cell padding */
+	border: 1px solid; /* cell spacing */
+	border-color: #CCCCCC;  /* table background color */
+}
+
+/* main table */
+.ewTable_ {
+	color: inherit; /* text color */
+	font-family: Verdana, Arial, Helvetica, sans-serif;; /* font name */
+	font-size: xx-small; /* font size */
+	border: 0px outset; /* border */
+	border-collapse: collapse;
+}
+
+/* main table data cells */
+.ewTable_ td {
+	padding: 4px; /* cell padding */
+	border: 1px solid; /* cell spacing */
+	border-color: #cccccc;  /* table background color */
+	border-top: 0px;
+}
+
+.ewBasicSearch {
+	font-family: Verdana, Arial, Helvetica, sans-serif;; /* font name */
+	font-size: xx-small; /* font size */
+	border: 0px;
+	border-collapse: collapse;
+}
+
+.ewBasicSearch td {
+	border: 0px;
+	padding: 1px;
+}
+
+.ewSearchOpr {
+	font-family: Verdana, Arial, Helvetica, sans-serif;; /* font name */
+	font-size: xx-small; /* font size */
+	color: maroon;
+}
+
+.ewListAdd {
+	font-family: Verdana, Arial, Helvetica, sans-serif;; /* font name */
+	font-size: xx-small; /* font size */
+	border: 0px;
+	border-collapse: collapse;
+}
+
+.ewListAdd td {
+	border: 0px;
+	padding: 2px;
+}
+
+.phpmakerlist td {
+	color: inherit; /* text color */
+	font-family: Verdana, Arial, Helvetica, sans-serif;; /* font name */
+	font-size: xx-small; /* font size */
+	border: 0px;
+	padding: 0px;
+	vertical-align: top; 
+}
+
+.ewAddOption td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;; /* font name */
+	font-size: xx-small; /* font size */
+	padding: 2px; /* cell padding */	
+	border: 0px;	
+}
+
+/* main table header cells */
+.ewTableHeader {
+	background-color: #52617B; /* header color */
+	color: #FFFFFF; /* header font color */	
+	vertical-align: top;
+	text-align: center;
+	font-weight: bold;
+}
+
+.ewTableHeader a:link {	
+	color: #FFFFFF; /* header font color */	
+}
+
+.ewTableHeader a:visited {	
+	color: #FFFFFF; /* header font color */	
+}
+
+/* main table row color */
+.ewTableRow {
+	background-color: #FFFFFF;  /* alt row color 1 */
+}
+
+.ewTableRowHide {
+	background-color: #FFFFFF;  /* alt row color 1 */
+	display: none;
+}
+
+/* main table alternate row color */
+.ewTableAltRow {
+	background-color: #E6E6E6; /* alt row color 2 */	
+}
+
+/* main table edit mode row color */
+.ewTableEditRow {
+	background-color: #FFFF99; /* edit mode color */
+}
+
+/* main table highlight color */
+.ewTableHighlightRow {
+	background-color: #FFCCFF; /* highlight color */
+}
+
+/* main table select color */
+.ewTableSelectRow {
+	background-color: #CCFFFF; /* select color */
+}
+
+/* main table footer section */
+.ewTableFooter {
+	background-color: #d5dae3;
+}
+
+/* classes for report */
+.ewReportTable {
+    border: 0px;
+    border-collapse: collapse;
+}
+
+.ewReportTable td {
+    padding: 3px;
+}
+
+.ewGroupField {
+	font-weight: bold;
+}
+
+.ewGroupName {
+	font-weight: bold;
+}
+
+.ewGroupHeader {
+	border-bottom: 3px double Gray;
+	border-top: 3px double Gray;
+}
+
+.ewGroupSummary {
+	border-top: 1px solid Gray;
+} 
+
+.ewGroupAggregate {
+	font-weight: bold;
+}
+
+.ewGrandSummary {
+	border-top: 1px solid Gray;
+}
+
+/* message */
+.ewmsg {
+	color: red; /* message color */
+	font-family: Verdana, Arial, Helvetica, sans-serif;; /* font name */
+	font-size: xx-small; /* font size */	
+}
+
+/* Ajax */
+.ewAstList {
+	border: 1px solid black;
+	background: #ffffff;
+	position: absolute;
+	padding: 0;
+	white-space: nowrap;
+}
+
+.ewAstListBase {
+	position: absolute;
+	padding: 1;
+}
+
+.ewAstListItem {
+	color: black;
+	background: #ffffff;
+	cursor: pointer;
+	white-space: nowrap;
+	padding: 1;
+}
+
+.ewAstSelListItem {
+	color: white;
+	background: Highlight;
+	cursor: pointer;
+	white-space: nowrap;
+	padding: 1;
+}
+
+/* MultiPage pager table */
+.ewMultiPagePager {
+	color: inherit; /* text color */
+	font-family: Verdana, Arial, Helvetica, sans-serif;; /* font name */
+	font-size: xx-small; /* font size */
+	border: 0px; /* border */	
+}
+
+.ewMultiPagePager td {
+	padding: 2px; /* cell padding */	
+}
+
+
+.divshow{
+}
+
+.divhide{
+	display: none;
+}
+
+#navitabs{
+clear:both;
+font-size:9px;
+}
+
+.navitab{
+color:  #505050;
+padding:6px 12px 6px 12px;
+margin:0px;
+text-decoration:none;
+background:#e0e0e0;
+border-right:1px solid #fff;
+cursor: pointer;
+
+}
+
+.navitab:hover{
+text-decoration:none;
+background:#d0d0d0;
+}
+
+.activenavitab{
+padding:6px 12px 6px 12px;
+color:#ffffff;
+margin:0px;
+text-decoration:none;
+background:#505050;
+border-right:1px solid #fff;
+cursor: pointer;
+}
+
+.activenavitab:hover{
+
+text-decoration:none;
+}
+
+.inputdisabled{
+	background-color: #999;
+}
+
+.busyboxshow{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width:60px;
+	height: 50px;
+	vertical-align: text-bottom;
+	background: white url('loading.gif') no-repeat center bottom;
+	color: #52617B;
+	font-weight: bold;
+
+	
+}
+
+.busyboxhide{
+	display: none;
+}
+
+.schoollist{
+	padding: 10px; 
+	position:absolute; 
+	background-color: #ffffcc; 
+	float:right; 
+	clear:both; 
+	border:1px black solid;
+}
+
+.blinkbg{
+	background: url('blinkred.gif');
+}
+
+.blinkwarning{
+	background: url('blinkyellow.gif');
+}
+
+.disabled{
+	background: #888;
+}
+
+#excludepages{
+	z-index: 100;
+	position: absolute;
+	background-color: white;
+	border: 3px solid #52617B;
+	left:150px;
+	padding: 0 20px 10px 10px;
+}
+
+#excludepages label{
+	display: block;
+}
+
+.closedschool{
+	text-decoration: line-through;
+}
+
+.exportEMIS_box{
+    width: 50%;
+    height: 65%;
+    border: solid #000 thin;
+    background-color: #bbccdd;
+    position:relative;
+}
+.exportEMIS_box table tbody tr td
+{
+    padding-top:11%;
+    padding-left:8%;
+    font-size: 13px;
+}
+
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   speak for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 140, 140, 140, .8 ) 
+                url('loading.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+/*END_SYSTEM_STYLES*/

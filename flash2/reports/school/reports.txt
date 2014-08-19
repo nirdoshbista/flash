@@ -1,0 +1,6 @@
+Schools By Grade,school_by_grade.rpt
+Schools By Grade Extras,school_by_grade_extra.rpt
+Schools By Level,school_by_level.rpt
+Schools BY Level Extras,school_by_level_extra.rpt
+Schools By Type,school_by_type.rpt
+Schools Entered,schools_entered.rpt

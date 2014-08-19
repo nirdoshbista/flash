@@ -1,0 +1,3 @@
+Agewise total student details,ecd_ppc_total_agewise.rpt
+Agewise dalit student details,ecd_ppc_dalit_agewise.rpt
+Agewise janjati student details,ecd_ppc_janjati_agewise.rpt

@@ -1,0 +1,4 @@
+Higher Secondary Level Total Enrollment,hsec_tot_enr.rpt
+Higher Secondary Level Dalit Enrollment,hsec_dalit_enr.rpt
+Higher Secondary Level Janjati Enrollment,hsec_janjati_enr.rpt
+Higher Secondary Level Enrollment by Social Groups,hsec_tot_social_status.rpt

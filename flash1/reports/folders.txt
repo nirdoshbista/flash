@@ -1,0 +1,13 @@
+School Reports,school/
+Basic Level Education Student Reports,basic education/
+Secondary Level Student Reports,secondary education/
+Agewise Reports,agewise/
+Agewise 2066 Reports,agewise_2066/
+Alternate Schooling,alternate_schooling/
+Disability,disability/
+Languages,languages/
+Teaching Methods,teaching_methods/
+Textbooks,textbooks/
+ECD/PPC Reports, ecd_ppc/
+SLC Electives,electives/
+Finance, finance/

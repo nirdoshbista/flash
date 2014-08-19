@@ -1,0 +1,3 @@
+Primary Level Teacher Training,primary teacher training/
+Lower Secondary Level Teacher Training,lower secondary teacher training/
+Secondary Level Teacher Training,Secondary teacher training/

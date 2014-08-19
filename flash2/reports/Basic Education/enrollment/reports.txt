@@ -1,0 +1,4 @@
+Basic Level Education Total Enrollment,pr_tot_enr.rpt
+Basic Level Education Dalit Enrollment,pr_dalit_enr.rpt
+Basic Level Education Janjati Enrollment,pr_janjati_enr.rpt
+Basic Level Education Enrollment by Social Groups,pri_tot_social_status.rpt

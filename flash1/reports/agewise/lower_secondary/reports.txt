@@ -1,0 +1,3 @@
+Total Enrollment,lsec_total_enroll_age.rpt
+Dalit Enrollment,lsec_dalit_enroll_age.rpt
+Janjati Enrollment,lsec_janjati_enroll_age.rpt

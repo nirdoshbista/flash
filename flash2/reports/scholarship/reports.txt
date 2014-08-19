@@ -1,0 +1,4 @@
+Basic Education Scholarship,basic_education_scholarship.rpt
+Basic and Secondary Scholarship,secondary_scholarship.rpt
+Dalit Special Scholarship,dalit_scholarship.rpt
+Karnali Special Scholarship,karnali_scholarship.rpt

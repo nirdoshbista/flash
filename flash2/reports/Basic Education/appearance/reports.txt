@@ -1,0 +1,4 @@
+Primary Level Total Exam Appearance,pr_tot_app.rpt
+Primary Level Dalit Exam Appearance,pr_dalit_app.rpt
+Primary Level Janjati Exam Appearance,pr_janjati_app.rpt
+Primary Level Exam Appearance by Social Groups,pri_tot_social_status.rpt

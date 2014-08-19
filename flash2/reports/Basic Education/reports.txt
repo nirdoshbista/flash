@@ -1,0 +1,6 @@
+Total Enrollment by Class,tot_enr_by_class.rpt
+Total Dalit Enrollment by Class,dalit_enr_by_class.rpt
+Total Janjati Enrollment by Class,janjati_enr_by_class.rpt
+Total Exam Appearance by Class,tot_exam_by_class.rpt
+Total Dalit Exam Appearance by Class,dalit_exam_by_class.rpt
+Total Janjati Exam Appearance by Class,janjati_exam_by_class.rpt

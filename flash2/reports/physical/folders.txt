@@ -1,0 +1,7 @@
+Govt. funds Details,govt_funds/
+School Monitoring Details,sch_monitor/
+School Operational Calendar Details,school_opening/
+School Environment Details,school_environment/
+Classroom Details,classroom/
+School Land and Building Details,school_land_building/
+School Information,school_information/

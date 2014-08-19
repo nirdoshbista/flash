@@ -1,0 +1,101 @@
+; Report & Chart data for School for type
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "School by type"
+
+[prereq]
+prereq1title = "Level"
+prereq1options = "All Levels | Primary Only (1-5) | Lower Secondary Only (1-8, 6-8) | Secondary Only (1-10, 6-10, 9-10)| Higher Secondary Only (1-12, 6-12, 9-12, 11-12)"
+prereq1clauses = "(mast_school_type.ecd between 1 and 12 or mast_school_type.class1 between 1 and 10 or mast_school_type.class6 between 1 and 10 or mast_school_type.class9 between 1 and 10 or mast_school_type.class11 between 1 and 10) | mast_school_type.class1>0 and mast_school_type.class6=0 | ((mast_school_type.class1>0 and mast_school_type.class6>0 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6>0 and mast_school_type.class9=0)) |((mast_school_type.class1>0 and mast_school_type.class6>0 and mast_school_type.class9>0 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6>0 and mast_school_type.class9>0 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9>0 and mast_school_type.class11=0)) | ((mast_school_type.class1>0 and mast_school_type.class11>0) or (class1=0 and class6=0 and mast_school_type.class9>0 and mast_school_type.class11>0) or (class1=0 and class6=0 and class9=0 and mast_school_type.class11>0))"
+
+prereq2title = "ECD/PPC Status"
+prereq2options = "All schools | Schools with ECD/PPC | Schools without ECD/PPC"
+prereq2clauses = "(mast_school_type.ecd is null or mast_school_type.ecd is not null or (mast_school_type.class1>0 or mast_school_type.class6>0 or mast_school_type.class9>0 or mast_school_type.class11>0))| (mast_school_type.ecd>0 and (mast_school_type.class1>0 or mast_school_type.class6>0 or mast_school_type.class9>0 or mast_school_type.class9>0))| (mast_school_type.ecd is null or mast_school_type.ecd=0 and (mast_school_type.class1>0 or mast_school_type.class6>0 or mast_school_type.class9>0 or mast_school_type.class11>0))"
+
+prereq3title = "Year"
+prereq3options = "2065|2064|2063|2062"
+prereq3clauses = "mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063|mast_schoollist.sch_year=2062 and mast_school_type.sch_year=2062"
+
+[tableheader]
+row1 = "Code / Name [2,2] | Ward [2,1] | Location [2,1] | A/C No [2,1] | School Based ECDs [2,1]| Community Based ECDs [2,1] | Ecd/PPC Only [2,1]| Total ECD/PPCs [2,1]| Total Schools[5] | Aided [4] | Community Managed [4] | Teacher Quota [4] | Unaided [4] | Institutional [4] | Madrassas [4] | Gumbas [4] | Ashrams [4]| SOP/FSP[2]"
+row2 = "Tot | Pri | LSS | SS | HSEC | Pri | LSS | SS | HSEC | Pri | LSS | SS | HSEC | Pri | LSS | SS | HSEC | Pri | LSS | SS | HSEC | Pri | LSS | SS | HSEC | Pri | LSS | SS | HSEC | Pri | LSS | SS | HSEC | Pri | LSS | SS | HSEC | Pri | LSS"
+
+[row]
+datacheck = "select distinct(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_enroll_f1 using (sch_num, sch_year) left join sopfsp_enroll using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.ecd>0 or mast_school_type.class1>0 or mast_school_type.class6>0 or mast_school_type.class9>0 or mast_school_type.class11>0)"
+
+query1 = "select (mast_schoollist.wardno) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_enroll_f1 using (sch_num, sch_year) left join sopfsp_enroll using (sch_num, sch_year) where mast_schoollist.flash1=1"
+
+query2 = "select (mast_schoollist.location) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_enroll_f1 using (sch_num, sch_year) left join sopfsp_enroll using (sch_num, sch_year) where mast_schoollist.flash1=1"
+
+query3 = "select (mast_schoollist.account_no) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_enroll_f1 using (sch_num, sch_year) left join sopfsp_enroll using (sch_num, sch_year) where mast_schoollist.flash1=1"
+
+query4 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and ((ecd>0 and ecd<11) and (class1 or class6 or class9 or class11))"
+
+query5 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_enroll_f1 using(sch_num, sch_year) where mast_schoollist.flash1=1 and ecdppc_enroll_f1.ecd_num>1"
+
+query6 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and (ecd>0 and (!class1 and !class6 and !class9 and !class11))"
+
+query7 = "#4+#5+#6"
+
+query8 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and ((class1 between 1 and 10) or (class6 between 1 and 10) or (class9 between 1 and 10) or (class11 between 1 and 10))"
+
+query9 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and mast_schoollist.flash1=1 and (class1>0 and class1<11)"
+
+query10 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and (class6>0 and class6<11)"
+
+query11 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and (class9>0 and class9<11)"
+
+query12 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and (class11>0 and class11<11)"
+
+query13 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class1=1"
+
+query14 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class6=1"
+
+query15 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class9=1"
+
+query16 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class11=1"
+
+query17 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class1=2"
+
+query18 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class6=2"
+
+query19 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class9=2"
+
+query20 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class11=2"
+
+query21 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class1=3"
+query22 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class6=3"
+query23 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class9=3"
+query24 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class11=3"
+
+query25 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class1=4"
+query26 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class6=4"
+query27 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class9=4"
+query28 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class11=4"
+
+query29 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and (class1=5 or class1=6 or class1=7)"
+query30 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and (class6=5 or class6=6 or class6=7)"
+query31 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and (class9=5 or class9=6 or class9=7)"
+query32 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and (class11=5 or class11=6 or class11=7)"
+
+query33 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class1=8"
+query34 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class6=8"
+query35 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class9=8"
+query36 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class11=8"
+
+query37 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class1=9"
+query38 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class6=9"
+query39 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class9=9"
+query40 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class11=9"
+
+
+query41 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class1=10"
+query42 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class6=10"
+query43 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class9=10"
+query44 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class11=10"
+
+query45 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join sopfsp_enroll using(sch_num, sch_year) where ((mast_schoollist.flash1=1 and class1=11) or (sopfsp_enroll.tot_enroll_total_t>0))"
+query46 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash1=1 and class6=11"
+

@@ -1,0 +1,35 @@
+[header]
+title1 = "Basic Level (Grade 6-8) and Secondary Level (Grade 9-10) Janajati Enrollment by age"
+
+[prereq]
+prereq1title = "School Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported (Excluding Religious) |  Government Supported (Including Religious) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Institutional (All) | Madrassas | Gumbas | Ashrams| Religious (All)"
+prereq1clauses ="mast_school_type.class6<11 or mast_school_type.class9<11|mast_school_type.class6=1 or mast_school_type.class9=1|mast_school_type.class6=2 or mast_school_type.class9=2|mast_school_type.class6=3 or mast_school_type.class9=3|mast_school_type.class6=4 or mast_school_type.class9=4|((mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4) or (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4))|((mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4 or mast_school_type.class6=8 or mast_school_type.class6=9 or mast_school_type.class6=10) or (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4 or mast_school_type.class9=8 or mast_school_type.class9=9 or mast_school_type.class9=10)) | mast_school_type.class6=5 or mast_school_type.class9=5 | mast_school_type.class6=6 or mast_school_type.class9=6 |  mast_school_type.class6=7 or mast_school_type.class9=7 |((mast_school_type.class6=5 or mast_school_type.class6=6 or mast_school_type.class6=7) or (mast_school_type.class9=5 or mast_school_type.class9=6 or mast_school_type.class9=7))| mast_school_type.class6=8 or mast_school_type.class9=8| mast_school_type.class6=9 or mast_school_type.class9=9 | mast_school_type.class6=10 or mast_school_type.class9=10 | ((mast_school_type.class6=8 or mast_school_type.class6=9 or mast_school_type.class6=10) or (mast_school_type.class9=8 or mast_school_type.class9=9 or mast_school_type.class9=10))"
+
+prereq2title = "ECD/PPC Status"
+prereq2options = "All schools | Schools with ECD/PPC | Schools without ECD/PPC"
+prereq2clauses = "(mast_school_type.ecd is null or mast_school_type.ecd is not null and (mast_school_type.class1>0 or mast_school_type.class6>0 or mast_school_type.class9>0 or mast_school_type.class11>0))| (mast_school_type.ecd>0 and (mast_school_type.class1>0 or mast_school_type.class6>0 or mast_school_type.class9>0 or mast_school_type.class9>0))| (mast_school_type.ecd is null or mast_school_type.ecd=0 and (mast_school_type.class1>0 or mast_school_type.class6>0 or mast_school_type.class9>0 or mast_school_type.class11>0))"
+
+prereq3title = "Select Class"
+prereq3options = "Class 6-10 | Class 6 | Class 7 | Class 8 | Class 6-8 | Class 9 | Class 10 | Class 9-10"
+prereq3clauses = "sec_janjati_enroll_age_f1.class>0|sec_janjati_enroll_age_f1.class=6|sec_janjati_enroll_age_f1.class=7|sec_janjati_enroll_age_f1.class=8|sec_janjati_enroll_age_f1.class<9 | sec_janjati_enroll_age_f1.class=9 | sec_janjati_enroll_age_f1.class=10 | sec_janjati_enroll_age_f1.class>8"
+
+prereq4title = "Year"
+prereq4options = "2065|2064|2063|2062"
+prereq4clauses = "mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063|mast_schoollist.sch_year=2062 and mast_school_type.sch_year=2062"
+
+[tableheader]
+row1 = "Code / Name [3,2] | Ward [3,1]| Location [3,1]| A/C No [3,1] | Year 2066 Onwards [51]| Upto Year 2065 [9]"
+row2 = "<10 [3]  | <11 [3]  | <12 [3] | <13 [3] | <14 [3] | 10 [3]  | 11 [3]  | 12 [3]  | 13 [3]  | 14 [3]  | 15 [3] | 16 [3] | 17 [3] | >14 [3] | >15 [3]  | >16 [3]  |  >17 [3] | 11 to 12 [3] | 13 to 14 [3] | >12 [3]"
+row3 = "G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T"
+
+[row]
+datacheck = "select distinct mast_schoollist.sch_num from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join sec_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and mast_school_type.class6>0"
+
+query1 = "select mast_schoollist.wardno from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join sec_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1"
+
+query2 = "select mast_schoollist.location from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join sec_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1"
+
+query3 = "select mast_schoollist.account_no from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join sec_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1"
+
+query4 = "SELECT sum(f_l10),sum(m_l10),sum(t_l10),sum(f_l11),sum(m_l11),sum(t_l11),sum(f_l12),sum(m_l12),sum(t_l12),sum(f_l13),sum(m_l13),sum(t_l13),sum(f_l14),sum(m_l14),sum(t_l14),sum(f_10),sum(m_10),sum(t_10),sum(f_11),sum(m_11),sum(t_11), sum(f_12),sum(m_12),sum(t_12),sum(f_13),sum(m_13),sum(t_13),sum(f_14),sum(m_14),sum(t_14),sum(f_15),sum(m_15),sum(t_15),sum(f_16),sum(m_16),sum(t_16),sum(f_17),sum(m_17),sum(t_17),sum(f_g14),sum(m_g14),sum(t_g14),sum(f_g15),sum(m_g15),sum(t_g15),sum(f_g16),sum(m_g16),sum(t_g16),sum(f_g17),sum(m_g17),sum(t_g17),sum(f_11_12),sum(m_11_12),sum(t_11_12),sum(f_13_14),sum(m_13_14),sum(t_13_14),sum(f_g12),sum(m_g12),sum(t_g12) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join sec_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1"

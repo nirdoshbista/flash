@@ -1,0 +1,4 @@
+Lower Secondary Level Total Exam Appearance,lsec_tot_app.rpt
+Lower Secondary Level Dalit Exam Appearance,lsec_dalit_app.rpt
+Lower Secondary Level Janjati Exam Appearance,lsec_janjati_app.rpt
+Lower Secondary Level Exam Appearance by Social Groups,lsec_tot_social_status.rpt

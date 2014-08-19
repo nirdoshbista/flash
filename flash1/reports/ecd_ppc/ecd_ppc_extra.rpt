@@ -1,0 +1,36 @@
+; Report & Chart data for ECD/PPC
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "ECD/PPC Enrollment"
+
+
+[prereq]
+prereq1title = "ECD Type"
+prereq1options = "All | ECD | Nursery | LKG | UKG"
+prereq1clauses ="(ecdppc_enroll_f1.ecd_class_type=1 or ecdppc_enroll_f1.ecd_class_type>2) | ecdppc_enroll_f1.ecd_class_type=1 | ecdppc_enroll_f1.ecd_class_type=3 | ecdppc_enroll_f1.ecd_class_type=4 | ecdppc_enroll_f1.ecd_class_type=5"
+
+prereq2title = "Year"
+prereq2options = "2066|2065|2064|2063"
+prereq2clauses = "mast_schoollist.sch_year=2066 and mast_school_type.sch_year=2066|mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063"
+
+[tableheader]
+row1 = "Code / Name [2,2] | School Based ECDs [2,1]| Community Based ECDs [2,1]| ECD/PPC Only [2,1]| Total ECD/PPCs [2,1]| Total [3] | Dalit [3] | Janjati [3] | Others [3] | Newly Enrolled [3]"
+row2 = "G | B | T | G | B | T | G | B | T | G | B | T| G | B | T"
+
+[row]
+datacheck = "select distinct(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_enroll_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1"
+
+query1 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_enroll_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and ((ecd>0 and ecd<11) and (class1 or class6 or class9 or class11))"
+
+query2 = "select count(ecd_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_enroll_f1 using(sch_num, sch_year) where mast_schoollist.flash1=1 and ecdppc_enroll_f1.ecd_num>1"
+
+query3 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_enroll_f1 using(sch_num, sch_year) where mast_schoollist.flash1=1 and (ecd>0 and (!class1 and !class6 and !class9 and !class11))"
+
+query4 = "#1+#2+#3"
+
+query5 = "select sum(tot_enroll_total_f), sum(tot_enroll_total_m), sum(tot_enroll_total_t), sum(tot_enroll_dalit_f), sum(tot_enroll_dalit_m), sum(tot_enroll_dalit_t), sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_m), sum(tot_enroll_janjati_t), sum(tot_enroll_total_f)-(sum(tot_enroll_dalit_f)+sum(tot_enroll_janjati_f)), sum(tot_enroll_total_m)-(sum(tot_enroll_dalit_m)+sum(tot_enroll_janjati_m)), sum(tot_enroll_total_t)-(sum(tot_enroll_dalit_t)+sum(tot_enroll_janjati_t)), sum(tot_new_enroll_f), sum(tot_new_enroll_m), sum(tot_new_enroll_t) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecdppc_enroll_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1"
+
+
+

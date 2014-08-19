@@ -1,0 +1,335 @@
+; Report & Chart data for Teacher Status
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "Teacher and Student Details for PCF Calculaton"
+
+
+[prereq]
+prereq1title = "School Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teacher | Government Unaided | Government Supported (Excluding Religious) | Government Supported (Including Religious) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Institutional (All) | Madrassas | Gumbas | Ashrams | Religious (All)"
+prereq1clauses = "(mast_school_type.class1>0 or mast_school_type.class6>0 or mast_school_type.class9>0 or mast_school_type.class11>0)| 
+
+((mast_school_type.class1=1 and mast_school_type.class6=0) or (mast_school_type.class1=1 and mast_school_type.class6=1 and mast_school_type.class9=0) or (mast_school_type.class1=1 and mast_school_type.class6=1 and mast_school_type.class9=1 and mast_school_type.class11=0) or (mast_school_type.class1=1 and mast_school_type.class6=1 and mast_school_type.class9=1 and mast_school_type.class11=1) or (mast_school_type.class1=0 and mast_school_type.class6=1 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=1 and mast_school_type.class9=1 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=1 and mast_school_type.class9=1 and mast_school_type.class11=1) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=1 and mast_school_type.class11=1) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=1)) | 
+
+((mast_school_type.class1=2 and mast_school_type.class6=0) or (mast_school_type.class1=2 and mast_school_type.class6=2 and mast_school_type.class9=0) or (mast_school_type.class1=2 and mast_school_type.class6=2 and mast_school_type.class9=2 and mast_school_type.class11=0) or (mast_school_type.class1=2 and mast_school_type.class6=2 and mast_school_type.class9=2 and mast_school_type.class11=2) or (mast_school_type.class1=0 and mast_school_type.class6=2 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=2 and mast_school_type.class9=2 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=2 and mast_school_type.class9=2 and mast_school_type.class11=2) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=2 and mast_school_type.class11=2) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=2)) | 
+
+((mast_school_type.class1=3 and mast_school_type.class6=0) or (mast_school_type.class1=3 and mast_school_type.class6=3 and mast_school_type.class9=0) or (mast_school_type.class1=3 and mast_school_type.class6=3 and mast_school_type.class9=3 and mast_school_type.class11=0) or (mast_school_type.class1=3 and mast_school_type.class6=3 and mast_school_type.class9=3 and mast_school_type.class11=3) or (mast_school_type.class1=0 and mast_school_type.class6=3 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=3 and mast_school_type.class9=3 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=3 and mast_school_type.class9=3 and mast_school_type.class11=3) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=3 and mast_school_type.class11=3) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=3)) | 
+
+((mast_school_type.class1=4 and mast_school_type.class6=0) or (mast_school_type.class1=4 and mast_school_type.class6=4 and mast_school_type.class9=0) or (mast_school_type.class1=4 and mast_school_type.class6=4 and mast_school_type.class9=4 and mast_school_type.class11=0) or (mast_school_type.class1=4 and mast_school_type.class6=4 and mast_school_type.class9=4 and mast_school_type.class11=4) or (mast_school_type.class1=0 and mast_school_type.class6=4 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=4 and mast_school_type.class9=4 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=4 and mast_school_type.class9=4 and mast_school_type.class11=4) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=4 and mast_school_type.class11=4) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=4)) | 
+
+((mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4) and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4) and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4) and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4) or (mast_school_type.class1=0 and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4) and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4) and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4)) or (mast_school_type.class1=0 and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4) and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4) and (mast_school_type.class11=0)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4) and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4)) or (mast_school_type.class1=0 and mast_school_type.class9=0 and mast_school_type.class11=0 and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class11=0 and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4)) or (mast_school_type.class11=0 and (mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4) and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4) and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4)) or (mast_school_type.class11=0 and mast_school_type.class9=0 and (mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4) and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4)) 
+or (mast_school_type.class11=0 and mast_school_type.class9=0 and mast_school_type.class6=0 and (mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4))) | 
+
+((mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4 or mast_school_type.class1=8 or mast_school_type.class1=9 or mast_school_type.class1=10) and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4 or mast_school_type.class6=8 or mast_school_type.class6=9 or mast_school_type.class6=10) and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4 or mast_school_type.class9=8 or mast_school_type.class9=9 or mast_school_type.class9=10) and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4 or mast_school_type.class11=8 or mast_school_type.class11=9 or mast_school_type.class11=10) or (mast_school_type.class1=0 and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4 or mast_school_type.class6=8 or mast_school_type.class6=9 or mast_school_type.class6=10) and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4 or mast_school_type.class9=8 or mast_school_type.class9=9 or mast_school_type.class9=10) and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4 or mast_school_type.class11=8 or mast_school_type.class11=9 or mast_school_type.class11=10)) or (mast_school_type.class1=0 and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4 or mast_school_type.class6=8 or mast_school_type.class6=9 or mast_school_type.class6=10) and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4 or mast_school_type.class9=8 or mast_school_type.class9=9 or mast_school_type.class9=10) and (mast_school_type.class11=0)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4 or mast_school_type.class9=8 or mast_school_type.class9=9 or mast_school_type.class9=10) and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4 or mast_school_type.class11=8 or mast_school_type.class11=9 or mast_school_type.class11=10)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4 or mast_school_type.class11=8 or mast_school_type.class11=9 or mast_school_type.class11=10)) or (mast_school_type.class1=0 and mast_school_type.class9=0 and mast_school_type.class11=0 and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4 or mast_school_type.class6=8 or mast_school_type.class6=9 or mast_school_type.class6=10)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class11=0 and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4 or mast_school_type.class9=8 or mast_school_type.class9=9 or mast_school_type.class9=10)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4 or mast_school_type.class11=8 or mast_school_type.class11=9 or mast_school_type.class11=10)) or (mast_school_type.class11=0 and (mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4 or mast_school_type.class1=8 or mast_school_type.class1=9 or mast_school_type.class1=10) and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4 or mast_school_type.class6=8 or mast_school_type.class6=9 or mast_school_type.class6=10) and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4 or mast_school_type.class9=8 or mast_school_type.class9=9 or mast_school_type.class9=10)) or (mast_school_type.class11=0 and mast_school_type.class9=0 and (mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4 or mast_school_type.class1=8 or mast_school_type.class1=9 or mast_school_type.class1=10) and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4 or mast_school_type.class6=8 or mast_school_type.class6=9 or mast_school_type.class6=10)) or (mast_school_type.class11=0 and mast_school_type.class9=0 and mast_school_type.class6=0 and (mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4 or mast_school_type.class1=8 or mast_school_type.class1=9 or mast_school_type.class1=10))) | 
+((mast_school_type.class1=5 and mast_school_type.class6=0) or (mast_school_type.class1=5 and mast_school_type.class6=5 and mast_school_type.class9=0) or (mast_school_type.class1=5 and mast_school_type.class6=5 and mast_school_type.class9=5 and mast_school_type.class11=0) or (mast_school_type.class1=5 and mast_school_type.class6=5 and mast_school_type.class9=5 and mast_school_type.class11=5) or (mast_school_type.class1=0 and mast_school_type.class6=5 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=5 and mast_school_type.class9=5 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=5 and mast_school_type.class9=5 and mast_school_type.class11=5) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=5 and mast_school_type.class11=5) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=5)) |
+
+((mast_school_type.class1=6 and mast_school_type.class6=0) or (mast_school_type.class1=6 and mast_school_type.class6=6 and mast_school_type.class9=0) or (mast_school_type.class1=6 and mast_school_type.class6=6 and mast_school_type.class9=6 and mast_school_type.class11=0) or (mast_school_type.class1=6 and mast_school_type.class6=6 and mast_school_type.class9=6 and mast_school_type.class11=6) or (mast_school_type.class1=0 and mast_school_type.class6=6 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=6 and mast_school_type.class9=6 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=6 and mast_school_type.class9=6 and mast_school_type.class11=6) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=6 and mast_school_type.class11=6) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=6)) |
+
+((mast_school_type.class1=7 and mast_school_type.class6=0) or (mast_school_type.class1=7 and mast_school_type.class6=7 and mast_school_type.class9=0) or (mast_school_type.class1=7 and mast_school_type.class6=7 and mast_school_type.class9=7 and mast_school_type.class11=0) or (mast_school_type.class1=7 and mast_school_type.class6=7 and mast_school_type.class9=7 and mast_school_type.class11=7) or (mast_school_type.class1=0 and mast_school_type.class6=7 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=7 and mast_school_type.class9=7 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=7 and mast_school_type.class9=7 and mast_school_type.class11=7) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=7 and mast_school_type.class11=7) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=7)) |
+
+((mast_school_type.class1=5 or mast_school_type.class1=6 or mast_school_type.class1=7) and (mast_school_type.class6=5 or mast_school_type.class6=6 or mast_school_type.class6=7) and (mast_school_type.class9=5 or mast_school_type.class9=6 or mast_school_type.class9=7) and (mast_school_type.class11=5 or mast_school_type.class11=6 or mast_school_type.class11=7) or (mast_school_type.class1=0 and (mast_school_type.class6=5 or mast_school_type.class6=6 or mast_school_type.class6=7) and (mast_school_type.class9=5 or mast_school_type.class9=6 or mast_school_type.class9=7) and (mast_school_type.class11=5 or mast_school_type.class11=6 or mast_school_type.class11=7)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and (mast_school_type.class9=5 or mast_school_type.class9=6 or mast_school_type.class9=7) and (mast_school_type.class11=5 or mast_school_type.class11=6 or mast_school_type.class11=7)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and (mast_school_type.class11=5 or mast_school_type.class11=6 or mast_school_type.class11=7)) or(mast_school_type.class1=0 and mast_school_type.class9=0 and mast_school_type.class11=0 and (mast_school_type.class6=5 or mast_school_type.class6=6 or mast_school_type.class6=7)) or(mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class11=0 and (mast_school_type.class9=5 or mast_school_type.class9=6 or mast_school_type.class9=7)) or(mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and (mast_school_type.class11=5 or mast_school_type.class11=6 or mast_school_type.class11=7)) or (mast_school_type.class11=0 and (mast_school_type.class1=5 or mast_school_type.class1=6 or mast_school_type.class1=7) and (mast_school_type.class6=5 or mast_school_type.class6=6 or mast_school_type.class6=7) and (mast_school_type.class9=5 or mast_school_type.class9=6 or mast_school_type.class9=7)) or (mast_school_type.class11=0 and mast_school_type.class9=0 and (mast_school_type.class1=5 or mast_school_type.class1=6 or mast_school_type.class1=7) and (mast_school_type.class6=5 or mast_school_type.class6=6 or mast_school_type.class6=7)) or(mast_school_type.class11=0 and mast_school_type.class9=0 and mast_school_type.class6=0 and (mast_school_type.class1=5 or mast_school_type.class1=6 or mast_school_type.class1=7))) |
+
+((mast_school_type.class1=8 and mast_school_type.class6=0) or (mast_school_type.class1=8 and mast_school_type.class6=8 and mast_school_type.class9=0) or (mast_school_type.class1=8 and mast_school_type.class6=8 and mast_school_type.class9=8 and mast_school_type.class11=0) or (mast_school_type.class1=8 and mast_school_type.class6=8 and mast_school_type.class9=8 and mast_school_type.class11=8) or (mast_school_type.class1=0 and mast_school_type.class6=8 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=8 and mast_school_type.class9=8 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=8 and mast_school_type.class9=8 and mast_school_type.class11=8) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=8 and mast_school_type.class11=8) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=8)) |
+
+((mast_school_type.class1=9 and mast_school_type.class6=0) or (mast_school_type.class1=9 and mast_school_type.class6=9 and mast_school_type.class9=0) or (mast_school_type.class1=9 and mast_school_type.class6=9 and mast_school_type.class9=9 and mast_school_type.class11=0) or (mast_school_type.class1=9 and mast_school_type.class6=9 and mast_school_type.class9=9 and mast_school_type.class11=9) or (mast_school_type.class1=0 and mast_school_type.class6=9 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=9 and mast_school_type.class9=9 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=9 and mast_school_type.class9=9 and mast_school_type.class11=9) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=9 and mast_school_type.class11=9) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=9)) |
+
+((mast_school_type.class1=10 and mast_school_type.class6=0) or (mast_school_type.class1=10 and mast_school_type.class6=10 and mast_school_type.class9=0) or (mast_school_type.class1=10 and mast_school_type.class6=10 and mast_school_type.class9=10 and mast_school_type.class11=0) or (mast_school_type.class1=10 and mast_school_type.class6=10 and mast_school_type.class9=10 and mast_school_type.class11=10) or (mast_school_type.class1=0 and mast_school_type.class6=10 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=10 and mast_school_type.class9=10 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=10 and mast_school_type.class9=10 and mast_school_type.class11=10) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=10 and mast_school_type.class11=10) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=10)) |
+
+((mast_school_type.class1=8 or mast_school_type.class1=9 or mast_school_type.class1=10) and (mast_school_type.class6=8 or mast_school_type.class6=9 or mast_school_type.class6=10) and (mast_school_type.class9=8 or mast_school_type.class9=9 or mast_school_type.class9=10) and (mast_school_type.class11=8 or mast_school_type.class11=9 or mast_school_type.class11=10) or (mast_school_type.class1=0 and (mast_school_type.class6=8 or mast_school_type.class6=9 or mast_school_type.class6=10) and (mast_school_type.class9=8 or mast_school_type.class9=9 or mast_school_type.class9=10) and (mast_school_type.class11=8 or mast_school_type.class11=9 or mast_school_type.class11=10)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and (mast_school_type.class9=8 or mast_school_type.class9=9 or mast_school_type.class9=10) and (mast_school_type.class11=8 or mast_school_type.class11=9 or mast_school_type.class11=10)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and (mast_school_type.class11=8 or mast_school_type.class11=9 or mast_school_type.class11=10)) or(mast_school_type.class1=0 and mast_school_type.class9=0 and mast_school_type.class11=0 and (mast_school_type.class6=8 or mast_school_type.class6=9 or mast_school_type.class6=10)) or(mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class11=0 and (mast_school_type.class9=8 or mast_school_type.class9=9 or mast_school_type.class9=10)) or(mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and (mast_school_type.class11=8 or mast_school_type.class11=9 or mast_school_type.class11=10)) or (mast_school_type.class11=0 and (mast_school_type.class1=8 or mast_school_type.class1=9 or mast_school_type.class1=10) and (mast_school_type.class6=8 or mast_school_type.class6=9 or mast_school_type.class6=10) and (mast_school_type.class9=8 or mast_school_type.class9=9 or mast_school_type.class9=10)) or (mast_school_type.class11=0 and mast_school_type.class9=0 and (mast_school_type.class1=8 or mast_school_type.class1=9 or mast_school_type.class1=10) and (mast_school_type.class6=8 or mast_school_type.class6=9 or mast_school_type.class6=10)) or(mast_school_type.class11=0 and mast_school_type.class9=0 and mast_school_type.class6=0 and (mast_school_type.class1=8 or mast_school_type.class1=9 or mast_school_type.class1=10)))"
+
+prereq2title = "Level and Unit"
+prereq2options = "All Levels | Primary Only (1-5) | Lower Secondary Only (1-8, 6-8) | Secondary Only (1-10, 6-10, 9-10)| Higher Secondary Only (1-12, 6-12, 9-12, 11-12)"
+prereq2clauses = "(mast_school_type.class1>0 or mast_school_type.class6>0 or mast_school_type.class9>0 or mast_school_type.class11>0) | mast_school_type.class1>0 and mast_school_type.class6=0 | ((mast_school_type.class1>0 and mast_school_type.class6>0 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6>0 and mast_school_type.class9=0)) |((mast_school_type.class1>0 and mast_school_type.class6>0 and mast_school_type.class9>0 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6>0 and mast_school_type.class9>0 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9>0 and mast_school_type.class11=0)) | ((mast_school_type.class1>0 and mast_school_type.class11>0) or (class1=0 and class6=0 and mast_school_type.class9>0 and mast_school_type.class11>0) or (class1=0 and class6=0 and class9=0 and mast_school_type.class11>0))"
+
+prereq3title = "ECD/PPC Status"
+prereq3options = "All schools | Schools with ECD/PPC | Schools without ECD/PPC"
+prereq3clauses = "(mast_school_type.ecd is null or mast_school_type.ecd is not null and (mast_school_type.class1>0 or mast_school_type.class6>0 or mast_school_type.class9>0 or mast_school_type.class11>0))| (mast_school_type.ecd>0 and (mast_school_type.class1>0 or mast_school_type.class6>0 or mast_school_type.class9>0 or mast_school_type.class9>0))| (mast_school_type.ecd is null or mast_school_type.ecd=0 and (mast_school_type.class1>0 or mast_school_type.class6>0 or mast_school_type.class9>0 or mast_school_type.class11>0))"
+
+prereq4title = "Year"
+prereq4options = "2065|2064|2063|2062"
+prereq4clauses = "mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063|mast_schoollist.sch_year=2062 and mast_school_type.sch_year=2062"
+
+
+[tableheader]
+row1 = "Code / Name [3,2] | Ward [3,1]| Location [3,1] | A/C No [3,1] | App. Position [3,1] | Primary [27] | App. Position [3,1] | Lower Secondary [27] | App. Position [3,1] | Secondary [27] | App. Position [3,1] | Higher Secondary[27] | Exam Appeared from Flash II [24] | Exam Appeared from Flash I [24]"
+row2 = "Permanent[6]| Temporary [6] | Rahat [6] | Private Sources [6] | Total Teachers[3]|Permanent[6]| Temporary [6] | Rahat [6] | Private Sources [6] | Total Teachers[3]| Permanent[6]| Temporary [6] | Rahat [6] | Private Sources [6] | Total Teachers[3]| Permanent[6]| Temporary [6] | Rahat [6] | Private Sources [6] | Total Teachers[3] | Grade 1 [2]| Grade 2 [2]| Grade 3 [2]| Grade 4 [2]| Grade 5 [2]| Grade 6 [2]| Grade 7 [2]| Grade 8 [2]| Grade 9 [2]| Grade 10 [2]| Grade 11 [2]| Grade 12 [2] | Grade 1 [2]| Grade 2 [2]| Grade 3 [2]| Grade 4 [2]| Grade 5 [2]| Grade 6 [2]| Grade 7 [2]| Grade 8 [2]| Grade 9 [2]| Grade 10 [2]"
+row3 = "T | F | M | D | J | Dis.| T | F | M | D | J | Dis.| T | F | M | D | J | Dis.| T | F | M | D | J | Dis.| T | F | M|T | F | M | D | J | Dis.| T | F | M | D | J | Dis.| T | F | M | D | J | Dis.| T | F | M | D | J | Dis.| T | F | M|T | F | M | D | J | Dis.| T | F | M | D | J | Dis.| T | F | M | D | J | Dis.| T | F | M | D | J | Dis.| T | F | M | T | F | M | D | J | Dis.| T | F | M | D | J | Dis.| T | F | M | D | J | Dis.| T | F | M | D | J | Dis.| T | F | M | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G | T | G"
+
+[row]
+datacheck = "select distinct mast_schoollist.sch_num from mast_schoollist inner join mast_school_type using(sch_num, sch_year) inner join teachers using(sch_num, sch_year) left join class1_5_enroll_app using (sch_num, sch_year) left join class6_8_enroll_app using (sch_num, sch_year) left join class9_10_enroll_app using (sch_num, sch_year) left join class11_12_enroll_app using (sch_num, sch_year) left join last_class1_5_enroll_f1 using (sch_num, sch_year) left join last_class6_8_enroll_f1 using (sch_num, sch_year) left join last_class9_10_enroll_f1 using (sch_num, sch_year) where mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query1 = "select (mast_schoollist.wardno) from mast_schoollist inner join mast_school_type using (sch_num, sch_year) left join teachers using (sch_num, sch_year) where mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query2 = "select (mast_schoollist.location) from mast_schoollist inner join mast_school_type using (sch_num, sch_year) left join teachers using (sch_num, sch_year) where mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query3 = "select (mast_schoollist.account_no) from mast_schoollist inner join mast_school_type using (sch_num, sch_year) left join teachers using (sch_num, sch_year) where mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query4 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='approved' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query5 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query6 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query7 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query8 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query9 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query10 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query11 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query12 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query13 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query14 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query15 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query16 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query17 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query18 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query19 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query20 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query21 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query22 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query23 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query24 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query25 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query26 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query27 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query28 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=1 and mast_schoollist.flash1=1"
+
+query29 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type!='approved' and teachers.type!='total' and teachers.level=1 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query30 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type!='approved' and teachers.type!='total' and teachers.level=1 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query31 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type!='approved' and teachers.type!='total' and teachers.level=1 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query32 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='approved' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query33 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query34 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query35 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query36 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query37 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query38 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query39 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query40 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query41 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query42 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query43 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query44 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query45 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query46 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query47 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query48 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query49 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query50 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query51 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query52 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query53 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query54 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query55 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query56 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=2 and mast_schoollist.flash1=1"
+
+query57 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type!='approved' and teachers.type!='total' and teachers.level=2 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query58 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type!='approved' and teachers.type!='total' and teachers.level=2 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query59 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type!='approved' and teachers.type!='total' and teachers.level=2 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query60 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='approved' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query61 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query62 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query63 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query64 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query65 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query66 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query67 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query68 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query69 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query70 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query71 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query72 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query73 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query74 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query75 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query76 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query77 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query78 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query79 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query80 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query81 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query82 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query83 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query84 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=3 and mast_schoollist.flash1=1"
+
+query85 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type!='approved' and teachers.type!='total' and teachers.level=3 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query86 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type!='approved' and teachers.type!='total' and teachers.level=3 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query87 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type!='approved' and teachers.type!='total' and teachers.level=3 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query88 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='approved' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query89 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query90 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query91 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query92 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query93 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query94 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='permanent' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query95 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query96 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query97 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query98 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query99 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query100 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='temporary' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query101 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query102 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query103 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query104 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query105 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query106 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='rahat' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query107 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query108 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query109 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query110 = "select sum(dalit) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query111 = "select sum(janjati) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query112 = "select sum(disabled) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type='private' and mast_schoollist.flash2=1 and teachers.level=4 and mast_schoollist.flash1=1"
+
+query113 = "select sum(total) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type!='approved' and teachers.type!='total' and teachers.level=4 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query114 = "select sum(female) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type!='approved' and teachers.type!='total' and teachers.level=4 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query115 = "select sum(male) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join teachers using(sch_num, sch_year) where teachers.type!='approved' and teachers.type!='total' and teachers.level=4 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query116 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join class1_5_enroll_app using (sch_num, sch_year) where class=1 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query117 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join class1_5_enroll_app using (sch_num, sch_year) where class=2 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query118 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join class1_5_enroll_app using (sch_num, sch_year) where class=3 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query119 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join class1_5_enroll_app using (sch_num, sch_year) where class=4 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query120 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join class1_5_enroll_app using (sch_num, sch_year) where class=5 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query121 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join class6_8_enroll_app using (sch_num, sch_year) where class=6 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query122 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join class6_8_enroll_app using (sch_num, sch_year) where class=7 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query123 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join class6_8_enroll_app using (sch_num, sch_year) where class=8 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query124 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join class9_10_enroll_app using (sch_num, sch_year) where class=9 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query125 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join class9_10_enroll_app using (sch_num, sch_year) where class=10 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query126 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join class11_12_enroll_app using (sch_num, sch_year) where class=11 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query127 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join class11_12_enroll_app using (sch_num, sch_year) where class=12 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query128 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join last_class1_5_enroll_f1 using (sch_num, sch_year) where class=1 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query129 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join last_class1_5_enroll_f1 using (sch_num, sch_year) where class=2 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query130 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join last_class1_5_enroll_f1 using (sch_num, sch_year) where class=3 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query131 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join last_class1_5_enroll_f1 using (sch_num, sch_year) where class=4 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query132 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join last_class1_5_enroll_f1 using (sch_num, sch_year) where class=5 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query133 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join last_class6_8_enroll_f1 using (sch_num, sch_year) where class=6 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query134 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join last_class6_8_enroll_f1 using (sch_num, sch_year) where class=7 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query135 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join last_class6_8_enroll_f1 using (sch_num, sch_year) where class=8 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query136 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join last_class9_10_enroll_f1 using (sch_num, sch_year) where class=9 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"
+
+query137 = "select sum(tot_appeared_exam_total_t), sum(tot_appeared_exam_total_f) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join last_class9_10_enroll_f1 using (sch_num, sch_year) where class=10 and mast_schoollist.flash2=1 and mast_schoollist.flash1=1"

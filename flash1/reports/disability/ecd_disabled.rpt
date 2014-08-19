@@ -1,0 +1,48 @@
+; Report & Chart data for School for type
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "ECD/PPC Disable Student Details"
+
+[prereq]
+prereq1title = "ECD Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported (Excluding Religious) | Government Supported (Including Religious) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Institutional (All) | Madrassas | Gumbas | Ashrams | Religious (All) | Community"
+prereq1clauses ="mast_school_type.ecd>0|mast_school_type.ecd=1|mast_school_type.ecd=2|mast_school_type.ecd=3 | mast_school_type.ecd=4 | (mast_school_type.ecd=1 or mast_school_type.ecd=2 or mast_school_type.ecd=3 or mast_school_type.ecd=4) | (mast_school_type.ecd=1 or mast_school_type.ecd=2 or mast_school_type.ecd=3 or mast_school_type.ecd=4 or mast_school_type.ecd=8 or mast_school_type.ecd=9 or mast_school_type.ecd=10) | mast_school_type.ecd=5 | mast_school_type.ecd=6 | (mast_school_type.ecd=4 or mast_school_type.ecd=5 or mast_school_type.ecd=6)| mast_school_type.ecd=7 | mast_school_type.ecd=8 | mast_school_type.ecd=9 | mast_school_type.ecd=10 | (mast_school_type.ecd=8 or mast_school_type.ecd=9 or mast_school_type.ecd=10) | mast_school_type.ecd=12"
+
+prereq2title = "Disability Type"
+prereq2options = "All|Physically Disabled| Mentally Disabled | Deaf | Blind | Low Vision | Deaf and Blind | Dumb | Others"
+prereq2clauses = "disability_type_id>0|disability_type_id=1|disability_type_id=2|disability_type_id=3|disability_type_id=4|disability_type_id=5|disability_type_id=6|disability_type_id=7"
+
+prereq3title = "Year"
+prereq3options = "2066|2065|2064|2063"
+prereq3clauses = "mast_schoollist.sch_year=2066 and mast_school_type.sch_year=2066|mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063"
+
+[tableheader]
+row1 = "Code / Name [2,2] | Ward [2,1] | Location [2,1] | A/C No [2,1] | Physically Disabled [3] | Menatally Disabled [3]   | Deaf [3] | Blind [3] | Low Vision [3]| Deaf and Blind [3] | Dumb [3] | Total [3]"
+row2 = "G | B | T |G | B | T |G | B | T |G | B | T |G | B | T |G | B | T |G | B | T |G | B | T "
+
+[row]
+datacheck = "select distinct(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_disabled_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and mast_school_type.ecd>0"
+
+query1 = "select mast_schoollist.wardno from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_disabled_f1 using(sch_num, sch_year) where mast_schoollist.flash1=1"
+
+query2 = "select mast_schoollist.location from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_disabled_f1 using(sch_num, sch_year) where mast_schoollist.flash1=1"
+
+query3 = "select mast_schoollist.account_no from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_disabled_f1 using(sch_num, sch_year) where mast_schoollist.flash1=1"
+
+query4 = "select sum(ecd_disabled_f1.disabled_f),sum(ecd_disabled_f1.disabled_m),sum(ecd_disabled_f1.disabled_t) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join ecd_disabled_f1 using(sch_num, sch_year) where mast_schoollist.flash1=1 and ecd_disabled_f1.disability_type_id=1"
+
+query5 = "select sum(ecd_disabled_f1.disabled_f),sum(ecd_disabled_f1.disabled_m),sum(ecd_disabled_f1.disabled_t) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join ecd_disabled_f1 using(sch_num, sch_year) where mast_schoollist.flash1=1 and ecd_disabled_f1.disability_type_id=2"
+
+query6 = "select sum(ecd_disabled_f1.disabled_f),sum(ecd_disabled_f1.disabled_m),sum(ecd_disabled_f1.disabled_t) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join ecd_disabled_f1 using(sch_num, sch_year) where mast_schoollist.flash1=1 and ecd_disabled_f1.disability_type_id=3"
+
+query7 = "select sum(ecd_disabled_f1.disabled_f),sum(ecd_disabled_f1.disabled_m),sum(ecd_disabled_f1.disabled_t) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join ecd_disabled_f1 using(sch_num, sch_year) where mast_schoollist.flash1=1 and ecd_disabled_f1.disability_type_id=4"
+
+query8 = "select sum(ecd_disabled_f1.disabled_f),sum(ecd_disabled_f1.disabled_m),sum(ecd_disabled_f1.disabled_t) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join ecd_disabled_f1 using(sch_num, sch_year) where mast_schoollist.flash1=1 and ecd_disabled_f1.disability_type_id=5"
+
+query9 = "select sum(ecd_disabled_f1.disabled_f),sum(ecd_disabled_f1.disabled_m),sum(ecd_disabled_f1.disabled_t) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join ecd_disabled_f1 using(sch_num, sch_year) where mast_schoollist.flash1=1 and ecd_disabled_f1.disability_type_id=6"
+
+query10 = "select sum(ecd_disabled_f1.disabled_f),sum(ecd_disabled_f1.disabled_m),sum(ecd_disabled_f1.disabled_t) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join ecd_disabled_f1 using(sch_num, sch_year) where mast_schoollist.flash1=1 and ecd_disabled_f1.disability_type_id=7"
+
+query11 = "select sum(ecd_disabled_f1.disabled_f),sum(ecd_disabled_f1.disabled_m),sum(ecd_disabled_f1.disabled_t) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join ecd_disabled_f1 using(sch_num, sch_year) where mast_schoollist.flash1=1"

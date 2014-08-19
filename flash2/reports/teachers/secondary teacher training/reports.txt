@@ -1,0 +1,3 @@
+Secondary Level All Teacher Training Details,teacher_training_sec.rpt
+Secondary Level Dalit Teacher Training Details,teacher_training_sec_dalits.rpt
+Secondary Level Janajati Teacher Training Details,teacher_training_sec_janjatis.rpt

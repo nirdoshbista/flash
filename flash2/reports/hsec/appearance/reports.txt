@@ -1,0 +1,4 @@
+Higher Secondary Level Total Exam Appearance,hsec_tot_app.rpt
+Higher Secondary Level Dalit Exam Appearance,hsec_dalit_app.rpt
+Higher Secondary Level Janjati Exam Appearance,hsec_janjati_app.rpt
+Higher Secondary Level Exam Appearance by Social Groups,hsec_tot_social_status.rpt

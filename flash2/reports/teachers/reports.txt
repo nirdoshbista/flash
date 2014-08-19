@@ -1,0 +1,7 @@
+Teacher Status, teacher_status.rpt
+Headteacher Status, headmaster.rpt
+PCF Status, pcf.rpt
+Licensed Teacher Status, license_teacher.rpt
+Teacher Qualification Status, teachers_edu.rpt
+Non Teaching Staff Details, non_teaching_staff.rpt
+Teacher and Student Details, teacher_student.rpt

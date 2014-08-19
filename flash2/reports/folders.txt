@@ -1,0 +1,13 @@
+School Reports,school/
+Basic Level Education Student Reports,Basic Education/
+Secondary Level Student Reports,Secondary Education/
+Scholarship,scholarship/
+Average marks,average marks/
+Attendance Reports,attendance/
+SMC / PTA Reports,smcpta/
+Teachers,teachers/
+Physical Information,physical/
+SOP/FSP, sop_fsp/
+ECD / PPC, ecd_ppc/
+PMEC Reports, PMEC/
+SLC and HSEB Reports,slc_hsec_exam/

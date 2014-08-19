@@ -1,0 +1,5 @@
+Total Passed,last_pr_tot_passed.rpt
+Dalit Passed,last_pr_dalit_Passed.rpt
+Janjati Passed,last_pr_janjati_Passed.rpt
+Others passed,last_pr_others_passed.rpt
+Exam Passed by Social Groups,last_pr_tot_social_status.rpt

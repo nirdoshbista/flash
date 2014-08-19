@@ -1,0 +1,5 @@
+Total Transfer-Ins,sec_transfer.rpt
+Dalit Transfer-Ins,sec_dalit_transfer.rpt
+Janjati Transfer-Ins,sec_janjati_transfer.rpt
+Others Transfer-Ins,sec_others_transfer.rpt
+Transfer Students by Social Groups,sec_tot_social_status.rpt

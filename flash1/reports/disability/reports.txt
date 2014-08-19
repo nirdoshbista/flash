@@ -1,0 +1,5 @@
+ECD/PPC Disability Details,ecd_disabled.rpt
+Basic Level (Grade 1-5) Disablility Details,pr_disabled.rpt
+Basic Level (Grade 6-8) Disability Details,lsec_disabled.rpt
+Secondary Level (Grade 9-10) Disability Details,sec_disabled.rpt
+Secondary Level (Grade 11-12) Disability Details,hsec_disabled.rpt

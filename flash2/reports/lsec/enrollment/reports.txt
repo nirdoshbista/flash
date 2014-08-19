@@ -1,0 +1,4 @@
+Lower Secondary Level Total Enrollment,lsec_tot_enr.rpt
+Lower Secondary Level Dalit Enrollment,lsec_dalit_enr.rpt
+Lower Secondary Level Janjati Enrollment,lsec_janjati_enr.rpt
+Lower Secondary Level Enrollment by Social Groups,lsec_tot_social_status.rpt

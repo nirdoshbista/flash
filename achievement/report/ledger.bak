@@ -1,0 +1,85 @@
+# Ledger Format
+# 
+# Format:
+# 	text~r,c,l,a
+# 	r=row, c=column
+# 	l=length allocated
+# 	a=alignment (values: l, r, c)
+#
+# Enclose text by {} to represent variable
+# Row value is relative in [repeat] section
+
+# Printer options, refer to PHP's printer_set_option()
+[printer-option]
+row=64
+col=95
+
+[non-repeat]
+District Education Office, <district>~1,1,95,c
+District Level Examination~2,1,95,c
+School Code: {sch_num}~3,1,50,l
+School Name: {nm_sch}~4,1,50,l
+Class: {class}~3,80,10,r
+Page: {page_num}~4,80,10,r
+
+#        1         2         3         4         5         6         7         8         9
+#2345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345
+{hr}~6,1,95,l
+Roll / Code     Name & DOB           Sex    <subjects>Tot Result~7,1,95,l
+#5800100010001  Jwalanta 
+{hr}~8,1,95,l
+
+[repeat]
+{stu_num}~1,1,15,l
+{reg_id}~2,1,15,l
+{first_name}~1,17,20,l
+{last_name}~2,17,20,l
+{dob_np}~3,17,20,l
+{sex}~1,38,4,l
+
+Th~1,41,3,l
+Pr~2,41,3,l
+To~3,41,3,l
+
+{s1_theory}~1,44,4,r
+{s1_practical}~2,44,4,r
+{s1}~3,44,4,r
+
+{s2_theory}~1,48,4,r
+{s2_practical}~2,48,4,r
+{s2}~3,48,4,r
+
+{s3_theory}~1,52,4,r
+{s3_practical}~2,52,4,r
+{s3}~3,52,4,r
+
+{s4_theory}~1,56,4,r
+{s4_practical}~2,56,4,r
+{s4}~3,56,4,r
+
+{s5_theory}~1,60,4,r
+{s5_practical}~2,60,4,r
+{s5}~3,60,4,r
+
+{s6_theory}~1,64,4,r
+{s6_practical}~2,64,4,r
+{s6}~3,64,4,r
+
+{s7_theory}~1,68,4,r
+{s7_practical}~2,68,4,r
+{s7}~3,68,4,r
+
+{s8_theory}~1,72,4,r
+{s8_practical}~2,72,4,r
+{s8}~3,72,4,r
+
+{s9_theory}~1,76,4,r
+{s9_practical}~2,76,4,r
+{s9}~3,76,4,r
+
+{total_theory}~1,80,4,r
+{total_practical}~2,80,4,r
+{total}~3,80,4,r
+
+{result}~1,85,10,l
+{hr}~4,1,95,l

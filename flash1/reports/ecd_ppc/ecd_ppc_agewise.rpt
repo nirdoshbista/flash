@@ -1,0 +1,89 @@
+; Report & Chart data for ECD/PPC
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "ECD/PPC Agewise Enrollment"
+
+[prereq]
+
+prereq1title = "ECD Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported (Excluding Religious) | Government Supported (Including Religious) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Institutional (All) | Madrassas | Gumbas | Ashrams | Religious (All) | Community"
+prereq1clauses ="mast_school_type.ecd>0|mast_school_type.ecd=1|mast_school_type.ecd=2|mast_school_type.ecd=3 | mast_school_type.ecd=4 | (mast_school_type.ecd=1 or mast_school_type.ecd=2 or mast_school_type.ecd=3 or mast_school_type.ecd=4 or mast_school_type.ecd=12) | (mast_school_type.ecd=1 or mast_school_type.ecd=2 or mast_school_type.ecd=3 or mast_school_type.ecd=4 or mast_school_type.ecd=8 or mast_school_type.ecd=9 or mast_school_type.ecd=10 or mast_school_type.ecd=12) | mast_school_type.ecd=5 | mast_school_type.ecd=6 | (mast_school_type.ecd=4 or mast_school_type.ecd=5 or mast_school_type.ecd=6)| mast_school_type.ecd=7 | mast_school_type.ecd=8 | mast_school_type.ecd=9 | mast_school_type.ecd=10 | (mast_school_type.ecd=8 or mast_school_type.ecd=9 or mast_school_type.ecd=10) | mast_school_type.ecd=12"
+
+
+prereq2title = "Year"
+prereq2options = "2066|2065|2064|2063"
+prereq2clauses = "mast_schoollist.sch_year=2066 and mast_school_type.sch_year=2066|mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063"
+
+[tableheader]
+row1 = "Code / Name [3,2]  | Total [9] | Dalit [9] | Janjati [9] | Others [9]"
+row2 = "< 3 [1,3]| 3 - 4 [1,3]| > 4 [1,3]| < 3 [1,3]| 3 - 4 [1,3]| > 4 [1,3]| < 3 [1,3]| 3 - 4 [1,3]| > 4 [1,3] | < 3 [1,3]| 3 - 4 [1,3]| > 4 [1,3]"
+row3 = "G | B | T | G | B | T | G | B | T | G | B | T | G | B | T | G | B | T | G | B | T | G | B | T |G | B | T | G | B | T | G | B | T | G | B | T "
+
+[row]
+
+query1 = "select sum(f_l3) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_total_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query2 = "select sum(m_l3) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_total_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query3 = "select sum(t_l3) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_total_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query4 = "select sum(f_3_4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_total_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query5 = "select sum(m_3_4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_total_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query6 = "select sum(t_3_4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_total_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query7 = "select sum(f_g4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_total_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query8 = "select sum(m_g4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_total_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query9 = "select sum(t_g4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_total_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+
+query10 = "select sum(f_l3) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_dalit_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query11 = "select sum(m_l3) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_dalit_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query12 = "select sum(t_l3) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_dalit_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query13 = "select sum(f_3_4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_dalit_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query14 = "select sum(m_3_4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_dalit_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query15 = "select sum(t_3_4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_dalit_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query16 = "select sum(f_g4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_dalit_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query17 = "select sum(m_g4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_dalit_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query18 = "select sum(t_g4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_dalit_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query19 = "select sum(f_l3) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query20 = "select sum(m_l3) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query21 = "select sum(t_l3) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query22 = "select sum(f_3_4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query23 = "select sum(m_3_4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query24 = "select sum(t_3_4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query25 = "select sum(f_g4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query26 = "select sum(m_g4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query27 = "select sum(t_g4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query28 = "#1-(#10+#19)";
+query29 = "#2-(#11+#20)";
+query30 = "#3-(#12+#21)";
+query31 = "#4-(#13+#22)";
+query32 = "#5-(#14+#23)";
+query33 = "#6-(#15+#24)";
+query34 = "#7-(#16+#25)";
+query35 = "#8-(#17+#26)";
+query36 = "#9-(#18+#27)";

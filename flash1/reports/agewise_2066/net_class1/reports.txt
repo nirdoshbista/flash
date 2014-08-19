@@ -1,0 +1,3 @@
+Total Enrollment,net_total_class1.rpt
+Dalit Enrollment,net_dalit_class1.rpt
+Janjati Enrollment,net_janjati_class1.rpt

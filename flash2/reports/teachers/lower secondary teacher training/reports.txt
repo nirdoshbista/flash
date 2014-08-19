@@ -1,0 +1,3 @@
+Lower Secondary Level All Teacher Training Details,teacher_training_lsec.rpt
+Lower Secondary Level Dalit Teacher Training Details,teacher_training_lsec_dalits.rpt
+Lower Secondary Level Janajati Teacher Training Details,teacher_training_lsec_janjatis.rpt

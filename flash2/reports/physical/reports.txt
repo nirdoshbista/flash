@@ -1,0 +1,4 @@
+Physical Information,physical.rpt
+Roof Details,roof.rpt
+Truss Details,truss.rpt
+Wall Details,wall.rpt

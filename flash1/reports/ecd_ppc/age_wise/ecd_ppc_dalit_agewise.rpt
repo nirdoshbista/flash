@@ -1,0 +1,30 @@
+; Report & Chart data for ECD/PPC
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "ECD/PPC Agewise Dalit Enrollment"
+
+[prereq]
+
+prereq1title = "ECD Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported | Institutional (All) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Madrassas | Gumbas | Ashrams | Community"
+prereq1clauses ="mast_school_type.ecd>0|mast_school_type.ecd=1|mast_school_type.ecd=2|mast_school_type.ecd=3 | mast_school_type.ecd=4 | (mast_school_type.ecd=1 or mast_school_type.ecd=2 or mast_school_type.ecd=3 or mast_school_type.ecd=4) | (mast_school_type.ecd=4 or mast_school_type.ecd=5 or mast_school_type.ecd=6)| mast_school_type.ecd=5 | mast_school_type.ecd=6 | mast_school_type.ecd=7 | mast_school_type.ecd=8 | mast_school_type.ecd=9 | mast_school_type.ecd=10 | mast_school_type.ecd=12"
+
+
+prereq2title = "Year"
+prereq2options = "2066|2065|2064|2063"
+prereq2clauses = "mast_schoollist.sch_year=2066 and mast_school_type.sch_year=2066|mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063"
+
+[tableheader]
+row1 = "Code / Name [3,2]  | Year 2067 Onwards [15] | Upto 2066 [12]"
+row2 = "3 [1,3] | 4 [1,3] | 5 [1,3] | >5 [1,3] | Total [1,3] | < 3 [1,3]| 3 - 4 [1,3]| > 4 [1,3] | Total [1,3]"
+row3 = "G | B | T | G | B | T | G | B | T | G | B | T | G | B | T | G | B | T | G | B | T | G | B | T | G | B | T "
+
+[row]
+datacheck = "select distinct(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_dalit_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1"
+
+query1 = "select sum(f3), sum(m3), sum(f3)+sum(m3), sum(f4), sum(m4), sum(f4)+sum(m4), sum(f5), sum(m5), sum(f5)+sum(m5), sum(f_g5), sum(m_g5), sum(f_g5)+sum(m_g5), sum(f3)+sum(f4)+sum(f5)+sum(f_g5), sum(m3)+sum(m4)+sum(m5)+sum(m_g5), sum(f3)+sum(m3)+sum(f4)+sum(m4)+sum(f5)+sum(m5)+sum(f_g5)+sum(m_g5) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_dalit_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1"
+
+query2 = "select sum(f_l3), sum(m_l3), sum(f_l3)+sum(m_l3), sum(f_3_4), sum(m_3_4), sum(f_3_4)+sum(m_3_4), sum(f_g4), sum(m_g4), sum(f_g4)+sum(m_g4), sum(f_l3)+sum(f_3_4)+sum(f_g4), sum(m_l3)+sum(m_3_4)+sum(m_g4), sum(f_l3)+sum(m_l3)+sum(f_3_4)+sum(m_3_4)+sum(f_g4)+sum(m_g4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_dalit_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1"
+

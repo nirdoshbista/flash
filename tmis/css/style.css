@@ -1,0 +1,311 @@
+@CHARSET "UTF-8";
+
+body {
+	margin: 10px;
+	padding: 0px;
+	font: 11px/ 1.5em Verdana;
+	height:100%;
+	min-width: 950px;
+	
+}
+html{
+height:100%;
+}
+
+h2 {
+	font: bold 14px Verdana, Arial, Helvetica, sans-serif;
+	color: #000;
+	margin: 0px;
+	padding: 0px 0px 0px 15px;
+}
+
+img {
+	border: none;
+}
+
+label {
+	display: block;
+	font-size: 93%;
+	font-weight: bold;
+	color: #333;
+}
+
+label a{
+	color: #333;
+}
+
+label a:visited{
+	color: #333;
+}
+
+input {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+input:disabled{
+	color:#000;
+}
+
+input:focus{
+	background-color:#ffc;
+}
+
+.inputbox {
+	float: left;
+	padding: 4px;
+}
+
+.bigselect {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.header{
+	margin:-10px;
+	padding: 5px;
+	height: 18px;
+	color: white;
+	font-weight: bold;
+	clear:both;
+	background-color: #232C1D; /* #0e140a;*/
+}
+
+.header a{
+	color: white;
+	font-size:0.8em;
+	text-decoration: none;
+}
+
+#busy{
+	position:absolute;
+	top: 30px;
+	right: 10px;
+}
+
+.notify-info{
+	position:absolute;
+	top: 28px;
+	right: 10px;
+	text-align:right;
+	padding: 0 10px 0 10px;
+	font-weight: bold;
+	background-color: yellow;
+}
+
+.notify-error{
+	position:absolute;
+	top: 28px;
+	right: 10px;
+	text-align:right;
+	padding: 0 10px 0 10px;
+	font-weight: bold;
+	background-color: #DD0000;
+	color: white;
+
+}
+
+
+/*- Menu Tabs  */
+#tabs {
+	float: left;
+	width: 100%;
+	background: #F4F4F4;
+	font-size: 93%;
+	line-height: normal;
+	font-weight: bold;
+}
+
+#tabs ul {
+	margin: 0;
+	padding: 10px 10px 0 0px;
+	list-style: none;
+}
+
+#tabs li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+#tabs a {
+	float: left;
+	background: url("tableft.gif") no-repeat left top;
+	margin: 0;
+	padding: 0 0 0 4px;
+	text-decoration: none;
+}
+
+#tabs a span {
+	float: left;
+	display: block;
+	background: url("tabright.gif") no-repeat right top;
+	padding: 5px 15px 4px 6px;
+	color: #666;
+}
+
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+#tabs a span {
+	float: none;
+}
+
+/* End IE5-Mac hack */
+#tabs a:hover span {
+	color: #000;
+}
+
+#tabs a:hover {
+	color: #000;
+	background-position: 0% -42px;
+}
+
+#tabs a:hover span {
+	color: #000;
+	background-position: 100% -42px;
+}
+
+#tabs a.active {
+	color: #000;
+	background-position: 0% -42px;
+}
+
+#tabs a.active span {
+	color: #000;
+	background-position: 100% -42px;
+}
+
+
+/* table css */
+
+table{
+	border-collapse: collapse;
+	font-size: 1em;
+	font-weight: bold;
+	margin: 0;
+	padding: 0;
+}
+
+th, td{
+	padding: 2px 10px;	
+
+}
+
+th{
+	background-color: #516C89;
+	color: white;
+	border: 1px solid #ababab;	
+}
+
+tr:hover{
+	background-color: #ffffcc;
+}
+
+tr{
+	
+
+	text-align: left;
+
+}
+
+tr.alt{
+	background-color: #f8f8f8;
+}
+
+/*
+table {
+	border-collapse: collapse;
+	font-size: 0.8em;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+caption {
+	font-size: 1.4em;
+	font-stretch: condensed;
+	font-weight: bold;
+	padding-bottom: 5px;
+	text-align: left;
+	text-transform: uppercase;
+}
+th, td {
+	border-bottom: 1px solid #666;
+	border-top: 1px solid #666;
+	padding: 2px 5px;
+}
+th {
+	text-align: left;
+	border-top: 2px solid #666;
+	border-bottom: 2px solid #666;
+}
+thead th, tfoot th, tfoot td {
+	background-color: #344969;
+	font-size: 1.1em;
+}
+tbody th, td {
+	background-color:#344969;
+}
+tbody tr:hover td, tbody tr:hover th {
+	background-color: #E5E5CB;
+}
+tr.odd td, tr.odd th {
+	background-color: #ddd;
+}
+tbody a {
+	color: #333;
+}
+tbody a:visited {
+	color: #999999;
+}
+tbody a:hover {
+	color: #33c;
+}
+tbody a:active {
+	color: #33c;
+}
+tbody td+td+td+td a {
+	padding-right: 12px;
+}
+tfoot th {
+	text-align: right;
+}
+tfoot th:after {
+	content: ":";
+}
+*/
+
+
+.blinkbg{
+	background: url('../images/blinkred.gif');
+}
+
+.blinkwarning{
+	background: url('../images/blinkyellow.gif');
+}
+
+.disabled{
+	background: #888;
+}
+
+.ewGroupName{
+	font-size: 14px;
+	font-weight: bold;
+}
+#trainingDiv{
+    display:none;
+}
+
+.tcher_photo{
+  border:1px solid;
+  float:right;
+  height:115px;
+  margin-top:-50px;
+  width:100px;
+}
+.btn_upload{
+    float:right;
+  margin-right:12px;
+}
+.tcher_photo img{
+    height:inherit;
+    width:inherit;
+}

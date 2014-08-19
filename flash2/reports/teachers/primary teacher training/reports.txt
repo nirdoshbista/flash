@@ -1,0 +1,3 @@
+Primary Level All Teacher Training Details,teacher_training_status.rpt
+Primary Level Dalit Teacher Training Details,teacher_training_status_dalits.rpt
+Primary Level Janajati Teacher Training Details,teacher_training_status_janjatis.rpt

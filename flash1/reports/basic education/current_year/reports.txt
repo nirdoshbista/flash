@@ -1,0 +1,5 @@
+Total Enrollment by Class,tot_enr_by_class.rpt
+Dalit Enrollment by Class,dalit_enr_by_class.rpt
+Janjati Enrollment by Class,janjati_enr_by_class.rpt
+Basic Level of 1-5 Total Enrollment Repeatation and Transfer students,pr_tot_enr_rep_tra.rpt
+Basic Level of 6-8 Total Enrollment Repeatation and Transfer students,basic_tot_enr_rep_tra.rpt

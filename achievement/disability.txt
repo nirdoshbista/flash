@@ -1,0 +1,6 @@
+Deaf
+Blind
+Dumb
+Physically Disabled
+Mentally Disabled
+Others

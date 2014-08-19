@@ -1,0 +1,2 @@
+Secondary Level Student Enrollment by Faculties,hsec_total_passed_details.rpt
+Secondary Level Student Appeared and Passed in Exam Details,hsec_last_details.rpt

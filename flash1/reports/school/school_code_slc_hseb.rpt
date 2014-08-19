@@ -1,0 +1,57 @@
+; Report & Chart data for School for type
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "School Details by SLC Code and HSEB Code"
+
+[prereq]
+
+prereq1title = "Year"
+prereq1options = "2065|2064|2063|2062"
+prereq1clauses = "mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063|mast_schoollist.sch_year=2062 and mast_school_type.sch_year=2062"
+
+[tableheader]
+row1 = "Code / Name [2,2] | Ward [2,1] | Location [2,1] | A/C No [2,1] | Established Date [2,1] | Telephone No. [2,1] | Email [2,1] | Region [1,2] | SLC Code [2,1] | HSEB Details [1,10]"
+row2 = "Rural | Urban | HSEB Code | HSEB Estd. Date | Faculty#1 |Faculty#2 |Faculty#3 |Faculty#4 |Faculty#5 |Faculty#6 |Faculty#7 |Faculty#8"
+
+[row]
+datacheck = "select distinct(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query1 = "select (mast_schoollist.wardno) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query2 = "select (mast_schoollist.location) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query3 = "select (mast_schoollist.account_no) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query4 = "select (mast_schoollist.estd_date) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query5 = "select (mast_schoollist.telno) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query6 = "select (mast_schoollist.email) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query7 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0) and mast_schoollist.region=1"
+
+query8 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0) and mast_schoollist.region=2"
+
+query9 = "select (slc_hseb_info_f1.slc_board_code) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query10 = "select (slc_hseb_info_f1.hseb_code) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query11 = "select (slc_hseb_info_f1.hseb_estd_date) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query12 = "select (slc_hseb_info_f1.hseb_faculty_1) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query13 = "select (slc_hseb_info_f1.hseb_faculty_2) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query14 = "select (slc_hseb_info_f1.hseb_faculty_3) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query15 = "select (slc_hseb_info_f1.hseb_faculty_4) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query16 = "select (slc_hseb_info_f1.hseb_faculty_5) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query17 = "select (slc_hseb_info_f1.hseb_faculty_6) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query18 = "select (slc_hseb_info_f1.hseb_faculty_7) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
+
+query19 = "select (slc_hseb_info_f1.hseb_faculty_8) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join slc_hseb_info_f1 using (sch_num, sch_year) where mast_schoollist.flash1=1 and (mast_school_type.class10>0 or mast_school_type.class11>0)"
