@@ -204,7 +204,7 @@ if (isset($_GET['af']))
                         $query2="select count(*) as appeared,
                                 count(case when (id_students_marks.nepali > '31' and id_students_marks.english > '31' 
                                 and id_students_marks.maths > '31' and id_students_marks.social_studies > '31' 
-                                and id_students_marks.science > '31' and id_students_marks.population_env > '31') THEN 1 END) as passed
+                                and id_students_marks.science > '31') THEN 1 END) as passed
                                 from id_students_marks 
                                 left join id_students_main on (id_students_marks.reg_id=id_students_main.reg_id)
                                 where id_students_marks.sch_num='$sch_num' 
@@ -215,7 +215,7 @@ if (isset($_GET['af']))
                             $query2.= " and id_students_main.caste='$key1'";
                         else    //for others case add up branmin/chhetri=>3 and others=>4
                             $query2.= " and (id_students_main.caste='$key1' or id_students_main.caste=".($key1+1).");";            
-                                
+                        
                         $result2 = mysql_query($query2);
                         $row2 = mysql_fetch_array($result2);
                         //display total students appeared in exam and passed count

@@ -79,7 +79,7 @@ function insertStudentMarks($studentsMarksInfo)
     foreach($studentsMarksInfo as $record)
     {
         $temp_data=array();
-        $temp_data['sch_num']=$record['School ID'];
+        $temp_data['sch_num']=strlen($record['School ID'])==8? "0".$record['School ID']:$record['School ID'];
         $temp_data['sch_year']=$record['Year'];
         $temp_data['reg_id']=$record['RegID'];
         $temp_data['class']=$record['Class'];
@@ -134,7 +134,7 @@ function insertStudentInfo($students_info){
     foreach($students_info as $record)
     {
         $temp_data=array();
-        $temp_data['sch_num']=$record['School ID'];
+        $temp_data['sch_num']=strlen($record['School ID'])==8? "0".$record['School ID']:$record['School ID'];
         $temp_data['sch_year']=$record['Year'];
         $temp_data['reg_id']=$record['Reg ID'];
         $temp_data['first_name']=$record['First Name'];
@@ -171,7 +171,7 @@ function insertStudentInfo($students_info){
         {
                 if(array_key_exists('cls_'.$i, $record))
                 {
-                        $temp_data['sch_num']=$record['School ID'];
+                        $temp_data['sch_num']=strlen($record['School ID'])==8? "0".$record['School ID']:$record['School ID'];
                         $temp_data['reg_id']=$reg_id;
                         $temp_data["sch_year"]=$i;
                         
@@ -194,7 +194,7 @@ function insertStudentInfo($students_info){
         {
                 if(array_key_exists('sch_'.$i, $record))
                 {
-                        $temp_data['sch_num']=$record['School ID'];
+                        $temp_data['sch_num']=strlen($record['School ID'])==8? "0".$record['School ID']:$record['School ID'];
                         $temp_data['reg_id']=$reg_id;
                         $temp_data["sch_year"]=$i;
                         $temp_data["class"]=$record['cls_'.$i];

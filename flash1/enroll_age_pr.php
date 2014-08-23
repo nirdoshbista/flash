@@ -369,26 +369,38 @@ if (isset($_GET['af']))
                         //for new enrollment in class 1
                         if(1==$class)
                         {
-                            $query="select count(*) as count from id_students_main 
+                            $newenroll_count=0;
+                            $thisyear_list=array();
+                            $query="select id_students_track.reg_id as reg_id,id_students_track.class as class from id_students_main 
                                     left join id_students_track on id_students_main.reg_id=id_students_track.reg_id
                                     where id_students_track.sch_num='$sch_num' and id_students_track.sch_year='$currentyear' 
                                     and ({$currentEng}-YEAR(STR_TO_DATE(id_students_main.dob,'%d/%m/%Y'))){$key3} and id_students_track.class={$class}
                                   and id_students_main.gender='$key2'";
                             if($key1!='3')
                                 $query.= " and id_students_main.caste='$key1'";
-                 
-                            $result = mysql_query($query);
-                            if (mysql_num_rows($result)>0)
-                            {   
-                                $row = mysql_fetch_array($result);
-                                if($row['count'])
-                                {
-                                    echo "document.forms[0]['{$value1}_newenr_age_{$value2}_{$value3}[{$class}]'].value='${row['count']}';\n";
-                                    echo "handleChange(d['{$value1}_newenr_age_{$value2}_{$value3}[{$class}]']);\n";
-                                    $row['count']=0;
-                                }   
+                             $result=mysql_query($query);
+                             while ($row = mysql_fetch_assoc($result)) 
+                                array_push($thisyear_list,$row);
+                            
+                             
+                            foreach($thisyear_list as $key=>$student)
+                            {
+                                $query2="select * from id_students_track 
+                                        where reg_id='{$student['reg_id']}' and sch_num='$sch_num' and 
+                                        id_students_track.sch_year='".($currentyear-1)."'"; 
+                                $result2 = mysql_query($query2);
+                                //if student record is found in last year then he/she is not a new enrollment 
+                                if (!mysql_num_rows($result2)) $newenroll_count++;
                             }
+                            //no need to display zeroes
+                            if($newenroll_count>0)
+                            {
+                                echo "document.forms[0]['{$value1}_newenr_age_{$value2}_{$value3}[{$class}]'].value='$newenroll_count';\n";
+                                echo "handleChange(d['{$value1}_newenr_age_{$value2}_{$value3}[{$class}]']);\n";
+                            }
+                            
                         }
+                        
                         //for other classes
                         $query="select count(*) as count from id_students_main 
                                 left join id_students_track on id_students_main.reg_id=id_students_track.reg_id

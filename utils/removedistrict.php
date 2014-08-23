@@ -1,6 +1,7 @@
 <?php
 
 require_once('../includes/tablelist.php');
+require_once('../includes/excelEMIS_tables.php');
 require_once('../includes/vars.php');
 require_once('../includes/dbfunctions.php');
 
@@ -17,6 +18,7 @@ if (isset($_POST['submit'])){
        // $f2=$_POST['flash2'];
         $ach=$_POST['ach'];
         $tmis=$_POST['tmis'];
+        $excelEMIS=$_POST['excelEMIS'];
 	
         if($districts)
         {
@@ -46,8 +48,7 @@ if (isset($_POST['submit'])){
 			
 		}
 		
-		// remove tmis tables
-		
+		// remove tmis tables		
 		// get all tid's for this district
                 if($tmis!='')
                 {
@@ -65,21 +66,40 @@ if (isset($_POST['submit'])){
 			
                         }
                 }
-        //deleting master tables
-        if($f!='')                        
-        {
-            foreach($t as $table)
-            {
-                 if (substr($table,0,4)!='mast') continue;
-                 if($table=='mast_school_type')
-                 {
-                    mysql_query("delete from $table where sch_num like '$d%'");  
-                    continue;
-                 }
-                 mysql_query("delete from $table where dist_code='$d'");
-                 
-            }
-        }
+                
+                //remove excelEMIS data
+                if($excelEMIS!='')
+                {
+                        foreach ($excelEMIS_tables as $table):
+                            /** check whether it is a tmis table or student_id table
+                            *  and set the required conditions respectively 
+                            */
+                            $query="delete from `$table` where ";
+                            if(substr($table, 0, 2)=="id")    
+                                $query.="sch_num like '$d%'";
+                            else if(substr($table, 0, 4)=="tmis")
+                                $query.="tid like '$d%'";
+                            else
+                                continue;
+                            mysql_query($query);
+                        endforeach;
+                }
+                
+                //deleting master tables
+                if($f!='')                        
+                {
+                    foreach($t as $table)
+                    {
+                        if (substr($table,0,4)!='mast') continue;
+                        if($table=='mast_school_type')
+                        {
+                            mysql_query("delete from $table where sch_num like '$d%'");  
+                            continue;
+                        }
+                        mysql_query("delete from $table where dist_code='$d'");
+
+                    }
+                }
 		
      }
         
@@ -140,6 +160,7 @@ if (isset($_POST['submit'])){
   <!--<input type="checkbox" name="flash2" id="flash2"/><label>Flash II</label>-->
   <input type="checkbox" name="tmis" id="tmis"/><label>Tmis</label>    
   <input type="checkbox" name="ach" id="ach"/><label>Achievement</label>
+  <input type="checkbox" name="excelEMIS" id="excelEMIS"/><label>Excel EMIS Data</label>
   </p>
   <p align="center">
     <input type="submit" name="submit" value="Remove">
@@ -159,6 +180,7 @@ if (isset($_POST['submit'])){
             echo "document.getElementById('flash').disabled=true;\n";
             echo "document.getElementById('tmis').disabled=true;\n";
             echo "document.getElementById('ach').disabled=true;\n";
+            echo "document.getElementById('excelEMIS').disabled=true;\n";
 
         }
 

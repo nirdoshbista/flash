@@ -62,8 +62,8 @@ $invalid_file=array();
 		for($fileno=0; $fileno<$file_count; $fileno++) 
 		{	
                         $filename=$_FILES['emis_excel']['tmp_name'][$fileno];
-                        $excelObject = new Spreadsheet_Excel_Reader($filename,false);               
-                        
+                        $excelObject = new Spreadsheet_Excel_Reader($filename,false);
+                        $excelObject->setOutputEncoding('CP1251');
                         //retrieve the general school information
                         $school_info[$fileno]=array();
                     
@@ -150,7 +150,7 @@ $invalid_file=array();
 <b style="margin-left:45%;">Select School Level EMIS File(s)</b><br/>
     <span class="import_span">
     <form method="POST" enctype="multipart/form-data"/>
-	<input type="file" name="emis_excel[]" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" multiple="multiple"/>  
+	<input type="file" name="emis_excel[]" accept="application/vnd.ms-excel" multiple="multiple"/>  
 	<input type="submit" name="submit" value="submit"/>
     </form>
     </span>

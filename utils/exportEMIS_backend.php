@@ -6,7 +6,9 @@ header ("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 header ("Pragma: no-cache"); // HTTP/1.0
 
 require_once('../includes/vars.php');
+require_once('../includes/excelEMIS_tables.php');
 require_once('../includes/dbfunctions.php');
+
 $link = dbconnect();
 
 $req=$_GET['req'];
@@ -160,10 +162,18 @@ if($req=='remove')
         $schoollist=array($schoolcode);
     
     
-    $tables=array("id_students_main","id_students_scholarship","id_students_track");
     foreach ($schoollist as $school_num):
-        foreach ($tables as $t):
-            $query="delete from `$t` where sch_num='$school_num'";
+        foreach ($excelEMIS_tables as $table):
+            /** check whether it is a tmis table or student_id table
+             *  and set the required conditions respectively 
+             */
+            $query="delete from `$table` where ";
+            if(substr($table, 0, 2)=="id")    
+                $query.="sch_num='$school_num'";
+            else if(substr($table, 0, 4)=="tmis")
+                $query.="tid like '$school_num%'";
+            else
+                $query.="0=1";
             mysql_query($query);
         endforeach;
     endforeach;
