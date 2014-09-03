@@ -181,8 +181,15 @@ function insertStudentInfo($students_info){
                         else $temp_data["class"]=  $record['cls_'.$i];
                         
                         $temp_data["attendance"]=$record['attendance_'.$i];
-                        if(isset($record['ECD Type']))      $temp_data["ecd_type"]=$record['ECD Type'];
-                        if(isset($record['ECD Number']))    $temp_data["ecd_num"]=$record['ECD Number'];
+                        //import ecd type and ecd no
+                        //for old template and ecd students without an ecd type or number set the default value ie 1
+                        if($temp_data["class"]==0)
+                        {
+                            if(isset($record['ECD Type']))      $temp_data["ecd_type"]=$record['ECD Type'];
+                            else                                $temp_data["ecd_type"]=1;
+                            if(isset($record['ECD Number']))    $temp_data["ecd_num"]=$record['ECD Number'];
+                            else                                $temp_data["ecd_num"]=1;
+                        }
                         if(isset($record['Stream']))        $temp_data["stream"]=$record['Stream'];
                         idata("id_students_track",$temp_data);
                 }

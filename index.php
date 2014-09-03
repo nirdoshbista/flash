@@ -21,7 +21,7 @@ if (!isset($pageuser)){
 if (!checkcookie()) header("Location: login.php");
 	
 
-// update tmis tables	
+// update tables
 $link = mysql_connect($dbserver, $dbusername, $dbpassword);
 if (!$link) {
    die('Could not connect to MySQL server: ' . mysql_error());
@@ -29,8 +29,7 @@ if (!$link) {
 $result =mysql_select_db($dbname, $link);
 
 // check if db upgrade is required
-//if(!columnExists('id_students_main','bank_name'))
-$result = mysql_query("SHOW TABLES LIKE 'id_physical_details';");
+$result = mysql_query("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'nfec';");
 if (!mysql_num_rows($result))
 {
     header("Location: utils/upgradedb.php");
@@ -92,14 +91,14 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
 
 ?>
 
-<table width="750" border="0" cellpadding="10" align="center">
+<table width="900" border="0" cellpadding="10" align="center">
     <td align="left"><img src="images/nepalflag.png"></td>
     <td align="center" <?php echo $style; ?>><img src="images/iemis logo.png" style="width:470;margin-bottom:5px;"><br /><strong><?php echo ($currentyear-1),'/',$currentyear?></strong></td>
     <td align="right"><img src="images/nepalgovt.png"></td>
   </tr>
 </table>
 
-<table width="750" border="0" align="center" cellpadding="50" bgcolor="#FFFFFF" style="border: 1px black solid; background: #eeeeee;">
+<table width="900" border="0" align="center" cellpadding="50" bgcolor="#FFFFFF" style="border: 1px black solid; background: #eeeeee;">
   <tr>
     <td height="142" class='ewListAdd'> <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
         <tr align="center" valign="top">
@@ -150,8 +149,9 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
 					<li class="top">Export</li>
 					<li class="item"><a href="utils/dbexportchoice.php">Flash &amp; TMIS</a></li>
 					<li class="item"><a href="utils/tagexport.php">Tag</a></li>
-					<li class="item"><a href="achievement/dbexportchoice.php">Achievement</a></li>
+					<!--<li class="item"><a href="achievement/dbexportchoice.php">Achievement</a></li>-->
                                         <li class="item"><a href="utils/exportEMIS.php">EMIS Excel</a></li>
+                                        <li class="item"><a href="nfemis/exportNFEMIS.php">NFEMIS Excel</a></li>
 					
 					</ul>
 					<ul id="db-maintenance">
@@ -234,6 +234,10 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
 					<li class="item"><a href="utils/schooldata.php?remove">Remove</a></li>
 					<li class="item"><a href="utils/schooldata.php?transfer">Transfer</a></li>
 		
+					</ul>
+                                        <ul id="util-nfemis">
+					<li class="top">Agency(NFEC)</li>
+					<li class="item"><a href="nfemis/addagency.php">Add</a></li>		
 					</ul>
 					</div>
                 

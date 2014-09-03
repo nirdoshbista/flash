@@ -364,7 +364,16 @@ text-decoration:none;
     background-color: #bbccdd;
     position:relative;
 }
-.exportEMIS_box table tbody tr td
+
+.addAgency_box{
+    background-color: #bbccdd;
+    border: thin solid #000;
+    height: 48%;
+    position: relative;
+    width: 50%;
+}
+
+.exportEMIS_box table tbody tr td,.addAgency_box table tbody tr td
 {
     padding-top:11%;
     padding-left:8%;

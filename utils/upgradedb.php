@@ -49,7 +49,10 @@ echo "Done</p>";
 
 <?php
 echo "<p>Installing new structure ... ";
+$nfecblank="..//nfemis//nfemisblank.sql";
 $flashblank = "flashblank.sql";
+
+importsql($nfecblank);
 importsql($flashblank);
 echo "Done</p>";
 ?>
