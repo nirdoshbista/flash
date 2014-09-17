@@ -2,6 +2,8 @@
 function pageheader(){
 	global $ro,$rtypestr, $D, $V, $T, $TN, $R, $Y;
 	
+        
+        //this is the new line of code
 	if (strstr($_SERVER["PHP_SELF"],"flash1/")!==false) $flash12 = 'I';
 	if (strstr($_SERVER["PHP_SELF"],"flash2/")!==false) $flash12 = 'II';
 	
