@@ -187,9 +187,11 @@ if (isset($_GET['af']))
 {
    //agewise autofill
    $currentEng=$currentyear-57;
+   $lastyear=$currentyear-1;
    for($class=6;$class<=8;$class++)
    {
         $agelist=array();
+        $lastclass=$class-1;
         if($class==6) $upperAge=8;
         else $upperAge=7;
         $lowerAge=4;
@@ -212,23 +214,39 @@ if (isset($_GET['af']))
         foreach(array('3'=>'total','2'=>'janjati','1'=>'dalit') as $key1=>$value1):
             foreach(array('M'=>'m','F'=>'f') as $key2=>$value2):
                    foreach($agelist as $key3=>$value3):
-                        $query="select count(*) as count from id_students_main 
+                        $studentlist=array();
+                        $students_count=0;
+                        $query="select id_students_track.reg_id as reg_id,id_students_track.class as class from id_students_main 
                                 left join id_students_track on id_students_main.reg_id=id_students_track.reg_id
                                 where id_students_track.sch_num='$sch_num' and id_students_track.sch_year='$currentyear' 
-                                and ({$currentEng}-YEAR(STR_TO_DATE(id_students_main.dob,'%d/%m/%Y'))){$key3} and id_students_track.class={$class}
-                              and id_students_main.gender='$key2'";
+                                and ({$currentEng}-YEAR(STR_TO_DATE(id_students_main.dob,'%d/%m/%Y'))){$key3} 
+                              and id_students_main.gender='$key2' and (id_students_track.class={$class} or id_students_track.class='-1')";
                         if($key1!='3')
                             $query.= " and id_students_main.caste='$key1'";
-                 
                         $result = mysql_query($query);
                         if (mysql_num_rows($result)>0)
                         {   
-                            $row = mysql_fetch_array($result);
-                            if($row['count'])
+                            while ($row = mysql_fetch_assoc($result)) 
+                                array_push($studentlist,$row);
+                            
+                            //check individually which class they were in last year
+                  
+                            foreach($studentlist as $key=>$student)
                             {
-                                echo "document.forms[0]['{$value1}_enroll_age_{$value2}_{$value3}[{$class}]'].value='${row['count']}';\n";
+                                
+                                $query="select * from id_students_track 
+                                        where reg_id='{$student['reg_id']}' and sch_num='$sch_num' and 
+                                        ((id_students_track.sch_year='$lastyear' and id_students_track.class='$lastclass') or
+                                        (id_students_track.sch_year='$currentyear' and id_students_track.class='$class'));";
+                                $result = mysql_query($query);
+                                        if (mysql_num_rows($result)) $students_count++;
+                            }
+                            
+                            if($students_count)
+                            {
+                                echo "document.forms[0]['{$value1}_enroll_age_{$value2}_{$value3}[{$class}]'].value='${students_count}';\n";
                                 echo "handleChange(d['{$value1}_enroll_age_{$value2}_{$value3}[{$class}]']);\n";
-                                $row['count']=0;
+                                $students_count=0;
                             }   
                         }
                     endforeach;
