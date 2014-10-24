@@ -3,8 +3,9 @@
 
 //$sch_num=$_GET['s'];
 
-require_once('../includes/vars.php');
-require_once('../includes/dbfunctions.php');
+require_once('includes/vars.php');
+require_once('includes/dbfunctions.php');
+require_once('excelImport_backend.php');
 require_once('../includes/excel_reader2_patch_applied.php');
 
 $link = dbconnect();
@@ -62,7 +63,43 @@ $invalid_file=array();
 		{	
                         $filename=$_FILES['nfemis_excel']['tmp_name'][$fileno];
                         $excelObject = new Spreadsheet_Excel_Reader($filename,false);               
+                        $excelObject->setOutputEncoding('CP1251');
+                        //retrieve the general agency information
+                        $agency_info[$fileno]=array();
+                        $agency_info[$fileno]['agency_code']=$agency_code=trim($excelObject->val(1,'F',$excelObject->getSheetIndex('General')));
+                        $agency_info[$fileno]['year']=$year=trim($excelObject->val(4,'B',$excelObject->getSheetIndex('General')));
                         
+                        //check if it is a valid file,skip the file if it is not valid
+                        if (checkIsValidFile($excelObject,$agency_code,$year)) {
+                            //delete all the records of the agency for the year if record of the agency exists in the database
+                            if (checkIfRecordExists("nfe_agency_details",array("center_id"=>$agency_code)))
+                            {
+                               deleteRows("`nfe_agency_details`","center_id=".$agency_code." AND year=".$year);
+                               deleteRows("`nfe_cmt_members`","center_id=".$agency_code." AND year=".$year);
+                               deleteRows("`nfe_clc_subcmt`","center_id=".$agency_code." AND year=".$year);
+                               deleteRows("`nfe_clc_activities`","center_id=".$agency_code." AND year=".$year);
+                               deleteRows("`nfe_clc_property`","center_id=".$agency_code." AND year=".$year);
+                               deleteRows("`nfe_class_details`","center_id=".$agency_code." AND year=".$year);
+                               deleteRows("`nfe_facilitators`","center_id=".$agency_code." AND year=".$year);
+                               deleteRows("`nfe_participants`","center_id=".$agency_code." AND year=".$year);
+                               deleteRows("`nfe_business_details`","center_id=".$agency_code." AND year=".$year);
+                            }
+                            
+                            //import the agency data from the file
+                            insertAgencyGeneralInfo($excelObject,$startingRow,$excelObject->getSheetIndex('Agency Details'));
+                            insertCommitteeMembersInfo($excelObject,$startingRow,$excelObject->getSheetIndex('Committee Members'));
+                            insertCLCSucommitteeInfo($excelObject,$startingRow,$excelObject->getSheetIndex('CLC Subcommittee'));
+                            insertCLCActivitiesInfo($excelObject,$startingRow,$excelObject->getSheetIndex('CLC Activities'));
+                            insertCLCPropertyInfo($excelObject,$startingRow,$excelObject->getSheetIndex('CLC Property'));
+                            insertClassDetails($excelObject,$startingRow,$excelObject->getSheetIndex('Class Details'));
+                            insertFacilitatorDetails($excelObject,$startingRow,$excelObject->getSheetIndex('Facilitators'),$agency_code);
+                            insertParticipantDetails($excelObject,$startingRow,$excelObject->getSheetIndex('Participants'),$agency_code);
+                            insertBusinessDetails($excelObject,$startingRow,$excelObject->getSheetIndex('Business'),$agency_code);
+                            
+                        }else{
+                            $invalid_file[$fileno]=TRUE;
+                            continue;
+                        }
                         $import_success[$fileno]=TRUE;
                 }              
     }
