@@ -71,6 +71,31 @@ function idata($table, $data){
 	mysql_query($query);
 }
 
+function udata($table,$data,$key)
+{
+    // update	
+    $query = 'UPDATE '.$table. ' SET ';
+
+    $ky=array_keys($data);
+
+    $arr=array();
+    foreach($ky as $k){
+            $arr[] = ($k."='".$data[$k]."'");
+    }
+    $val = implode(",", $arr);
+    $query .= $val;
+    
+    $arr=array();
+    $query.=" WHERE ";
+    foreach(array_keys($key) as $k){
+        $arr[]=($k."='".$key[$k]."'");
+    }
+    $val = implode(" and ", $arr);
+    $query .= $val;
+
+    $query=str_replace("''","null",$query);
+    mysql_query($query);
+}
 
 
 // check cookie

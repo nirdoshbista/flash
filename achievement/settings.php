@@ -7,10 +7,10 @@ if ($_POST['save']){
 	
 	foreach ($_POST as $variable => $value){
 		if ($variable == 'save') continue;
-		
+                if($variable=='grace_marks') calculateGraceMarks($currentyear,(int)$_POST['grace_marks']);
+                
 		mysql_query("DELETE FROM settings WHERE variable='$variable'");
 		mysql_query("INSERT INTO settings (variable, value) VALUES ('$variable','$value')");
-		
 	}
 	
 	$message = "Settings saved.";
@@ -19,10 +19,10 @@ if ($_POST['save']){
 	$result = mysql_query("SELECT * FROM settings");
 	while ($row = mysql_fetch_assoc($result)){
 		if (isset($SETTINGS[$row['variable']])){
-			$SETTINGS[$row['variable']] = $row['value'];
+                    $SETTINGS[$row['variable']] = $row['value'];
 		}
 	}	
-	
+        
 }
 
 ?>
@@ -137,6 +137,14 @@ if ($_POST['save']){
 
 </table>
 
+<h3>Marks</h3>
+<table>
+<tr>
+	<td width="250"><strong>Enter Grace Mark to be provided</strong></td>
+	<td><?php echo_input_marks('grace_marks'); ?></td>
+</tr>
+</table>
+
 <br />
 <input type="submit" name='save' value="Save" />
 
@@ -150,6 +158,12 @@ function echo_input($name){
 	global $SETTINGS;
 	
 	echo "<input type='text' name='$name' value=\"{$SETTINGS[$name]}\" />";
+	
+}
+
+function echo_input_marks($name){
+	global $SETTINGS;
+	echo "<input type='text' name='$name' size='4' onkeypress='return forceNumberInput(this, event);' value=\"{$SETTINGS[$name]}\" />";
 	
 }
 

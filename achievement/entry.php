@@ -14,6 +14,19 @@ if (mysql_num_rows($result)==0){
 	header("Location: subjects.php?c=$sch_class");
 }
 
+//get the list of subjects for the current year
+$subjects=array();
+$result = mysql_query("SELECT * FROM subjects WHERE class='$sch_class' and dist_code='$dist_code' and sch_year='$currentyear'");
+while ($row = mysql_fetch_assoc($result))
+    $subjects[$row['subject_sn']]=  $row;
+
+//get the total grace marks that is allowed
+$grace_allowed=0;
+$result = mysql_query("SELECT value FROM settings where variable='grace_marks'");
+$row=  mysql_fetch_assoc($result);
+if (isset($row['value']))
+    $grace_allowed=$row['value'];
+
 if ($_GET['req']=='delete'){
 	$sn = $_GET['sn'];
 	
@@ -32,6 +45,7 @@ if ($_POST['save']){
 	//$result = mysql_query("SELECT ");
 		
 	$d=array();
+        $total_grace=0;
 	
 	if ($_POST['sn']!=''){
 		$d['stu_num']=mysql_escape_string($_POST['sn']);
@@ -73,12 +87,28 @@ if ($_POST['save']){
 	$dm['sch_year']=$currentyear;
 	$dm['class']=$sch_class;
 	
+        //calculate the total grace marks needed for the student
+        for ($i=1;$i<=12;$i++){
+            if($_POST["s{$i}_theory"]<$subjects[$i]['subject_theory_pass_mark'])
+                $total_grace+=$subjects[$i]['subject_theory_pass_mark']-$_POST["s{$i}_theory"];
+        }
 	for ($i=1;$i<=12;$i++){
 		$dm["s{$i}_practical"]=$_POST["s{$i}_practical"];
 		$dm["s{$i}_theory"]=$_POST["s{$i}_theory"];
-		$dm["s{$i}_grace"]=$_POST["s{$i}_grace"];
-		$dm["s{$i}_subject"]=$_POST["s{$i}_subject"];		
-		$dm["s{$i}_comment"]=$_POST["s{$i}_comment"];		
+                //$dm["s{$i}_subject"]=$_POST["s{$i}_subject"];		
+		//$dm["s{$i}_grace"]=$_POST["s{$i}_grace"];
+                //to display grace check if allowed grace marks has been set,student has failed in particular subject 
+                //and whether total grace for a student is less 
+                //than the allowed value of the grace marks
+                if(($grace_allowed>0) AND ($_POST["s{$i}_theory"]<$subjects[$i]['subject_theory_pass_mark']) AND ($total_grace<=$grace_allowed) )
+                    $dm["s{$i}_grace"]=$subjects[$i]['subject_theory_pass_mark']-$_POST["s{$i}_theory"];
+		
+                if(((int)$dm["s{$i}_theory"]+(int)$dm["s{$i}_grace"])>=$subjects[$i]['subject_theory_pass_mark'])
+                    $dm["s{$i}_subject"]="Pass";
+                else
+                    $dm["s{$i}_subject"]="Fail";
+                    
+                $dm["s{$i}_comment"]=$_POST["s{$i}_comment"];		
 		$dm["s{$i}"]=(int)$dm["s{$i}_practical"]+(int)$dm["s{$i}_theory"]+(int)$dm["s{$i}_grace"];
 	}
 	
@@ -299,7 +329,7 @@ for ($i=1;$i<=12;$i++){
 	}
 	inserttextbox("s{$i}_theory",($i==1?'Th.':''),4,3,'int',($subjects[$i]['subject_theory_full_mark']?'':'disabled'));
 	inserttextbox("s{$i}_practical",($i==1?'Pr.':''),4,3,'int',($subjects[$i]['subject_practical_full_mark']?'':'disabled'));
-	inserttextbox("s{$i}_grace",($i==1?'Grace':''),4,3,'int',($subjects[$i]['subject_theory_full_mark']?'':'disabled'));
+	inserttextbox("s{$i}_grace",($i==1?'Grace':''),4,3,'int','disabled');
 	inserttextbox("s{$i}",($i==1?'Tot.':''),4,3,'int','disabled');
 	insertcombobox("s{$i}_comment",($i==1?'Remark':''),file2array('remarks.txt'));
 	

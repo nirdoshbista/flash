@@ -114,4 +114,57 @@ function newStudentID($prefix){
 	return ($prefix.$suffix);
 }
 
+/** function that calculates and sets grace marks for all students in the current year specified
+ *  and the grace marks allowed
+ * @param int $currentyear 
+ * @param int $grace_allowed
+ */
+function calculateGraceMarks($currentyear,$grace_allowed)
+{
+    $dist_code=0;
+    $class=0;
+    $marks = mysql_query("SELECT * FROM student_marks WHERE sch_year='$currentyear' order by stu_num");
+    while ($marks_row = mysql_fetch_assoc($marks))
+    {   
+        $total_grace=0;
+        if ($dist_code!==substr($marks_row["stu_num"], 0,2) or $class!==$marks_row["class"])
+        {        
+            //get the list of subjects for the current year
+            $subjects=array();
+            $dist_code=  substr($marks_row["stu_num"], 0,2);
+            $class=$marks_row["class"];
+            $result1 = mysql_query("SELECT * FROM subjects WHERE class='$class' and dist_code='$dist_code' and sch_year='$currentyear' order by subject_sn");
+            while ($row1 = mysql_fetch_assoc($result1))
+                $subjects[$row1['subject_sn']]=  $row1;
+        }
+        
+        //calculate the total grace marks needed for the student
+        for ($i=1;$i<=count($subjects);$i++){
+            if($marks_row["s{$i}_theory"]<$subjects[$i]['subject_theory_pass_mark'])
+                $total_grace+=$subjects[$i]['subject_theory_pass_mark']-$marks_row["s{$i}_theory"];
+        }
+        //no need to continue if the student doesnot require any grace
+        if ($total_grace==0) continue;
+        
+        //now update the row where necessary
+        $dm=array();
+        for ($i=1;$i<=count($subjects);$i++){
+                //to display grace check if allowed grace marks has been set,student has failed in particular subject 
+                //and whether total grace for a student is less 
+                //than the allowed value of the grace marks
+                if(($marks_row["s{$i}_theory"]<$subjects[$i]['subject_theory_pass_mark']) AND ($total_grace<=$grace_allowed)) 
+                    $dm["s{$i}_grace"]=$subjects[$i]['subject_theory_pass_mark']-$marks_row["s{$i}_theory"];
+                else
+                    $dm["s{$i}_grace"]=0;
+		
+                if(((int)$marks_row["s{$i}_theory"]+(int)$dm["s{$i}_grace"])>=$subjects[$i]['subject_theory_pass_mark'])
+                    $dm["s{$i}_subject"]="Pass";
+                else
+                    $dm["s{$i}_subject"]="Fail";    
+                 
+		$dm["s{$i}"]=(int)$marks_row["s{$i}_practical"]+(int)$marks_row["s{$i}_theory"]+(int)$dm["s{$i}_grace"];
+	}
+	udata('student_marks',$dm,array('stu_num'=>$marks_row["stu_num"],'sch_year'=>$currentyear,'class'=>$class));
+    }
+}
 ?>

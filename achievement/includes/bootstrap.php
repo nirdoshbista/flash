@@ -52,6 +52,7 @@ $SETTINGS['ledger_show_failed_marks'] = "*";
 $SETTINGS['ledger_show_grace_mark'] = "1";
 $SETTINGS['ledger_font'] = "Courier";
 $SETTINGS['ledger_font_size'] = "8";
+$SETTINGS['grace_marks'] = "0";
 
 
 // if there's no settings table, create it
