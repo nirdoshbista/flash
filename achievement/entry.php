@@ -329,7 +329,7 @@ for ($i=1;$i<=12;$i++){
 	}
 	inserttextbox("s{$i}_theory",($i==1?'Th.':''),4,3,'int',($subjects[$i]['subject_theory_full_mark']?'':'disabled'));
 	inserttextbox("s{$i}_practical",($i==1?'Pr.':''),4,3,'int',($subjects[$i]['subject_practical_full_mark']?'':'disabled'));
-	inserttextbox("s{$i}_grace",($i==1?'Grace':''),4,3,'int','disabled');
+	inserthiddentextbox("s{$i}_grace",'',4,3,'int','disabled');
 	inserttextbox("s{$i}",($i==1?'Tot.':''),4,3,'int','disabled');
 	insertcombobox("s{$i}_comment",($i==1?'Remark':''),file2array('remarks.txt'));
 	

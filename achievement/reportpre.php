@@ -103,11 +103,20 @@ function handlechange(obj, event){
 			document.getElementById('reportfilters').className = '';
 			document.getElementById('studentcode').className = 'divhide';
 			document.getElementById('showreport').value = "Show";
+                        document.getElementById('reportformat').className = 'divhide';
 		}
+                else if(obj.value=='ledger'){
+                        document.getElementById('reportfilters').className = 'divhide';
+			document.getElementById('studentcode').className = '';
+			document.getElementById('showreport').value = "Get Report";
+                        document.getElementById('reportformat').className = '';
+                       
+                }
 		else{
 			document.getElementById('reportfilters').className = 'divhide';
 			document.getElementById('studentcode').className = '';
 			document.getElementById('showreport').value = "Get PDF";
+                        document.getElementById('reportformat').className = 'divhide';
 		}
 	}
 	
@@ -164,7 +173,14 @@ function showreport(){
 		reportlink +=('&sch_type='+document.getElementById('sch_type').value);
 	}
 	
-	//alert(reportlink);
+        if (document.getElementById('reporttype').value=='ledger'){
+            if(document.getElementById('pdf-format').checked) {
+                reportlink +=('&format='+document.getElementById('pdf-format').value);
+            }else if(document.getElementById('excel-format').checked) {
+                reportlink +=('&format='+document.getElementById('excel-format').value);    
+            }
+        }
+        
 	window.location = reportlink;
 	
 	
@@ -328,6 +344,12 @@ Sort by
 <option value="name">Name</option>
 <option value="mark">Total Mark</option>
 </select>
+</div>
+
+<div id="reportformat" class="divhide">
+    Format
+    <Input type = 'Radio' name='report-format' id='pdf-format' value= 'pdf' checked >PDF
+    <Input type = 'Radio' name='report-format' id='excel-format' value= 'excel'>Excel
 </div>
 <br />
 <input name="showreport" type="button" id="showreport" value="Get PDF" onclick="showreport()"> 

@@ -31,6 +31,37 @@ function inserttextbox($id, $label, $size, $maxlength, $dtype='string', $extraar
 }
 
 /**
+ * Inserts a hidden textbox
+ *
+ * @param $id Object ID
+ * @param $label Label
+ * @param $size Size (length, visible) of data
+ * @param $maxlength Maximum length of data
+ * @param $dtype Data type (int, string)
+ * @param $extraargs Extra arguments for the input field
+ */
+function inserthiddentextbox($id, $label, $size, $maxlength, $dtype='string', $extraargs=''){
+	echo "<div class='inputbox'>\n";
+	
+	if ($dtype == 'int') $fns = " onkeypress='return forceNumberInput(this, event);' onchange='handleChange(this)' ";
+	if ($dtype == 'string') $fns = " onkeypress='return generalKeyPress(this, event);' onchange='handleChange(this)' ";
+		
+	if (substr($label,0,1)=='#') {
+		$orglabel = $label;
+		$label = substr($label,1);
+		echo "<label><a href='#' onclick='addNewValueModal(document.getElementById(\"$id\"))' onfocus='document.getElementById(\"$id\").focus();' title='Click here or press [Ctrl-a] to add new $label'>$label</a></label>";
+	}
+	else echo "<label>$label</label>";
+	
+	echo "<input type='hidden' name='$id' id='$id' size='$size' maxlength='$maxlength' title='$label' $fns $extraargs>\n";	
+	
+	if ($orglabel=='#' && $dtype=='string') echo "<a href='#' onclick='addNewValueModal(document.getElementById(\"$id\"))' onfocus='document.getElementById(\"$id\").focus();' title='Click here or press [Ctrl-a] to add new.'><img src='images/add.png' border='0'></a>";
+	
+	echo "</div>\n";
+
+}
+
+/**
  * Inserts Combobox
  *
  * @param $id Object ID

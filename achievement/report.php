@@ -10,12 +10,61 @@ $p = $_GET['p'];
 $op = $_GET['op'];
 $id = $_GET['id'];
 $r = $_GET['r'];
-
-$cal = new Nepali_Calendar();
+//password to protect the worksheet
+$password="apple";
 
 
 if (!($r=='marksheet' || $r=='ledger')){
 	die();
+}
+
+$cal = new Nepali_Calendar();
+if($r=='ledger' and $_GET['format']=='excel')
+{
+    //create directory in desktop for the exported excel file
+    $directory="Reports";
+    $path=getenv('ALLUSERSPROFILE')."\\Desktop\\".$directory;
+    if (!file_exists($path)) {
+        mkdir($directory,0777,true);
+        rename($directory,$path);
+    }
+    
+    //param1->server i.e localhost
+    //param2->database name i.e "achievement"
+    //param3->flash database name i.e "flash"
+    //param4->username i.e "root"
+    //param5->password i.e "admin"
+    //param6->location code i.e "690010001" or "69001"
+    //param7->current year selected in IEMIS
+    //param8->class selected
+    //param9->filter ie students upto,below,between and so on
+    //param10->ID1 i.e lower limit
+    //param11->ID2 i.e upper limit
+    //param12->temp. file path i.e "C:\Program Files\Flash\htdocs\achievement\"
+    //param12->password to lock the sheet
+    //check the version of office installed 
+    $parameters=$dbserver.",".$dbname.",".$flashdbname.",".$dbusername.",".$dbpassword.",".$s.",".$y.",".$c.",".$op.",".$id.",".$_GET['id2'].",".dirname(__FILE__)."\\report".",".$password;
+    if (file_exists("C:\Program Files\Microsoft Office\Office12\EXCEL.exe") OR file_exists("C:\Program Files (x86)\Microsoft Office\Office12\EXCEL.exe"))
+    {
+        $cmd="\"".dirname(__FILE__)."\\exportLedger2007.exe\" ".$parameters;
+    }
+    else if (file_exists("C:\Program Files\Microsoft Office\Office14\EXCEL.exe") OR file_exists("C:\Program Files (x86)\Microsoft Office\Office14\EXCEL.exe"))
+    {
+        $cmd="\"".dirname(__FILE__)."\\exportLedger2010.exe\" ".$parameters;
+    }
+    
+    $output=shell_exec($cmd);
+    
+    //delete if a file already exists in desktop and
+    //move the temp file to the desktop
+    if(file_exists($path."\\Ledger-".$s.".xls"))
+        unlink($path."\\Ledger-".$s.".xls");
+    rename(dirname(__FILE__)."\\report\\Ledger.xls",$path."\\Ledger-".$s.".xls");
+        
+    
+    //report has been generated so navigate to the previous page
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    
 }
 
 // get mark related settings
