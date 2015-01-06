@@ -149,7 +149,7 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
 					<li class="top">Export</li>
 					<li class="item"><a href="utils/dbexportchoice.php">Flash &amp; TMIS</a></li>
 					<li class="item"><a href="utils/tagexport.php">Tag</a></li>
-					<!--<li class="item"><a href="achievement/dbexportchoice.php">Achievement</a></li>-->
+					<li class="item"><a href="achievement/dbexportchoice.php">Achievement</a></li>
                                         <li class="item"><a href="utils/exportEMIS.php">EMIS Excel</a></li>
                                         <li class="item"><a href="nfemis/exportNFEMIS.php">NFEMIS Excel</a></li>
 					
