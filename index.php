@@ -142,6 +142,7 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
 					<li class="item"><a href="utils/dbimport.php">Flash Data</a></li>
                                         <li class="item"><a href="tmis/excel_import.php">TMIS Excel</a></li>
                                         <li class="item"><a href="achievement/excel_import.php">Exam Result</a></li>
+                                        <li class="item"><a href="nfemis/dbimport.php">NFEMIS</a></li>
 					<li class="item"><a href="excelEMIS">EMIS Excel</a></li>
                                         <li class="item"><a href="nfemis/excel_import.php">NFEMIS Excel</a></li>
 					</ul>
@@ -150,6 +151,7 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
 					<li class="item"><a href="utils/dbexportchoice.php">Flash &amp; TMIS</a></li>
 					<li class="item"><a href="utils/tagexport.php">Tag</a></li>
 					<li class="item"><a href="achievement/dbexportchoice.php">Achievement</a></li>
+                                        <li class="item"><a href="nfemis/dbexportchoice.php">NFEMIS</a></li>
                                         <li class="item"><a href="utils/exportEMIS.php">EMIS Excel</a></li>
                                         <li class="item"><a href="nfemis/exportNFEMIS.php">NFEMIS Excel</a></li>
 					
@@ -205,8 +207,13 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
 					<li class="item"><a href="schoolreport/">School</a></li>
 					<li class="item"><a href="ecdreport/">ECD / SOP</a></li>
 					<li class="item"><a href="tmisreport/reportpre.php">TMIS</a></li>
-	
 					</ul>
+                            
+                                        <ul id="nfec">
+                                            <li class="top">NFEC</li>
+                                            <li class="item"><a href="">Agency Report</a></li>
+					</ul>
+                            
 					</div>
 				  </td>
               </tr>

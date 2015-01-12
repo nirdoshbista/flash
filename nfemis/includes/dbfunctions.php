@@ -1,12 +1,12 @@
 <?php
 
-function dbconnect(){
+function dbconnect($database){
     include 'includes/vars.php';
     $link = mysql_connect($dbserver, $dbusername, $dbpassword);
 	if (!$link) {
 	   die('Could not connect to MySQL server: ' . mysql_error());
 	}
-    $result =mysql_select_db($dbname, $link);
+    $result =mysql_select_db($database, $link);
     //echo "DB connect : ",$result?"Success":"Failure";
     //echo '<br>';
 
@@ -174,5 +174,74 @@ function deleteRows($tablename,$condition)
     if (mysql_query("DELETE FROM $tablename WHERE $condition;"))    return TRUE;
     return FALSE;
 }
+
+
+function exporttable($filename, $tablename, $whereclause){
+    global $dblink;
+    
+    $result = mysql_query("describe $tablename",$dblink);
+    $fields = array();
+    while ($row = mysql_fetch_assoc($result)){
+        $fields[] = "`".$row['Field']."`";
+    
+    }
+    
+    $fields_joined = implode(",",$fields);
+ 
+	
+	$query="select * from $tablename where ".$whereclause;
+	//echo $query."\n";
+	
+	$result = mysql_query($query,$dblink);
+
+	//echo $query.'<br>';
+	
+	$fptr=fopen($filename, "a");
+	
+	$num_rows=mysql_num_rows($result);
+	//echo $num_rows;
+	if ($num_rows > 0){
+		
+		$str="\nINSERT INTO $tablename ($fields_joined) VALUES\n";
+
+		for ($n=0;$n<$num_rows;$n++){
+		
+			$row=mysql_fetch_array($result);
+		
+			$str.="(";
+			for ($i=0;$i<mysql_num_fields($result);$i++){
+				if ($row[$i]==null) $str.='null';
+				else $str.='"'.mysql_real_escape_string($row[$i]).'"';
+				$str.=($i==mysql_num_fields($result)-1?")":",");
+			}
+			
+			if ($n<$num_rows-1) $str.=",\n"; 
+			else $str.=";\n\n";
+			
+		}
+		
+		fputs($fptr,$str);
+		
+	
+	}
+
+	fclose($fptr);
+}
+
+
+function exportsqlheader($filename){
+	include 'includes/vars.php';
+	
+	$fptr=fopen($filename, "a");
+	
+	$str="create database if not exists `$dbname`;\n";
+	$str.="use `$dbname`;\n\n";
+	
+	fputs($fptr,$str);
+	
+	fclose($fptr);	
+	
+}
+
 
 ?>

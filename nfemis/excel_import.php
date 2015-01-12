@@ -8,7 +8,7 @@ require_once('includes/dbfunctions.php');
 require_once('excelImport_backend.php');
 require_once('../includes/excel_reader2_patch_applied.php');
 
-$link = dbconnect();
+$link = dbconnect($dbname);
 $school_info=array();
 $students_info=array();
 $marks_info=array();

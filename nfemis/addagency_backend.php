@@ -7,7 +7,7 @@ header ("Pragma: no-cache"); // HTTP/1.0
 require_once('../includes/vars.php');
 require_once('../includes/dbfunctions.php');
 
-$link = dbconnect();
+$link = dbconnect($dbname);
 
 $req=$_GET['req'];
 

@@ -8,7 +8,7 @@ require_once('includes/dbfunctions.php');
 
 if (!checkcookie()) header("Location: ../login.php");
 
-$link = dbconnect();
+$link = dbconnect($dbname);
 
 ?>
 <html>

@@ -4,7 +4,7 @@
 require_once('includes/vars.php');
 require_once('includes/dbfunctions.php');
 
-$link = dbconnect();
+$link = dbconnect($dbname);
 
 ?>
 <html>
