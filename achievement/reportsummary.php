@@ -22,6 +22,10 @@ $vdc_code = substr($sch_code, 2,3);
 $hstr = array();
 $hstr[] = get_dist_vdc($sch_code);
 
+//get the dist_code and vdc code as well as the schoolcode if given
+$s=$sch_code;
+
+
 $query = "SELECT stu_num, sch_num, sch_year, `student_main`.`class` as `class`, reg_id, first_name, last_name, sex, caste_ethnicity, disability, 
 				 s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s1+s2+s3+s4+s5+s6+s7+s8+s9+s10+s11+s12 as total
 			FROM `student_main`
@@ -35,7 +39,7 @@ if ($caste!='') { $query .= " AND caste_ethnicity='$caste' "; $hstr[] = "Caste: 
 if ($sex!='') { $query .= " AND sex='$sex' "; $hstr[] = "Sex: ".$sex_[$sex]; }
 
 // get subjects
-$result = mysql_query("SELECT * FROM subjects WHERE dist_code='$dist_code' AND `class`='$class' ORDER BY subject_sn");
+$result = mysql_query("SELECT * FROM subjects WHERE dist_code='$dist_code' AND `class`='$class' and sch_year='$sch_year' ORDER BY subject_sn");
 $subjects = array();
 
 
@@ -46,23 +50,31 @@ $total_mark = 0;
 while ($row=mysql_fetch_assoc($result)) {
 	$subjects[$row['subject_sn']]=$row['subject_name'];
 	
-	$pass_condition[] = "s{$row['subject_sn']}_theory>={$row['subject_theory_pass_mark']}";
-	$pass_condition[] = "s{$row['subject_sn']}_practical>={$row['subject_practical_pass_mark']}";
+	$pass_condition[] = "COALESCE(s{$row['subject_sn']}_theory,0)>={$row['subject_theory_pass_mark']}";
+	$pass_condition[] = "COALESCE(s{$row['subject_sn']}_practical,0)>={$row['subject_practical_pass_mark']}";
 	
-	$fail_condition[] = "s{$row['subject_sn']}_theory<{$row['subject_theory_pass_mark']}";
-	$fail_condition[] = "s{$row['subject_sn']}_practical<{$row['subject_practical_pass_mark']}";
+	$fail_condition[] = "COALESCE(s{$row['subject_sn']}_theory,0)<{$row['subject_theory_pass_mark']}";
+	$fail_condition[] = "COALESCE(s{$row['subject_sn']}_practical,0)<{$row['subject_practical_pass_mark']}";
 	
 	$total_mark += ((int)$row['subject_theory_full_mark'] + (int)$row['subject_practical_full_mark']);
 
 }
 
-$pass = "(".implode(" AND ", $pass_condition).")";
-$fail = "(".implode(" OR ", $fail_condition).")";
-
 $dist = $total_mark * 0.8;
 $first = $total_mark * 0.6;
 $second = $total_mark * 0.45;
 $third = $total_mark * 0.32;
+
+if($total_mark>0)
+{
+    $pass = " AND (".implode(" AND ", $pass_condition).")";
+    $fail = " AND (".implode(" OR ", $fail_condition).")";
+    $dist_condition=" HAVING (total>=$dist)";
+    $firstdiv_condition=" HAVING (total>=$first AND total<$dist)";
+    $seconddiv_condition=" HAVING (total>=$second AND total<$first)";
+    $thirddiv_condition=" HAVING (total>=$third AND total<$second)";
+}
+
 
 function get_dist_vdc($sch_code){
 	global $flashdblink;
@@ -99,6 +111,7 @@ function get_nm_sch($s){
 }
 
 function get_total($q){
+       // echo $q;
 	global $dblink;
 	
 	$result = mysql_query($q);
@@ -127,33 +140,79 @@ function get_total($q){
 		<h2 align='center'><?php echo implode("<br />", $hstr); ?></h2>
 		<p align='center'>
 		<table style="width: 200px;" align='center'>
+                        <tr>
+                            <th></th>
+                            <td>Male</td>
+                            <td>Female</td>
+                            <td>Dalit</td>
+                            <td>Janajati</td>
+                            <td>Brahmin/Chhetri</td>
+                            <td>Others</td>
+                            <td>Total</td>
+                        </tr>
 			<tr>
 				<th>Total Students</th>
-				<td><?php echo get_total($query); ?></td>
+                                <td><?php echo get_total($query." AND sex='1'"); ?></td>
+                                <td><?php echo get_total($query." AND sex='2'"); ?></td>
+                                <?php for ($caste = 1; $caste <= 4; $caste++) { ?>
+                                <td><?php echo get_total($query." AND caste_ethnicity='$caste' "); ?></td>
+                                <?php } ?>
+                                <td><?php echo get_total($query); ?></td>
+                                
 			</tr>
 			<tr>
 				<th>Total Pass</th>
-				<td><?php echo get_total($query." AND ".$pass); ?></td>
+                                <td><?php echo get_total($query.$pass." AND sex='1'"); ?></td>
+                                <td><?php echo get_total($query.$pass." AND sex='2'"); ?></td>
+                                <?php for ($caste = 1; $caste <= 4; $caste++) { ?>
+                                <td><?php echo get_total($query.$pass." AND caste_ethnicity='$caste' "); ?></td>
+                                <?php } ?>
+				<td><?php echo get_total($query.$pass); ?></td>
 			</tr>
 			<tr>
 				<th>Total Fail</th>
-				<td><?php echo get_total($query." AND ".$fail); ?></td>
+                                <td><?php echo get_total($query.$fail." AND sex='1'"); ?></td>
+                                <td><?php echo get_total($query.$fail." AND sex='2'"); ?></td>
+                                <?php for ($caste = 1; $caste <= 4; $caste++) { ?>
+                                <td><?php echo get_total($query.$fail." AND caste_ethnicity='$caste' "); ?></td>
+                                <?php } ?>
+				<td><?php echo get_total($query.$fail); ?></td>
 			</tr>
 			<tr>
 				<th>Distinction</th>
-				<td><?php echo get_total($query." AND ".$pass. " HAVING (total>=$dist)"); ?></td>
+                                <td><?php echo get_total($query.$pass." AND sex='1'".$dist_condition); ?></td>
+                                <td><?php echo get_total($query.$pass." AND sex='2'".$dist_condition); ?></td>
+                                <?php for ($caste = 1; $caste <= 4; $caste++) { ?>
+                                <td><?php echo get_total($query.$pass." AND caste_ethnicity='$caste' ".$dist_condition); ?></td>
+                                <?php } ?>
+				<td><?php echo get_total($query.$pass.$dist_condition); ?></td>
 			</tr>
 			<tr>
 				<th>First Division</th>
-				<td><?php echo get_total($query." AND ".$pass. " HAVING (total>=$first AND total<$dist)"); ?></td>
+                                <td><?php echo get_total($query.$pass." AND sex='1'".$firstdiv_condition); ?></td>
+                                <td><?php echo get_total($query.$pass." AND sex='2'".$firstdiv_condition); ?></td>
+                                <?php for ($caste = 1; $caste <= 4; $caste++) { ?>
+                                <td><?php echo get_total($query.$pass." AND caste_ethnicity='$caste' ".$firstdiv_condition); ?></td>
+                                <?php } ?>
+				<td><?php echo get_total($query.$pass.$firstdiv_condition ); ?></td>
 			</tr>
 			<tr>
 				<th>Second Division</th>
-				<td><?php echo get_total($query." AND ".$pass. " HAVING (total>=$second AND total<$first)"); ?></td>
+                                <td><?php echo get_total($query.$pass." AND sex='1'".$seconddiv_condition); ?></td>
+                                <td><?php echo get_total($query.$pass." AND sex='2'".$seconddiv_condition); ?></td>
+                                <?php for ($caste = 1; $caste <= 4; $caste++) { ?>
+                                <td><?php echo get_total($query.$pass." AND caste_ethnicity='$caste' ".$seconddiv_condition); ?></td>
+                                <?php } ?>
+				<td><?php echo get_total($query.$pass.$seconddiv_condition ); ?></td>
 			</tr>
 			<tr>
 				<th>Third Division</th>
-				<td><?php echo get_total($query." AND ".$pass. " HAVING (total>=$third AND total<$second)"); ?></td>
+                                <td><?php echo get_total($query.$pass." AND sex='1'".$thirddiv_condition); ?></td>
+                                <td><?php echo get_total($query.$pass." AND sex='2'".$thirddiv_condition); ?></td>
+                                 <?php for ($caste = 1; $caste <= 4; $caste++) { ?>
+                                <td><?php echo get_total($query.$pass." AND caste_ethnicity='$caste' ".$thirddiv_condition); ?></td>
+                                <?php } ?>
+				<td><?php echo get_total($query.$pass.$thirddiv_condition ); ?></td>
 			</tr>
 			
 			

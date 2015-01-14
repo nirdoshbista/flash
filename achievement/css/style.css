@@ -200,6 +200,7 @@ th{
 	background-color: #81BF5D;
 	color: white;
 	border-bottom: 1px solid #666;	
+        border-right:1px solid #666;	
 }
 
 tr:hover{
