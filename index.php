@@ -57,19 +57,6 @@ mysql_query("ALTER TABLE subjects ADD COLUMN sch_year int AFTER id");
 <title>Flash - Home</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="css/style.css" rel="stylesheet" type="text/css">
-<style>
-
-.menu{margin-top:-10px;}
-.menu ul{float:left; list-style:none;margin:0px;padding:0px;}
-.menu ul .item{display:none;}
-.menu ul:hover .item{display:block;}
-.menu{position:absolute;}
-.menu li{color:  #505050;margin: 0px 2px;text-decoration:none;background:#e0e0e0;padding:6px 12px 6px 12px;}
-.menu li a{color:  #505050;text-decoration:none;}
-.menu li:hover{background:#d0d0d0;}
-.clear{clear:both;height:10px;}
-
-</style>
 </head>
 
 <body>
@@ -98,7 +85,7 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
   </tr>
 </table>
 
-<table width="900" border="0" align="center" cellpadding="50" bgcolor="#FFFFFF" style="border: 1px black solid; background: #eeeeee;">
+<table width="900" border="0" align="center" cellpadding="20" bgcolor="#FFFFFF" style="border: 1px black solid; background: #eeeeee;">
   <tr>
     <td height="142" class='ewListAdd'> <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
         <tr align="center" valign="top">
@@ -109,21 +96,29 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
               </tr>
               <tr align="center" valign="middle"> 
                 <td width="90"><img src="images/entry.png" border="0"></td>
-                <td align="left">
-					<div class="menu">
-					
-					<ul id="entry-f1">
-					<li class="top">Flash</li>
-					<li class="item"><a href="flash1/">Flash I</a></li>
-					<li class="item"><a href="flash2/">Flash II</a></li>
-					</ul>
-					<ul id="entry-tmis">
-					<li class="top"><a href="tmis/">TMIS</a></li>
-					</ul>
-					<ul id="entry-achievement">
-					<li class="top"><a href="achievement/">Achievement</a></li>
-					</ul>                                        
-					</div>
+                <td align="left">	
+                        <nav class="main_nav data-entry">
+                                            <ul>
+                                                <li class="item-0">
+                                                    <a href="javascript:void(0);">Flash</a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="flash1/">Flash I</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="flash2/">Flash II</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>    
+                                                <li  class="item-0">
+                                                   <a href="tmis/">TMIS</a>
+                                                </li>
+                                                <li  class="item-0">
+                                                   <a href="achievement/">Achievement</a> 
+                                                </li>
+                                                
+                                            </ul>
+                                        </nav>                                               
                 </td>
               </tr>
               <tr align="center" valign="bottom"> 
@@ -133,49 +128,75 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
               <tr align="center" valign="middle"> 
                 <td><img src="images/savedb.png" border="0"></td>
                 <td align="left">
-	                
-                
-					<div class="menu">
-					
-					<ul id="db-import">
-                                        <li class="top">Import</li>    
-					<li class="item"><a href="utils/dbimport.php">Flash Data</a></li>
-                                        <li class="item"><a href="tmis/excel_import.php">TMIS Excel</a></li>
-                                        <li class="item"><a href="achievement/excel_import.php">Exam Result</a></li>
-                                        <li class="item"><a href="nfemis/dbimport.php">NFEMIS</a></li>
-					<li class="item"><a href="excelEMIS">EMIS Excel</a></li>
-                                        <li class="item"><a href="nfemis/excel_import.php">NFEMIS Excel</a></li>
-					</ul>
-					<ul id="db-export">
-					<li class="top">Export</li>
-					<li class="item"><a href="utils/dbexportchoice.php">Flash &amp; TMIS</a></li>
-					<li class="item"><a href="utils/tagexport.php">Tag</a></li>
-					<li class="item"><a href="achievement/dbexportchoice.php">Achievement</a></li>
-                                        <li class="item"><a href="nfemis/dbexportchoice.php">NFEMIS</a></li>
-                                        <li class="item"><a href="utils/exportEMIS.php">EMIS Excel</a></li>
-                                        <li class="item"><a href="nfemis/exportNFEMIS.php">NFEMIS Excel</a></li>
-					
-					</ul>
-					<ul id="db-maintenance">
-					<li class="top">Maintenance</li>
-					<li class="item"><a href="utils/dbrepair.php">Repair</a></li>
-					<li class="item"><a href="utils/removeduplicates_splash.php">Duplicates</a></li>
-					<?php
-						$result = mysql_query("SELECT * FROM mast_district");
-						//if ( mysql_num_rows($result)>1 ):
-					
-					?>
-					
-					<li class="item"><a href="utils/removedistrict.php">Remove Districts</a></li>
-                                        <li class="item"><a href="utils/removeSchoolInfo.php">Remove EMIS Excel data</a></li>
-					<?php
-						//endif;
-					?>
-					
-					</ul>
-					</div>
-
-                  
+                                        <nav class="main_nav database">
+                                            <ul>
+                                                <li class="item-0">
+                                                    <a href="javascript:void(0);">Import</a>
+                                                    <ul>
+                                                        <li>
+                                                           <a href="utils/dbimport.php">Flash Data</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="tmis/excel_import.php">TMIS Excel</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="achievement/excel_import.php">Exam Result</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="excelEMIS">EMIS Excel</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0);">NFEMIS</a>
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="nfemis/dbimport.php">NFEMIS Data</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="nfemis/excel_import.php">NFEMIS Excel</a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    </ul>
+                                                </li>    
+                                                <li class="item-0">
+                                                   <a href="javascript:void(0);">Export</a>
+                                                   <ul>
+                                                        <li>
+                                                            <a href="utils/dbexportchoice.php">Flash &amp; TMIS</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="utils/tagexport.php">Tag</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="achievement/dbexportchoice.php">Achievement</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="utils/exportEMIS.php">EMIS Excel</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0);">NFEMIS</a>
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="nfemis/dbexportchoice.php">NFEMIS Data</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="nfemis/exportNFEMIS.php">NFEMIS Excel</a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                   </ul>
+                                                </li>
+                                                <li class="item-0">
+                                                   <a href="javascript:void(0);">Maintenance</a> 
+                                                   <ul>
+                                                        <li><a href="utils/dbrepair.php">Repair</a></li>
+                                                        <li><a href="utils/removeduplicates_splash.php">Duplicates</a></li>	
+                                                        <li><a href="utils/removedistrict.php">Remove Districts</a></li>
+                                                        <li><a href="utils/removeSchoolInfo.php">Remove EMIS Excel data</a></li>
+                                                   </ul>  
+                                                </li>
+                                            </ul>
+                                        </nav>    
                   </td>
               </tr>
             </table></td>
@@ -187,35 +208,38 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
               <tr align="center" valign="middle"> 
                 <td width="90"><img src="images/reports.png" border="0"></td>
                 <td align="left">
-                
-                	<div class="menu">
-					
-
-					<ul id="flash">
-					<li class="top">Flash</li>
-					<li class="item"><a href="flash1/reports.php">Flash I</a></li>
-					<li class="item"><a href="flash2/reports.php">Flash II</a></li>
-					</ul>
-
-					<ul id="tmis">
-					<li class="top"><a href="tmisreport/reportpre_agg.php">TMIS</a></li>
-					</ul>					
-
-					<ul id="reportcard">
-					<li class="top">Report Cards</li>
-					<li class="item"><a href="districtreport/">District</a></li>
-					<li class="item"><a href="schoolreport/">School</a></li>
-					<li class="item"><a href="ecdreport/">ECD / SOP</a></li>
-					<li class="item"><a href="tmisreport/reportpre.php">TMIS</a></li>
-					</ul>
-                            
-                                        <ul id="nfec">
-                                            <li class="top">NFEC</li>
-                                            <li class="item"><a href="">Agency Report</a></li>
-					</ul>
-                            
-					</div>
-				  </td>
+                        <nav class="main_nav report">
+                            <ul>
+                                <li class="item-0">
+                                    <a href="javascript:void(0);">Flash</a>
+                                    <ul>
+                                        <li><a href="flash1/reports.php">Flash I</a></li>
+					<li><a href="flash2/reports.php">Flash II</a></li>
+                                    </ul>
+                                </li>
+                                <li class="item-0">
+                                    <a href="tmisreport/reportpre_agg.php">TMIS</a>
+                                </li>
+                                <li class="item-0">
+                                    <a href="javascript:void(0);">Report Cards</a>
+                                    <ul>
+                                        <li><a href="districtreport/">District</a></li>
+					<li><a href="schoolreport/">School</a></li>
+					<li><a href="ecdreport/">ECD / SOP</a></li>
+					<li><a href="tmisreport/reportpre.php">TMIS</a></li>
+                                    </ul>
+                                </li> 
+                                <li class="item-0">
+                                    <a href="javascript:void(0);">NFEC</a>
+                                    <ul>
+                                        <li>
+                                            <a href="nfemis/reportchoice.php">Report</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </td>
               </tr>
               <tr align="center" valign="bottom"> 
                 <td colspan="2"><font color="#003366" size="4"><strong><br>
@@ -224,30 +248,39 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
               <tr align="center" valign="middle"> 
                 <td><img src="images/configure.png" width="72" height="72" border="0"></td>
                 <td align="left">
-                
-                	<div class="menu">
-					
-					<ul id="util-edit">
-					<li class="top">Rename</li>
-					<li class="item"><a href="utils/aevdc.php">VDC</a></li>
-					<li class="item"><a href="utils/aeschool.php">School</a></li>
-					</ul>
-					<ul id="util-tags">
-					<li class="top"><a href="utils/aetag.php">Tags</a></li>
-					</ul>
-					<ul id="util-school">
-					<li class="top">School</li>
-					
-					<li class="item"><a href="utils/schooldata.php?remove">Remove</a></li>
-					<li class="item"><a href="utils/schooldata.php?transfer">Transfer</a></li>
-		
-					</ul>
-                                        <ul id="util-nfemis">
-					<li class="top">Agency(NFEC)</li>
-					<li class="item"><a href="nfemis/addagency.php">Add</a></li>		
-					</ul>
-					</div>
-                
+                        <nav class="main_nav utils">
+                            <ul>
+                                <li class="item-0">
+                                    <a href="javascript:void(0);">Rename</a>
+                                    <ul>
+                                        <li>
+                                            <a href="utils/aevdc.php">VDC</a>
+                                        </li>
+					<li>
+                                            <a href="utils/aeschool.php">School</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="item-0">
+                                    <a href="utils/aetag.php">Tags</a>
+                                </li>
+                                <li class="item-0">
+                                    <a href="javascript:void(0);">School</a>
+                                    <ul>
+                                        <li><a href="utils/schooldata.php?remove">Remove</a></li>
+					<li><a href="utils/schooldata.php?transfer">Transfer</a></li>
+                                    </ul>
+                                </li>
+                                <li class="item-0">
+                                    <a href="javascript:void(0);">Agency(NFEC)</a>
+                                    <ul>
+                                        <li>
+                                            <a href="nfemis/addagency.php">Add</a>
+                                        </li>		
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
               </tr>
             </table></td>
         </tr>

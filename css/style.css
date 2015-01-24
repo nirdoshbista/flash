@@ -98,7 +98,7 @@ a:visited {
 
 .ewListAdd td {
 	border: 0px;
-	padding: 2px;
+	/*padding: 2px;*/
 }
 
 .phpmakerlist td {
@@ -372,7 +372,6 @@ text-decoration:none;
     position: relative;
     width: 50%;
 }
-
 .exportEMIS_box table tbody tr td,.addAgency_box table tbody tr td
 {
     padding-top:11%;
@@ -411,3 +410,85 @@ body.loading .modal {
     display: block;
 }
 /*END_SYSTEM_STYLES*/
+
+/* for the multilevel menu */
+.main_nav ul {
+    background: white;
+    float: left;
+    -webkit-transition: .5s;
+    transition: .5s;
+    padding:0;
+    
+}
+
+.main_nav li {
+    float: left;
+    position: relative;
+    list-style: none;
+    -webkit-transition: .5s;
+    transition: .5s;
+    background:#e0e0e0;
+}
+.main_nav li.item-0{
+    display: table;
+    margin: 2px;
+    width: 95px;
+}
+
+.main_nav > ul > li > a, h1 {
+        white-space: nowrap;
+
+}
+
+.main_nav a {
+        display: block;
+        text-decoration: none;
+        padding: 5px 15px;
+        color: #000;
+}
+
+.main_nav ul ul {
+        position: absolute;
+        right: 0;
+        width:100%;
+        top: 100%;
+        visibility: hidden;
+        opacity: 0;
+        padding-left:0px;
+}
+
+.main_nav ul ul ul {
+        background:#ddd;
+        left: 100%;
+        top: 0;
+}
+
+.main_nav li:hover, .main_nav li:hover li {
+        background: #ddd;
+        z-index:999;
+}
+
+.main_nav li li:hover, .main_nav li li:hover li {
+        background: #bbb;
+        z-index:999;
+}
+
+.main_nav li li li:hover {
+        background: #999;
+}
+
+.main_nav li:hover > ul {
+        visibility: visible;
+        opacity: 1;
+}
+.main_nav li ul li {
+    width: 100%;
+}
+/*.main_nav {
+    margin: 0 auto;
+    background: #000;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 2px #666;
+	}*/
+/*end of multi level menu */

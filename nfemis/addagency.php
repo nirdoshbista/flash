@@ -30,6 +30,9 @@ $link = dbconnect($dbname);
                 
                 //insert the information into nfe master database,agency id is autoincremented at the database side
                 idata('nfe_mast_agency', $data);
+                //now update the centerid column with the last inserted agency_code
+                $query='UPDATE nfe_mast_agency SET center_id=(select CONCAT(dist_code,agency_code)) WHERE agency_code=LAST_INSERT_ID();';
+		mysql_query($query);
                         
                 echo "<script>alert('".$data['agency_name']." has been added successfully!')</script>";
             } 
