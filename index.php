@@ -144,24 +144,24 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
                                                            <a href="utils/dbimport.php">Flash Data</a>
                                                         </li>
                                                         <li>
-                                                            <a href="tmis/excel_import.php">TMIS Excel</a>
-                                                        </li>
-                                                        <li>
                                                             <a href="achievement/excel_import.php">Exam Result</a>
                                                         </li>
                                                         <li>
-                                                            <a href="excelEMIS">EMIS Excel</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:void(0);">NFEMIS</a>
+                                                            <a href="javascript:void(0);">Excel</a>
                                                             <ul>
                                                                 <li>
-                                                                    <a href="nfemis/dbimport.php">NFEMIS Data</a>
+                                                                    <a href="tmis/excel_import.php">TMIS</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="nfemis/excel_import.php">NFEMIS Excel</a>
+                                                                    <a href="excelEMIS">EMIS</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="nfemis/excel_import.php">NFEMIS</a>
                                                                 </li>
                                                             </ul>
+                                                        </li>
+                                                        <li>
+                                                            <a href="nfemis/dbimport.php">NFEMIS Data</a>
                                                         </li>
                                                     </ul>
                                                 </li>    
@@ -178,18 +178,21 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
                                                             <a href="achievement/dbexportchoice.php">Achievement</a>
                                                         </li>
                                                         <li>
-                                                            <a href="utils/exportEMIS.php">EMIS Excel</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="javascript:void(0);">NFEMIS</a>
-                                                            <ul>
+                                                            <a href="javascript:void(0);">Excel</a>
+                                                             <ul>
                                                                 <li>
-                                                                    <a href="nfemis/dbexportchoice.php">NFEMIS Data</a>
+                                                                    <a href="achievement/exportClassList.php">Class List</a>
+                                                                </li> 
+                                                                <li>
+                                                                    <a href="utils/exportEMIS.php">EMIS</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="nfemis/exportNFEMIS.php">NFEMIS Excel</a>
+                                                                    <a href="nfemis/exportNFEMIS.php">NFEMIS</a>
                                                                 </li>
                                                             </ul>
+                                                        </li>
+                                                        <li>
+                                                            <a href="nfemis/dbexportchoice.php">NFEMIS Data</a>
                                                         </li>
                                                    </ul>
                                                 </li>
