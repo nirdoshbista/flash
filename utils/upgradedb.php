@@ -53,7 +53,11 @@ $nfecblank="..//nfemis//nfemisblank.sql";
 $flashblank = "flashblank.sql";
 
 importsql($nfecblank);
-importsql($flashblank);
+$result=  mysql_query("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'flash' AND TABLE_NAME = 'id_physical_details' AND COLUMN_NAME = 'sch_num'");
+if(!mysql_num_rows($result))
+{
+    importsql($flashblank);
+}
 echo "Done</p>";
 ?>
 
