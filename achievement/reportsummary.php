@@ -8,6 +8,7 @@ $sort = $_GET['sort'];
 $sch_code = $_GET['s'];
 $sch_year = $_GET['y'];
 $class = $_GET['c'];
+$sch_type=$_GET['sch_type'];
 
 // prepare hashes
 $sex_ = array(1=>"M",2=>"F");
@@ -29,8 +30,7 @@ $s=$sch_code;
 $query = "SELECT stu_num, sch_num, sch_year, `student_main`.`class` as `class`, reg_id, first_name, last_name, sex, caste_ethnicity, disability, 
 				 s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s1+s2+s3+s4+s5+s6+s7+s8+s9+s10+s11+s12 as total
 			FROM `student_main`
-			LEFT JOIN `student_marks`
-			USING (`stu_num`, `sch_year`)
+			LEFT JOIN `student_marks` USING (`stu_num`, `sch_year`)
 			WHERE stu_num LIKE '$s%'
 				AND sch_year = '$sch_year'
 				AND	`student_main`.`class` = '$class' ";
@@ -50,10 +50,10 @@ $total_mark = 0;
 while ($row=mysql_fetch_assoc($result)) {
 	$subjects[$row['subject_sn']]=$row['subject_name'];
 	
-	$pass_condition[] = "COALESCE(s{$row['subject_sn']}_theory,0)>={$row['subject_theory_pass_mark']}";
+	$pass_condition[] = "COALESCE(s{$row['subject_sn']}_theory+s{$row['subject_sn']}_grace,0)>={$row['subject_theory_pass_mark']}";
 	$pass_condition[] = "COALESCE(s{$row['subject_sn']}_practical,0)>={$row['subject_practical_pass_mark']}";
 	
-	$fail_condition[] = "COALESCE(s{$row['subject_sn']}_theory,0)<{$row['subject_theory_pass_mark']}";
+	$fail_condition[] = "COALESCE(s{$row['subject_sn']}_theory+s{$row['subject_sn']}_grace,0)<{$row['subject_theory_pass_mark']}";
 	$fail_condition[] = "COALESCE(s{$row['subject_sn']}_practical,0)<{$row['subject_practical_pass_mark']}";
 	
 	$total_mark += ((int)$row['subject_theory_full_mark'] + (int)$row['subject_practical_full_mark']);
@@ -108,6 +108,15 @@ function get_nm_sch($s){
 
 	return $row['nm_sch'];
 
+}
+
+function get_school_type($s, $class, $sch_year){
+	global $flashdblink, $currentyear;
+	
+	$result = mysql_query("SELECT class$class class FROM mast_school_type WHERE sch_num='$s' AND sch_year='$sch_year'", $flashdblink);
+	$r = mysql_fetch_assoc($result);
+	
+	return $r['class'];
 }
 
 function get_total($q){

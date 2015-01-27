@@ -9,6 +9,7 @@ $sch_code = $_GET['s'];
 $sch_year = $_GET['y'];
 $class = $_GET['c'];
 $dob_en_y_ = $_GET['dob_en_y'];
+$sch_type=$_GET['sch_type'];
 
 
 

@@ -238,7 +238,7 @@ function printreport(){
     </td>
 </tr>
 </table>
-<div id="toprightmenu" style="position:absolute; top:10px; right:10px;"><a href="index.php">Main Menu</a> | <a href="../logout.php">Logout</a></div>
+<div id="toprightmenu" style="position:absolute; top:10px; right:10px;"><a href="../index.php">Main Menu</a> | <a href="../logout.php">Logout</a></div>
 
 <p>&nbsp; </p>
 </body>

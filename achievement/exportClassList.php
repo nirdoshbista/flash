@@ -58,9 +58,9 @@ if(isset($_GET['s']) && isset($_GET['y']) && isset($_GET['c']))
     
     //delete if a file already exists in desktop and
     //move the temp file to the desktop
-    if(file_exists($path."\\".$code." ".$schoolName.".xls"))
-            unlink($path."\\".$code." ".$schoolName.".xls");
-    rename(dirname(__FILE__)."\\".$code.".xls",$path."\\".$code." ".$schoolName.".xls");
+    if(file_exists($path."\\".$code." ".$schoolName."- Class ".$class." - ".$year.".xls"))
+            unlink($path."\\".$code." ".$schoolName."- Class ".$class." - ".$year.".xls");
+    rename(dirname(__FILE__)."\\".$code.".xls",$path."\\".$code." ".$schoolName."- Class ".$class." - ".$year.".xls");
     
     echo "<script>";
     echo "alert('Successfully Exported to Dektop');\n";

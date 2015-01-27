@@ -141,10 +141,7 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
                                                     <a href="javascript:void(0);">Import</a>
                                                     <ul>
                                                         <li>
-                                                           <a href="utils/dbimport.php">Flash Data</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="achievement/excel_import.php">Exam Result</a>
+                                                            <a href="javascript:void(0);">Exam Result</a>
                                                         </li>
                                                         <li>
                                                             <a href="javascript:void(0);">Excel</a>
@@ -153,15 +150,18 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
                                                                     <a href="achievement/excel_import.php">Exam Result</a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="tmis/excel_import.php">TMIS</a>
-                                                                </li>
-                                                                <li>
                                                                     <a href="excelEMIS">EMIS</a>
                                                                 </li>
                                                                 <li>
                                                                     <a href="nfemis/excel_import.php">NFEMIS</a>
                                                                 </li>
+                                                                <li>
+                                                                    <a href="tmis/excel_import.php">TMIS</a>
+                                                                </li>
                                                             </ul>
+                                                        </li>
+                                                        <li>
+                                                           <a href="utils/dbimport.php">Flash Data</a>
                                                         </li>
                                                         <li>
                                                             <a href="nfemis/dbimport.php">NFEMIS Data</a>
@@ -171,12 +171,6 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
                                                 <li class="item-0">
                                                    <a href="javascript:void(0);">Export</a>
                                                    <ul>
-                                                        <li>
-                                                            <a href="utils/dbexportchoice.php">Flash &amp; TMIS</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="utils/tagexport.php">Tag</a>
-                                                        </li>
                                                         <li>
                                                             <a href="achievement/dbexportchoice.php">Achievement</a>
                                                         </li>
@@ -195,17 +189,23 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
                                                             </ul>
                                                         </li>
                                                         <li>
+                                                            <a href="utils/dbexportchoice.php">Flash &amp; TMIS</a>
+                                                        </li>
+                                                        <li>
                                                             <a href="nfemis/dbexportchoice.php">NFEMIS Data</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="utils/tagexport.php">Tag</a>
                                                         </li>
                                                    </ul>
                                                 </li>
                                                 <li class="item-0">
                                                    <a href="javascript:void(0);">Maintenance</a> 
                                                    <ul>
-                                                        <li><a href="utils/dbrepair.php">Repair</a></li>
                                                         <li><a href="utils/removeduplicates_splash.php">Duplicates</a></li>	
                                                         <li><a href="utils/removedistrict.php">Remove Districts</a></li>
                                                         <li><a href="utils/removeSchoolInfo.php">Remove EMIS Excel data</a></li>
+                                                        <li><a href="utils/dbrepair.php">Repair</a></li>
                                                    </ul>  
                                                 </li>
                                             </ul>
@@ -237,8 +237,8 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
                                     <a href="javascript:void(0);">Report Cards</a>
                                     <ul>
                                         <li><a href="districtreport/">District</a></li>
+                                        <li><a href="ecdreport/">ECD / SOP</a></li>
 					<li><a href="schoolreport/">School</a></li>
-					<li><a href="ecdreport/">ECD / SOP</a></li>
 					<li><a href="tmisreport/reportpre.php">TMIS</a></li>
                                     </ul>
                                 </li> 
@@ -267,15 +267,12 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
                                     <a href="javascript:void(0);">Rename</a>
                                     <ul>
                                         <li>
-                                            <a href="utils/aevdc.php">VDC</a>
-                                        </li>
-					<li>
                                             <a href="utils/aeschool.php">School</a>
                                         </li>
+                                        <li>
+                                            <a href="utils/aevdc.php">VDC</a>
+                                        </li>
                                     </ul>
-                                </li>
-                                <li class="item-0">
-                                    <a href="utils/aetag.php">Tags</a>
                                 </li>
                                 <li class="item-0">
                                     <a href="javascript:void(0);">School</a>
@@ -283,6 +280,9 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
                                         <li><a href="utils/schooldata.php?remove">Remove</a></li>
 					<li><a href="utils/schooldata.php?transfer">Transfer</a></li>
                                     </ul>
+                                </li>
+                                <li class="item-0">
+                                    <a href="utils/aetag.php">Tags</a>
                                 </li>
                                 <li class="item-0">
                                     <a href="javascript:void(0);">Agency(NFEC)</a>
