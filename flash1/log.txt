@@ -1,0 +1,4 @@
+
+insert into mast_schoollist (sch_year,dist_code,vdc_code,sch_code,nm_sch,estd_date,location,wardno,region,telno,email,account_no,sch_num,flash1,entry_timestamp) values ('2071','26','003','0097','Manakamana Ebs','--','Nagancha','4','2','6614871',null,null,'260030097','1','2015-01-27 05:11:03')
+
+insert into mast_school_type (sch_num,sch_year,ecd,class1,class2,class3,class4,class5,class6,class7,class8,class9,class10,class11,class12,entry_timestamp) values ('260030097','2071','1','1','1','1','1','1','1','1','1','0','0','0','0','2015-01-27 05:11:03')
