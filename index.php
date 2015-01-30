@@ -32,13 +32,6 @@ $result =mysql_select_db($dbname, $link);
 $result=  mysql_query("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'nfec' AND TABLE_NAME = 'nfe_mast_agency' AND COLUMN_NAME = 'center_id'");
 if(!mysql_num_rows($result))
 {
-    mysql_query("alter table `nfec`.`nfe_mast_agency` ,add column `center_id` int (6) UNSIGNED ZEROFILL   NOT NULL  after `agency_code`,drop primary key,  add primary key (`dist_code`, `agency_code`, `center_id`, `year` )");
-}
-
-// check if db upgrade is required
-$result = mysql_query("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'nfec';");
-if (!mysql_num_rows($result))
-{
     header("Location: utils/upgradedb.php");
 }
 

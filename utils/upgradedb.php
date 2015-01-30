@@ -6,7 +6,6 @@
 <body>
 <h1>Flash DB Upgrade</h1>
 
-<h3>Backing up existing data</h3>
 <?php
 require_once('../includes/tablelist.php');
 require_once('../includes/vars.php');
@@ -19,7 +18,17 @@ if (!$link) {
 $result =mysql_select_db($dbname, $link);
 
 
+//upgrade the nfec database
+$nfecblank="..//nfemis//nfemisblank.sql";
+echo "Initializing the NFEC database...";
+importsql($nfecblank);
 
+// check if db upgrade is required for flash
+$result=  mysql_query("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'flash' AND TABLE_NAME = 'id_physical_details' AND COLUMN_NAME = 'sch_num'");
+if(!mysql_num_rows($result))
+{
+
+ echo "<h3>Backing up existing data</h3>"; 
 // filename for db export
 $result = mysql_query("select * from mast_district");
 if (@mysql_num_rows($result)==1){
@@ -49,15 +58,11 @@ echo "Done</p>";
 
 <?php
 echo "<p>Installing new structure ... ";
-$nfecblank="..//nfemis//nfemisblank.sql";
+
 $flashblank = "flashblank.sql";
 
-importsql($nfecblank);
-$result=  mysql_query("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'flash' AND TABLE_NAME = 'id_physical_details' AND COLUMN_NAME = 'sch_num'");
-if(!mysql_num_rows($result))
-{
-    importsql($flashblank);
-}
+importsql($flashblank);
+
 echo "Done</p>";
 ?>
 
@@ -73,6 +78,7 @@ echo "<p>Importing {$sqlfile} ... ";
 importsql($sqlfile);
 echo "Done</p>";
 
+}
 
 ?>
 
@@ -80,20 +86,3 @@ echo "Done</p>";
 
 </body>
 </html>
-<?php
-
-function importsql($sqlpath){
-	global $dbserver, $dbusername, $dbpassword, $dbname;
-
-	$mysql_path = "..\\..\\..\\mysql\\bin\\mysql.exe";
-
-	$mysql_command =sprintf("$mysql_path -v -h%s -u%s -p%s < %s",
-        $dbserver, $dbusername, $dbpassword, $sqlpath);
-	
-	echo $mysql_command."<br />";
-	
-    shell_exec($mysql_command);
-    
-}
-
-?>

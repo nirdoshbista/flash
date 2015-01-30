@@ -407,4 +407,19 @@ function deleteRows($tablename,$condition)
     return FALSE;
 }
 
+//for upgrading the database structure
+function importsql($sqlpath){
+	global $dbserver, $dbusername, $dbpassword, $dbname;
+
+	$mysql_path = "..\\..\\..\\mysql\\bin\\mysql.exe";
+
+	$mysql_command =sprintf("$mysql_path -v -h%s -u%s -p%s < %s",
+        $dbserver, $dbusername, $dbpassword, $sqlpath);
+	
+	echo $mysql_command."<br />";
+	
+        shell_exec($mysql_command);
+    
+}
+
 ?>
