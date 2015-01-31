@@ -5,6 +5,7 @@ header("Cache-Control: private, no-store, no-cache, must-revalidate"); // HTTP/1
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache"); // HTTP/1.0
 
+//include the necessary library files
 include 'includes/dbfunctions.php';
 include 'includes/vars.php';
 
