@@ -134,9 +134,6 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
                                                     <a href="javascript:void(0);">Import</a>
                                                     <ul>
                                                         <li>
-                                                            <a href="javascript:void(0);">Exam Result</a>
-                                                        </li>
-                                                        <li>
                                                             <a href="javascript:void(0);">Excel</a>
                                                             <ul>
                                                                 <li>
