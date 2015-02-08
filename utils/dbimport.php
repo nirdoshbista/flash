@@ -81,7 +81,7 @@ if (isset($_POST['sql'])){
 	}
 	
 
-	$mysql_command =sprintf("$mysql_path -v -h%s -u%s -p%s -D%s < %s",
+	$mysql_command =sprintf("$mysql_path -f -v -h%s -u%s -p%s -D%s < %s",
         $dbserver, $dbusername, $dbpassword, $dbname, $sqlpath);
 
    
