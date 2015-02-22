@@ -35,7 +35,8 @@ if(!mysql_num_rows($result))
 {
     header("Location: utils/upgradedb.php");
 }
-
+mysql_query("delete from tmis_sec2 where sch_year is null");
+mysql_query("delete from tmis_sec2 where sch_year not like '20%'");
 
 ?>
 
