@@ -326,7 +326,7 @@ echo "<input type='button' value='Delete this ECD' onclick='deleteecd()'>\n";
 </div>
 </form>
 <div id="backbtn" style="clear:none; float:left"></div>
-<div id="nextbtn" style="clear:none; float:right"></div>
+<!-- <div id="nextbtn" style="clear:none; float:right"></div> -->
 <p>&nbsp;</p>
 <script>
 

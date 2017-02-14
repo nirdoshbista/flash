@@ -1,0 +1,6 @@
+Total Enrollment,pr_tot_enr.rpt
+Dalit Enrollment,pr_dalit_enr.rpt
+Janjati Enrollment,pr_janjati_enr.rpt
+Others Enrollment,pr_others_enr.rpt
+Enrollment by Social Groups,pri_tot_social_status.rpt
+Janjati Enrollment in Details,pr_janjatis.rpt

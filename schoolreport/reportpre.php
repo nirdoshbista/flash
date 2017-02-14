@@ -9,26 +9,26 @@
 var totaloptions = 0;
 
 function ajaxDiv(url, targetdiv)
-{ 
-  var XMLHttpRequestObject = false; 
+{
+  var XMLHttpRequestObject = false;
 
   if (window.XMLHttpRequest) {
     XMLHttpRequestObject = new XMLHttpRequest();
   } else if (window.ActiveXObject) {
-    XMLHttpRequestObject = new 
+    XMLHttpRequestObject = new
      ActiveXObject("Microsoft.XMLHTTP");
   }
 
   if(XMLHttpRequestObject) {
 	//alert(url);
-    XMLHttpRequestObject.open("GET", url); 
-    
+    XMLHttpRequestObject.open("GET", url);
 
-    XMLHttpRequestObject.onreadystatechange = function() 
-    { 
-    if (XMLHttpRequestObject.readyState == 4 && 
-		XMLHttpRequestObject.status == 200) { 
-		
+
+    XMLHttpRequestObject.onreadystatechange = function()
+    {
+    if (XMLHttpRequestObject.readyState == 4 &&
+		XMLHttpRequestObject.status == 200) {
+
 		document.getElementById(targetdiv).innerHTML=XMLHttpRequestObject.responseText;
           delete XMLHttpRequestObject;
           XMLHttpRequestObject = null;
@@ -36,25 +36,25 @@ function ajaxDiv(url, targetdiv)
 				ajaxDiv('reportprebe.php?req=schoollist&distcode='+document.getElementById('d').value+'&vdccode='+document.getElementById('v').value,'selectschool')
 		  }
 		  busybox(false,"");
-      } 
-    } 
+      }
+    }
 	busybox(true, "Querying..");
-    XMLHttpRequestObject.send(null); 
+    XMLHttpRequestObject.send(null);
   }
 }
 
 
 
 function busybox(showhide, text){
-	
-	if (showhide==true){	
+
+	if (showhide==true){
 		document.getElementById('busybox').innerHTML = text;
 		document.getElementById('busybox').className = 'busyboxshow';
 	}
 	else{
 		document.getElementById('busybox').className = 'divhide';
 	}
-	
+
 }
 
 var reporttype = 1;
@@ -64,9 +64,9 @@ window.onload = function(){
 	document.getElementById('selectschool').className="divhide";
 	ajaxDiv('reportprebe.php?req=distlist','selectdistrict');
 	ajaxDiv('reportprebe.php?req=taglist','selecttagcat');
-	
-	
-	
+
+
+
 }
 
 
@@ -77,26 +77,26 @@ function handleclick(obj, event){
 function handlechange(obj, event){
 
 	if (obj.name=='d'){
-	
+
 		ajaxDiv('reportprebe.php?req=vdclist&distcode='+document.getElementById('d').value,'selectvdc');
-		
+
 		if (obj.value==0){
 			document.getElementById('selectvdc').className="divhide";
-			document.getElementById('selectschool').className="divhide";		
+			document.getElementById('selectschool').className="divhide";
 		}
 		else{
 			document.getElementById('selectvdc').className="divshow";
-			document.getElementById('selectschool').className="divshow";				
+			document.getElementById('selectschool').className="divshow";
 		}
-		
+
 
 	}
 
 	if (obj.name=='v' || obj.name=='y'){
 		ajaxDiv('reportprebe.php?req=schoollist&distcode='+document.getElementById('d').value+'&vdccode='+document.getElementById('v').value+'&y='+document.getElementById('y').value,'selectschool');
-		
+
 	}
-	
+
 	if (obj.name=='t'){
 		if (obj.value!=''){
 			document.getElementById('d').disabled = true;
@@ -105,32 +105,101 @@ function handlechange(obj, event){
 				if (document.getElementById('v')) document.getElementById('v').disabled = true;
 				if (document.getElementById('s')) document.getElementById('s').disabled = true;
 			}
-			
+
 			ajaxDiv('reportprebe.php?req=tagname&t='+document.getElementById('t').value,'selecttagname');
-			
+
 		}
 		else{
-		
+
 			document.getElementById('d').disabled = false;
 			document.getElementById('y').disabled = false;
 			if (document.getElementById('d').value!=0){
-			
+
 				if (document.getElementById('v')) document.getElementById('v').disabled = false;
-				if (document.getElementById('s')) document.getElementById('s').disabled = false;		
+				if (document.getElementById('s')) document.getElementById('s').disabled = false;
 			}
-			
+
 			document.getElementById('selecttagname').innerHTML='';
-			
+
 		}
 	}
-	
+
 
 }
 
 function showreport(){
-	
+
 	var reportlink='reportshow.php?';
+
+	if (document.getElementById('d').value=='' && document.getElementById('t').value==''){
+		alert("Please select district or tag.");
+		return false;
+
+	}
+
+	reportlink +=('d='+document.getElementById('d').value);
+	if (document.getElementById('d').value!='') {
+		reportlink +=('&'+'v='+document.getElementById('v').value);
+
+		if (document.getElementById('v').value!=''){
+			reportlink +=('&'+'s='+document.getElementById('s').value);
+		}
+
+
+	}
+
+	reportlink +=('&t='+document.getElementById('t').value);
+
+	if (document.getElementById('t').value!=''){
+		reportlink +=('&tn='+document.getElementById('tn').value);
+	}
+
+	// add year
+
+	reportlink +=('&yr='+document.getElementById('y').value);
+
+	//alert(reportlink);
+	window.location = reportlink;
+
+
+}
+
+function getStudentDetails(){
+  var reportlink = 'studentDetails.php?';
+
+  if (document.getElementById('d').value=='' && document.getElementById('t').value==''){
+		alert("Please select district or tag.");
+		return false;
+	}
+  // alert(document.getElementById('d').value);
+	reportlink += ('d='+document.getElementById('d').value);
+	if (document.getElementById('d').value!='') {
+		reportlink +=('&'+'v='+document.getElementById('v').value);
+
+		if (document.getElementById('v').value!=''){
+			reportlink +=('&'+'s='+document.getElementById('s').value);
+		}
+	}
+
+	reportlink +=('&t='+document.getElementById('t').value);
+
+	if (document.getElementById('t').value!=''){
+		reportlink +=('&tn='+document.getElementById('tn').value);
+	}
+
+	// add year
+
+	reportlink +=('&yr='+document.getElementById('y').value);
 	
+	//alert(reportlink);
+	window.location = reportlink;
+
+}
+
+function compareschool(){
+
+	var reportlink='compareschool.php?';
+
 	if (document.getElementById('d').value=='' && document.getElementById('t').value==''){
 		alert("Please select district or tag.");
 		return false;
@@ -139,31 +208,29 @@ function showreport(){
 	reportlink +=('d='+document.getElementById('d').value);
 	if (document.getElementById('d').value!='') {
 		reportlink +=('&'+'v='+document.getElementById('v').value);
-		
+
 		if (document.getElementById('v').value!=''){
 			reportlink +=('&'+'s='+document.getElementById('s').value);
 		}
-	
-	
+
+
 	}
-	
+
 	reportlink +=('&t='+document.getElementById('t').value);
-	
+
 	if (document.getElementById('t').value!=''){
 		reportlink +=('&tn='+document.getElementById('tn').value);
 	}
-	
+
 	// add year
-	
+
 	reportlink +=('&yr='+document.getElementById('y').value);
-	
+
 	//alert(reportlink);
 	window.location = reportlink;
-	
-	
+
+
 }
-
-
 </script>
 
 
@@ -194,10 +261,10 @@ function showreport(){
   <tr>
     <td height="142">
 	<table width="100%" border="0" cellpadding="10" style="background: white;">
-        <tr> 
+        <tr>
           <td height="66" class="ewListAdd"><p>
-		  
-		  
+
+
 
 <table border="0" cellspacing="0" cellpadding="10">
   <tr class="ewListAdd">
@@ -210,7 +277,7 @@ function showreport(){
 </div></td>
 
     <td><div id="selectyear">
-Year: 
+Year:
     <select name='y' id='y' onchange='return handlechange(this, event);'>
 <?php
 
@@ -218,7 +285,7 @@ include "../includes/vars.php";
 for ($y=$currentyear-1;$y>=2064;$y--){
 	print "<option value='$y'>$y</option>\n";
 }
-?> 
+?>
 
 </select>
 
@@ -231,7 +298,7 @@ for ($y=$currentyear-1;$y>=2064;$y--){
 
 
   </tr>
-  
+
   <tr><td colspan=3 class='ewListAdd'>
   <br>
   <div id="selecttagcat"></div><div id="selecttagname"></div>
@@ -240,13 +307,16 @@ for ($y=$currentyear-1;$y>=2064;$y--){
 
 
 <p>&nbsp;</p>
-		   
-		   
+
+
 		   <input name="showreport" type="button" id="showreport" value="Show" onclick="showreport()">
+		   <input name="compareschool" type="button" id="compareschool" value="Compare School" onclick="compareschool()">
+       <input name="schoolId" type="button" id="schoolId" value="School ID" onclick="getStudentDetails()">
+
 	</td>
 	</tr>
       </table>
-	  
+
 	  </td>
   </tr>
 </table>

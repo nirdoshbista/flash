@@ -1,0 +1,36 @@
+;
+;
+
+[property]
+schoolwise = 0
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "Class 7 Janjati Agewise Enrollment"
+
+[prereq]
+prereq1title = "School Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported | Institutional (All) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Madrassas | Gumbas | Ashrams| SOP"
+prereq1clauses ="mast_school_type.class6<11|mast_school_type.class6=1|mast_school_type.class6=2|mast_school_type.class6=3 | mast_school_type.class6=4 | (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4) | (mast_school_type.class6=5 or mast_school_type.class6=7 or mast_school_type.class6=7) | mast_school_type.class6=5 | mast_school_type.class6=7 | mast_school_type.class6=7 | mast_school_type.class6=8 | mast_school_type.class6=9 | mast_school_type.class6=10 | mast_school_type.class6=11"
+
+
+prereq2title = "Year"
+prereq2options = "2066|2065|2064|2063"
+prereq2clauses = "mast_schoollist.sch_year=2066 and mast_school_type.sch_year=2066|mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063"
+
+
+[tableheader]
+row1 = "Code / Name [3,2] |Grade 7[12] | Total [2,3]"
+row2 = "< 11 [3]|11 [3] |12 [3] |> 12 [3]"
+row3 = "G|B|T|G|B|T|G|B|T|G|B|T | G | B | T"
+
+
+
+[row]
+datacheck = "select distinct mast_schoollist.sch_num from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join sec_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and mast_school_type.class6>0"
+
+query1 = "select sum(sec_janjati_enroll_age_f1.f_l11), sum(sec_janjati_enroll_age_f1.m_l11), sum(sec_janjati_enroll_age_f1.t_l11), sum(sec_janjati_enroll_age_f1.f_11), sum(sec_janjati_enroll_age_f1.m_11), sum(sec_janjati_enroll_age_f1.t_11),sum(sec_janjati_enroll_age_f1.f_12), sum(sec_janjati_enroll_age_f1.m_12), sum(sec_janjati_enroll_age_f1.t_12),sum(sec_janjati_enroll_age_f1.f_g12), sum(sec_janjati_enroll_age_f1.m_g12), sum(sec_janjati_enroll_age_f1.t_g12) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join sec_janjati_enroll_age_f1 using(sch_num, sch_year)  where mast_schoollist.flash=1 and mast_school_type.flash=1 and sec_janjati_enroll_age_f1.class=7"
+
+query2="#1+#4+#7+#10";
+query3="#2+#5+#8+#11";
+query4="#3+#6+#9+#12";

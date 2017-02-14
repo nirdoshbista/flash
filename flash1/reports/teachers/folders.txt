@@ -1,0 +1,5 @@
+Headmaster Details,headmaster/
+Primary Level,pr_teacher_details/
+Lower Secondary Level,lsec_teacher_details/
+Secondary Level,sec_teacher_details/
+Higer Secondary Level,hsec_teacher_details/

@@ -94,7 +94,6 @@ function ajaxExportExcel(){
                 schoolcode += ":" + selectbox[i].value;
         }
     }
- 
     ajaxRequest('exportEMIS_backend.php?req=export&schoolcode='+schoolcode, exportCallback);
 }
 

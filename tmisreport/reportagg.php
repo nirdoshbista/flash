@@ -21,7 +21,7 @@ $ethnicity = $_GET['ethnicity'];
 $level = $_GET['level'];
 $rank = $_GET['rank'];
 $apptype = $_GET['apptype'];
-
+$schooltype = $_GET['schooltype'];
 
 
 if (strlen($sch_num)>=2) $dist_code=substr($sch_num, 0,2);
@@ -35,42 +35,67 @@ $ethnicities = array("", "Dalit", "Janjati", "Brahmin/Chhetri", "Others");
 $levels = array("", "ECD" ,"Pri", "Lsec", "Sec");
 $ranks = array("", "1st", "2nd", "3rd");
 $apptypes = array("", "ECD Facilitator","Permanent","Temporary","Rahat" ,"PCF","Private Sources", "Permanent Leon", "Temporary Leon");
-
+$teachers = array(""," Teacher","Head Teacher");
+$subjects = array("", "Nepali","English","Science","Social", "Accounts","Sanskrit", "Pop_Health");
 $reporttypes = array("general"=>"General",
 					 "salary"=>"Salary",
 					 "award"=>"Award",
 					 "edu"=>"Education",
 					 "leave"=>"Leave",
-					 "med"=>"Medical Imbursement",
 					 "pub"=>"Publication",
+					 "med"=>"Medical Imbursement",
 					 "punish"=>"Punishment",
-					 "train"=>"Training"
+					 "train"=>"Training",
+					 "information"=>"Information"
 					 );
+$schooltypes = array("","Public","Private","Religious");
 
 $filter = '';
+$tmissec1filter = '';
+$schooltypefilter = '';
 $filtertext = array();
 
 if ($sex!='') {
 	$filter .= " AND tmis_sec1.sex='$sex' ";
+	$tmissec1filter .= " AND t1.sex='$sex' ";
 	$filtertext[] = "Sex: ".$sexes[$sex];
 }
 if ($ethnicity!='') {
 	$filter .= " AND tmis_sec1.t_caste=$ethnicity ";
+	$tmissec1filter .= " AND t1.t_caste=$ethnicity ";
 	$filtertext[] = "Level: ".$ethnicities[$ethnicity];
 }
 if ($level!='') {
 	$filter .= " AND tmis_sec1.curr_perm_level=$level ";
+	$tmissec1filter .= " AND t1.curr_perm_level=$level ";
 	$filtertext[] = "Level: ".$levels[$level];
 }
 if ($rank!='') {
 	$filter .= " AND tmis_sec1.curr_perm_rank=$rank ";
+	$tmissec1filter .= " AND t1.curr_perm_rank=$rank ";
 	$filtertext[] = "Rank: ".$ranks[$rank];
 }
 if ($apptype!='') {
 	$filter .= "AND tmis_sec1.curr_perm_type=$apptype ";
+	$tmissec1filter .= "AND t1.curr_perm_type=$apptype ";
 	$filtertext[] = "Appointment Type: ".$apptypes[$apptype];
 }
-
+if ($teacher!='') {
+	$filter .= "AND tmis_sec1.head_teacher=$teacher ";
+	$tmissec1filter .= "AND t1.head_teacher=$teacher ";
+	$filtertext[] = "Teacher:".$teachers[$teacher];
+}
+if($schooltype !=''){
+	$schooltypefilter = "select * from mast_school_type ";
+	if($schooltype==1){
+		$schooltypefilter.= "where mast_school_type.class1 between 1 and 4 or mast_school_type.class6 between 1 and 4 or mast_school_type.class9 between 1 and 4 or mast_school_type.class11 between 1 and 4";
+	} else if($schooltype==2){
+		$schooltypefilter.="where mast_school_type.class1 between 5 and 7 or mast_school_type.class6 between 5 and 7 or mast_school_type.class9 between 5 and 7 or mast_school_type.class11 between 5 and 7";
+	} else if ($schooltype==3){
+		$schooltypefilter.="where mast_school_type.class1 between 8 and 10 or mast_school_type.class6 between 8 and 10 or mast_school_type.class9 between 8 and 10 or mast_school_type.class11 between 8 and 10";
+	}
+	$filtertext[] = "School Type:".$schooltypes[$schooltype];
+}
 //
 // table data
 //
@@ -91,8 +116,6 @@ $coldata["edu"] = array(
 	array("subj","Subject",null),
 	array("school","School",null),
 	array("country","Country",null)
-		
-		
 );
 
 $coldata["leave"] = array(
@@ -143,6 +166,34 @@ $coldata["train"] = array(
 	array("org","Organization",array("","SJBK","TU","Other")),
 	array("country","Country",null)
 );
+// $coldata["information"] = array(
+	// array("nepali","Nepali"),
+	// array("english","English",null),
+	// array("maths","Maths",null),
+	// array("science","Science",null),
+	// array("social","Social",null),
+	// array("accounts","Accounts",null),
+	// array("sanskrit","Sanskrit"),
+	// array("pop_health","Pop_Health",null),
+	// array("environment","Environment",null),
+	// array("economics","Economics",null),
+	// array("optional","Optional",null),
+	// array("others","Others",null),
+	// array("ecd","ECD"),
+	// array("class1","Class 1",null),
+	// array("class2","Class 2",null),
+	// array("class3","Class 3",null),
+	// array("class4","Class 4",null),
+	// array("class5","Class 5",null),
+	// array("class6","Class 6"),
+	// array("class7","Class 7",null),
+	// array("class8","Class 8",null),
+	// array("class9","Class 9",null),
+	// array("class10","Class 10",null),
+	// array("class11","Class 11",null),
+	// array("class12","Class 12",null)
+	
+// );
 
 $traindata["1"]=array("150 hr","180 hr","1st pkg","2nd pkg","3rd pkg","4th pkg","1st stage","2nd stage","3rd stage","Special","1st Sem","2nd Sem","SLC (Ed)","DAG","I Ed.","B Ed.","M Ed.","M Phil","PhD","Others");
 $traindata["2"]=array("Mod I-1 mth","Mod I-1.5 mth","Mod I-2.5 mth","Mod II-5 mth","Mod III-1 mth","Mod III-1.5 mth","Mod III-2.5 mth","I Ed.","B Ed.","M Ed.","M Phil","PhD","Others");
@@ -250,7 +301,64 @@ br.page { page-break-after: always }
 		
 		
 	</tr>
-	
+	<?php elseif ($report == 'information'): ?>
+
+	<tr class='theader'>
+		<td rowspan='1'>Code</td>
+		<td rowspan='1'>Name</td>
+		<td rowspan='1'>Total</td>
+		<td rowspan='1'>Sex</td>
+		<td colspan='1'>DOB</td>
+		<td colspan='1'>Appointment Date</td>
+		<td colspan='1'>Retirement Year</td>
+		<td colspan='1'>Level</td>
+		<td colspan='1'>Rank</td>
+		<td colspan='1'>Appointment Type</td>
+		<td colspan='12'>Teaching Subject</td>
+		<td colspan='13'>Teaching Class</td>
+		
+		
+	</tr>
+	<tr class='theader'>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>Nepali</td>
+		<td>English</td>
+		<td>Maths</td>
+		<td>Science</td>
+		<td>Social</td>
+		<td>Accounts</td>
+		<td>Sanskrit</td>
+		<td>Popn_Health</td>
+		<td>Environment</td>
+		<td>Economics</td>
+		<td>Optional</td>
+		<td>Others</td>
+		
+		<td>ECD</td>
+		<td>Class 1</td>
+		<td>Class 2</td>
+		<td>Class 3</td>
+		<td>Class 4</td>
+		<td>Class 5</td>
+		<td>Class 6</td>
+		<td>Class 7</td>
+		<td>Class 8</td>
+		<td>Class 9</td>
+		<td>Class 10</td>
+		<td>Class 11</td>
+		<td>Class 12</td>
+		
+	</tr>
 <?php elseif ($report == 'salary'): ?>
 	<tr class='theader'>
 		<td>Code</td>
@@ -263,6 +371,9 @@ br.page { page-break-after: always }
 		<td>Level</td>
 		<td>Rank</td>
 		<td>Appointment Type</td>
+		<td>Teacher</td>
+		<td>Telephone</td>
+		<td>Bank Name</td>
 
 		<td>Num of Income Sources</td>
 
@@ -399,7 +510,9 @@ function throwRow($code, $name){
 		case 'salary':
 			throwRow_salary($code, $name);
 			break;
-			
+		case 'information':
+			throwRow_info($code, $name);
+			break;
 		default:
 			throwRow_generic($code,$name);
 			break;
@@ -432,7 +545,7 @@ function throwRow_general($code, $name){
 	
 	global $currentyear;
 	
-	global $filter, $sch_year;
+	global $filter, $sch_year, $schooltypefilter, $tmissec1filter;
 	
 	$table = 'tmis_main';
 	$wc = " AND $table.sch_year='{$sch_year}' ";
@@ -446,8 +559,23 @@ function throwRow_general($code, $name){
 	//else $join = ' WHERE ';
 	
 	$query = "SELECT COUNT($table.tid) as c FROM $table $join $table.tid LIKE '$code%' $wc $filter";
+	
+	$query1 = "SELECT Count(t0.tid) FROM tmis_main as t0
+		inner join 
+		(select * from tmis_sec1) as t1
+		on t0.tid = t1.tid and t0.sch_year = t1.sch_year
+		inner join 
+		($schooltypefilter) as t2
+		on t0.sch_year = t2.sch_year and t0.sch_num=t2.sch_num
+		where (t0.inactive IS NULL OR t0.inactive='0') AND t0.tid LIKE '$code%' AND t0.sch_year='{$sch_year}' $tmissec1filter";
+	
 	//echo $query."<br />";
-	$result = mysql_query($query);
+	// var_dump($query);
+	// echo '<br />';
+	// var_dump($query1);
+	// echo '<br />';
+	// die();
+	$result = mysql_query($query1);
 	$row = mysql_fetch_assoc($result);
 	
 	if ($row['c']==0) return;
@@ -559,6 +687,8 @@ function getCountValue($table, $column, $code, $condition, $type){
 	else if ($type == 'sum') $query = "SELECT SUM($table.$column) as c FROM $table $join  $table.tid LIKE '$code%' $wc $filter";
 	else $query = "SELECT $table.$column as c FROM $table $join  $table.tid LIKE '$code%' $wc $filter";
 	
+	
+	
 	if ($condition!='') $query .= " AND $condition";
 	$result = mysql_query($query);
 	
@@ -574,6 +704,178 @@ function getCountValue($table, $column, $code, $condition, $type){
 }
 
 function throwRow_salary($code, $name){
+	
+	global $currentyear;
+	global $wc, $filter, $sch_year;
+	global $levels, $ranks, $apptypes, $sexes;
+	global $teachers;
+	
+	$table = 'tmis_main';
+	$wc = " AND $table.sch_year='{$sch_year}' ";
+	
+	$join = '';
+	//if ($filter != ''){
+		if ($table!='tmis_main') $join = " LEFT JOIN tmis_main USING (tid, sch_year) ";
+		if ($table!='tmis_sec1') $join .= " LEFT JOIN tmis_sec1 USING (tid, sch_year) ";
+		$join .= " WHERE (tmis_main.inactive IS NULL OR tmis_main.inactive='0') AND ";
+	//}
+	//else $join = ' WHERE ';
+	
+	$query = "SELECT COUNT($table.tid) as c FROM $table $join $table.tid LIKE '$code%' $wc $filter";
+	$result = mysql_query($query);
+	//echo $query;
+	$row = mysql_fetch_assoc($result);
+	
+	if ($row['c']==0) return;
+	if (strlen($code)>9) $row['c']='';
+	
+	$color = '#FFF';
+	if (strlen($code)==2) $color='#BAC0C9';
+	if (strlen($code)==5) $color='#D0D4DA';
+	if (strlen($code)==9) $color='#EEE';
+	
+	
+	echo "<tr style='background-color:$color;'>";
+	echo "<td style='text-align: left;'>$code</td>";
+	echo "<td style='text-align: left;'>$name</td>";
+	echo "<td style='text-align: left;'>{$row['c']}</td>";
+	
+	if (strlen($code)==14) $type = 'tick';
+	else $type='count';
+		
+	
+	$tid = $code;
+	$t_name = $name;
+	
+	if (strlen($tid)==14){
+	
+		// tmis_sec1
+		$result = mysql_query("SELECT * FROM tmis_sec1 WHERE tid='$tid' AND sch_year='$sch_year' LIMIT 0,1");
+		$row = mysql_fetch_assoc($result);
+		
+		$data["sex"] = $sexes[$row['sex']];
+		
+		if ($row['bs_dob_year1']!=''){
+			$data["DOB"] = $row['bs_dob_year1'].'/'.$row['bs_dob_month1'].'/'.$row['bs_dob_day1'];
+			$ry = (int)($row['bs_dob_year1'])+60;
+		}
+		else {
+			$data["DOB"] = "";
+			$ry = "";
+		}	
+		
+
+		
+		// tmis_sec1
+		$result = mysql_query("SELECT * FROM tmis_sec1 WHERE tid='$tid' AND sch_year='$sch_year'");
+		$row = mysql_fetch_assoc($result);
+		
+		if ($row['current_app_year']!=''){
+			$data["Appointment Date"] = $row['current_app_year'].'/'.$row['current_app_month'].'/'.$row['current_app_day'];
+		}
+		else $data["Appointment Date"] = '';
+		
+		$data["Retirement Year"]  = $ry;		
+				
+		$data["Level"] = $levels[$row['curr_perm_level']];
+		$data["Rank"] = $ranks[$row['curr_perm_rank']];
+		$data["Appointment Type"] = $apptypes[$row['curr_perm_type']];
+		$data["Teacher"]=$teachers[$row['head_teacher']];
+		$data["Contact"]=$row['perm_addr_phone'];
+		$data["Bank"]=$row['bank_name'];
+		
+		// tmis_inc	
+		
+		$result = mysql_query("SELECT count(tid) as c FROM tmis_inc WHERE tid='$tid' AND sch_year='$sch_year'");
+		$row = mysql_fetch_assoc($result);
+		$n = $row["c"];
+		if ($n==0) $n="";
+		$data["n"] = $n;
+	
+	}
+	else{
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+	}
+	
+	
+	$table = 'tmis_inc';
+	$wc = " AND $table.sch_year='{$sch_year}' ";
+
+	$join = '';
+	//if ($filter != ''){
+		if ($table!='tmis_main') $join = " LEFT JOIN tmis_main USING (tid, sch_year) ";
+		if ($table!='tmis_sec1') $join .= " LEFT JOIN tmis_sec1 USING (tid, sch_year) ";
+		$join .= " WHERE (tmis_main.inactive IS NULL OR tmis_main.inactive='0') AND ";
+	//}
+	//else $join = ' WHERE ';
+	
+	$query = "SELECT sum(scale) as scale, sum(grade) as grade, sum(ta) as ta, sum(ra) as ra, sum(ma) as ma, sum(mahangi) as mahangi, sum(insurance) as insurance, sum(festival) festival, sum(total) as total FROM $table $join $table.tid LIKE '$tid%' $wc $filter";
+
+	$result = mysql_query($query);
+	$row = mysql_fetch_assoc($result);
+	
+	//echo $query;
+	
+	/*
+			
+	$data["scale"]=$row["scale"];
+	$data["grade"]=$row["grade"];
+	$data["ta"]=$row["ta"];
+	$data["ra"]=$row["ra"];
+	$data["ma"]=$row["ma"];
+	$total = $row["scale"]*1+$row["grade"]*1+$row["ta"]*1+$row["ra"]*1+$row["ma"]*1;
+	if ($total==0) $total="";
+	$data["total"] = $total;
+	*/
+	
+	
+	/*
+	
+		<td>Salary <br />Scale</td>
+		<td>Grade</td>
+		<td>Total</td>
+		<td>Provident<br />Fund</td>
+		<td>H.T. Allowance</td>
+		<td>Mahangi</td>
+		<td>Insurance</td>
+		<td>Remote</td>
+		<td>Monthly <br />Salary</td>
+		<td>Yearly <br />Salary</td>
+		<td>Festival </td>
+		<td>Total</td>  
+	 
+	*/
+	$data["scale"]=$row["scale"];
+	$data["grade"]=$row["grade"];
+	$data["sg_total"] = $row["scale"]*1+$row["grade"]*1;
+	$data["ma"]=$row["ma"];
+	$data["ta"]=$row["ta"];
+	$data["mahangi"]=$row["mahangi"];
+	$data["insurance"]=$row["insurance"];
+	$data["ra"]=$row["ra"];
+	$data["monthly"]=$row["scale"]*1+$row["grade"]*1+$row["ta"]*1+$row["ra"]*1+$row["ma"]*1;
+	$data["yearly"]=$data["monthly"]*12+$row["scale"]*1;
+	$data["festival"]=$row["festival"];
+	$data["total"]=$row["scale"]*12+$row["ta"]*1+$row["ra"]*1+$row["ma"]*1;
+	
+	foreach ($data as $d){
+		if ($d=="0") $d='';
+		echo "<td>".$d."&nbsp;</td>";
+	}
+	echo "</tr>\n";	
+	
+}
+function throwRow_info($code, $name){
 	
 	global $currentyear;
 	global $wc, $filter, $sch_year;
@@ -649,16 +951,41 @@ function throwRow_salary($code, $name){
 		$data["Level"] = $levels[$row['curr_perm_level']];
 		$data["Rank"] = $ranks[$row['curr_perm_rank']];
 		$data["Appointment Type"] = $apptypes[$row['curr_perm_type']];
-
+		// $data["Teacher"]=$teachers[$row['head_teacher']];
+		// $data["Contact"]=$row['perm_addr_phone'];
+		// $data["Bank"]=$row['bank_name'];
 		
 		// tmis_inc	
 		
-		$result = mysql_query("SELECT count(tid) as c FROM tmis_inc WHERE tid='$tid' AND sch_year='$sch_year'");
+		$result = mysql_query("SELECT * FROM tmis_educational_info WHERE tid='$tid' AND sch_year='$sch_year'");
 		$row = mysql_fetch_assoc($result);
-		$n = $row["c"];
-		if ($n==0) $n="";
-		$data["n"] = $n;
-	
+		$data["Nepali"] = $row['nepali'];
+		$data["English"] = $row['english'];
+		$data["Maths"] = $row['maths'];
+		$data["Science"] = $row['science'];
+		$data["Social"] = $row['social'];
+		$data["Accounts"] = $row['account'];
+		$data["Sanskrit"] = $row['sanskrit'];
+		$data["Pop_Health"] = $row['popn_health'];
+		$data["Environment"] = $row['environment'];
+		$data["Economics"] = $row['economics'];
+		$data["Optional"] = $row['optional'];
+		$data["Others"] = $row['others'];
+		
+		$data["ECD"] = $row['ecd'];
+		$data["Class 1"] = $row['class1'];
+		$data["Class 2 "] = $row['class2'];
+		$data["Class 3"] = $row['class3'];
+		$data["Class 4 "] = $row['class4'];
+		$data["Class 5"] = $row['class5'];
+		$data["Class 6 "] = $row['class6'];
+		$data["Class 7"] = $row['class7'];
+		$data["Class 8 "] = $row['class8'];
+		$data["Class 9"] = $row['class9'];
+		$data["Class 10 "] = $row['class10'];
+		$data["Class 11"] = $row['class11'];
+		$data["Class 12 "] = $row['class12'];
+
 	}
 	else{
 		$data[]='&nbsp;';
@@ -669,70 +996,34 @@ function throwRow_salary($code, $name){
 		$data[]='&nbsp;';
 		$data[]='&nbsp;';
 		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
+		$data[]='&nbsp;';
 	}
 	
-	
-	$table = 'tmis_inc';
-	$wc = " AND $table.sch_year='{$sch_year}' ";
-
-	$join = '';
-	//if ($filter != ''){
-		if ($table!='tmis_main') $join = " LEFT JOIN tmis_main USING (tid, sch_year) ";
-		if ($table!='tmis_sec1') $join .= " LEFT JOIN tmis_sec1 USING (tid, sch_year) ";
-		$join .= " WHERE (tmis_main.inactive IS NULL OR tmis_main.inactive='0') AND ";
-	//}
-	//else $join = ' WHERE ';
-	
-	$query = "SELECT sum(scale) as scale, sum(grade) as grade, sum(ta) as ta, sum(ra) as ra, sum(ma) as ma, sum(mahangi) as mahangi, sum(insurance) as insurance, sum(festival) festival, sum(total) as total FROM $table $join $table.tid LIKE '$tid%' $wc $filter";
-	$result = mysql_query($query);
-	$row = mysql_fetch_assoc($result);
-	
-	//echo $query;
-	
-	/*
-			
-	$data["scale"]=$row["scale"];
-	$data["grade"]=$row["grade"];
-	$data["ta"]=$row["ta"];
-	$data["ra"]=$row["ra"];
-	$data["ma"]=$row["ma"];
-	$total = $row["scale"]*1+$row["grade"]*1+$row["ta"]*1+$row["ra"]*1+$row["ma"]*1;
-	if ($total==0) $total="";
-	$data["total"] = $total;
-	*/
-	
-	
-	/*
-	
-		<td>Salary <br />Scale</td>
-		<td>Grade</td>
-		<td>Total</td>
-		<td>Provident<br />Fund</td>
-		<td>H.T. Allowance</td>
-		<td>Mahangi</td>
-		<td>Insurance</td>
-		<td>Remote</td>
-		<td>Monthly <br />Salary</td>
-		<td>Yearly <br />Salary</td>
-		<td>Festival </td>
-		<td>Total</td>  
-	 
-	*/
-	$data["scale"]=$row["scale"];
-	$data["grade"]=$row["grade"];
-	$data["sg_total"] = $row["scale"]*1+$row["grade"]*1;
-	$data["ma"]=$row["ma"];
-	$data["ta"]=$row["ta"];
-	$data["mahangi"]=$row["mahangi"];
-	$data["insurance"]=$row["insurance"];
-	$data["ra"]=$row["ra"];
-	$data["monthly"]=$row["scale"]*1+$row["grade"]*1+$row["ta"]*1+$row["ra"]*1+$row["ma"]*1;
-	$data["yearly"]=$data["monthly"]*12+$row["scale"]*1;
-	$data["festival"]=$row["festival"];
-	$data["total"]=$row["scale"]*12+$row["ta"]*1+$row["ra"]*1+$row["ma"]*1;
-	
 	foreach ($data as $d){
-		if ($d=="0") $d='';
+		if ($d=="1") $d='✓';
 		echo "<td>".$d."&nbsp;</td>";
 	}
 	echo "</tr>\n";	

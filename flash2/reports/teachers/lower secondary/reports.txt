@@ -1,0 +1,2 @@
+Lower Secondary Teacher Details,lss_teachers.rpt
+Lower Secondary Teacher Training,lss_training.rpt

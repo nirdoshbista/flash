@@ -1,0 +1,171 @@
+; Report & Chart data for Primary Teachers
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "Total Teacher Information"
+
+
+[prereq]
+prereq1title = "School Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported | Institutional (All) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Madrassas | Gumbas | Ashrams | SOP/FSP"
+prereq1clauses = "(mast_school_type.class1<11 or mast_school_type.class6<11 or mast_school_type.class9<11 or mast_school_type.class11<11)| 
+
+((mast_school_type.class1=1 and mast_school_type.class6=0) or (mast_school_type.class1=1 and mast_school_type.class6=1 and mast_school_type.class9=0) or (mast_school_type.class1=1 and mast_school_type.class6=1 and mast_school_type.class9=1 and mast_school_type.class11=0) or (mast_school_type.class1=1 and mast_school_type.class6=1 and mast_school_type.class9=1 and mast_school_type.class11=1) or (mast_school_type.class1=0 and mast_school_type.class6=1 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=1 and mast_school_type.class9=1 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=1 and mast_school_type.class9=1 and mast_school_type.class11=1) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=1 and mast_school_type.class11=1) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=1 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=1)) 
+
+| ((mast_school_type.class1=2 and mast_school_type.class6=0) or (mast_school_type.class1=2 and mast_school_type.class6=2 and mast_school_type.class9=0) or (mast_school_type.class1=2 and mast_school_type.class6=2 and mast_school_type.class9=2 and mast_school_type.class11=0) or (mast_school_type.class1=2 and mast_school_type.class6=2 and mast_school_type.class9=2 and mast_school_type.class11=2) or (mast_school_type.class1=0 and mast_school_type.class6=2 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=2 and mast_school_type.class9=2 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=2 and mast_school_type.class9=2 and mast_school_type.class11=2) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=2 and mast_school_type.class11=2) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=2 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=2)) | 
+
+((mast_school_type.class1=3 and mast_school_type.class6=0) or (mast_school_type.class1=3 and mast_school_type.class6=3 and mast_school_type.class9=0) or (mast_school_type.class1=3 and mast_school_type.class6=3 and mast_school_type.class9=3 and mast_school_type.class11=0) or (mast_school_type.class1=3 and mast_school_type.class6=3 and mast_school_type.class9=3 and mast_school_type.class11=3) or (mast_school_type.class1=0 and mast_school_type.class6=3 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=3 and mast_school_type.class9=3 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=3 and mast_school_type.class9=3 and mast_school_type.class11=3) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=3 and mast_school_type.class11=3) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=3 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=3)) | 
+
+((mast_school_type.class1=4 and mast_school_type.class6=0) or (mast_school_type.class1=4 and mast_school_type.class6=4 and mast_school_type.class9=0) or (mast_school_type.class1=4 and mast_school_type.class6=4 and mast_school_type.class9=4 and mast_school_type.class11=0) or (mast_school_type.class1=4 and mast_school_type.class6=4 and mast_school_type.class9=4 and mast_school_type.class11=4) or (mast_school_type.class1=0 and mast_school_type.class6=4 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=4 and mast_school_type.class9=4 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=4 and mast_school_type.class9=4 and mast_school_type.class11=4) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=4 and mast_school_type.class11=4) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=4 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=4)) | 
+
+((mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4) and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4) and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4) and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4) or (mast_school_type.class1=0 and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4) and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4) and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4) and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4)) or (mast_school_type.class1=0 and mast_school_type.class9=0 and mast_school_type.class11=0 and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class11=0 and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4)) or 
+(mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4)) or (mast_school_type.class11=0 and (mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4) and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4) and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4)) or 
+(mast_school_type.class11=0 and mast_school_type.class9=0 and (mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4) and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4)) or
+(mast_school_type.class11=0 and mast_school_type.class1=0 and (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4) and (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class6=4)) or(mast_school_type.class11=0 and mast_school_type.class9=0 and mast_school_type.class6=0 and (mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4))) | 
+
+((mast_school_type.class1=5 or mast_school_type.class1=6 or mast_school_type.class1=7) and (mast_school_type.class6=5 or mast_school_type.class6=6 or mast_school_type.class6=7) and (mast_school_type.class9=5 or mast_school_type.class9=6 or mast_school_type.class9=7) and (mast_school_type.class11=5 or mast_school_type.class11=6 or mast_school_type.class11=7) or (mast_school_type.class1=0 and (mast_school_type.class6=5 or mast_school_type.class6=6 or mast_school_type.class6=7) and (mast_school_type.class9=5 or mast_school_type.class9=6 or mast_school_type.class9=7) and (mast_school_type.class11=5 or mast_school_type.class11=6 or mast_school_type.class11=7)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and (mast_school_type.class9=5 or mast_school_type.class9=6 or mast_school_type.class9=7) and (mast_school_type.class11=5 or mast_school_type.class11=6 or mast_school_type.class11=7)) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and (mast_school_type.class11=5 or mast_school_type.class11=6 or mast_school_type.class11=7)) or(mast_school_type.class1=0 and mast_school_type.class9=0 and mast_school_type.class11=0 and (mast_school_type.class6=5 or mast_school_type.class6=6 or mast_school_type.class6=7)) or(mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class11=0 and (mast_school_type.class9=5 or mast_school_type.class9=6 or mast_school_type.class9=7)) or(mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and (mast_school_type.class11=5 or mast_school_type.class11=6 or mast_school_type.class11=7)) or (mast_school_type.class11=0 and (mast_school_type.class1=5 or mast_school_type.class1=6 or mast_school_type.class1=7) and (mast_school_type.class6=5 or mast_school_type.class6=6 or mast_school_type.class6=7) and (mast_school_type.class9=5 or mast_school_type.class9=6 or mast_school_type.class9=7)) or (mast_school_type.class11=0 and mast_school_type.class9=0 and (mast_school_type.class1=5 or mast_school_type.class1=6 or mast_school_type.class1=7) and (mast_school_type.class6=5 or mast_school_type.class6=6 or mast_school_type.class6=7)) or(mast_school_type.class11=0 and mast_school_type.class9=0 and mast_school_type.class6=0 and (mast_school_type.class1=5 or mast_school_type.class1=6 or mast_school_type.class1=7))) |
+
+((mast_school_type.class1=5 and mast_school_type.class6=0) or (mast_school_type.class1=5 and mast_school_type.class6=5 and mast_school_type.class9=0) or (mast_school_type.class1=5 and mast_school_type.class6=5 and mast_school_type.class9=5 and mast_school_type.class11=0) or (mast_school_type.class1=5 and mast_school_type.class6=5 and mast_school_type.class9=5 and mast_school_type.class11=5) or (mast_school_type.class1=0 and mast_school_type.class6=5 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=5 and mast_school_type.class9=5 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=5 and mast_school_type.class9=5 and mast_school_type.class11=5) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=5 and mast_school_type.class11=5) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=5)) |
+
+((mast_school_type.class1=6 and mast_school_type.class6=0) or (mast_school_type.class1=6 and mast_school_type.class6=6 and mast_school_type.class9=0) or (mast_school_type.class1=6 and mast_school_type.class6=6 and mast_school_type.class9=6 and mast_school_type.class11=0) or (mast_school_type.class1=6 and mast_school_type.class6=6 and mast_school_type.class9=6 and mast_school_type.class11=6) or (mast_school_type.class1=0 and mast_school_type.class6=6 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=6 and mast_school_type.class9=6 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=6 and mast_school_type.class9=6 and mast_school_type.class11=6) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=6 and mast_school_type.class11=6) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=6)) |
+
+((mast_school_type.class1=7 and mast_school_type.class6=0) or (mast_school_type.class1=7 and mast_school_type.class6=7 and mast_school_type.class9=0) or (mast_school_type.class1=7 and mast_school_type.class6=7 and mast_school_type.class9=7 and mast_school_type.class11=0) or (mast_school_type.class1=7 and mast_school_type.class6=7 and mast_school_type.class9=7 and mast_school_type.class11=7) or (mast_school_type.class1=0 and mast_school_type.class6=7 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=7 and mast_school_type.class9=7 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=7 and mast_school_type.class9=7 and mast_school_type.class11=7) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=7 and mast_school_type.class11=7) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=7)) |
+
+((mast_school_type.class1=8 and mast_school_type.class6=0) or (mast_school_type.class1=8 and mast_school_type.class6=8 and mast_school_type.class9=0) or (mast_school_type.class1=8 and mast_school_type.class6=8 and mast_school_type.class9=8 and mast_school_type.class11=0) or (mast_school_type.class1=8 and mast_school_type.class6=8 and mast_school_type.class9=8 and mast_school_type.class11=8) or (mast_school_type.class1=0 and mast_school_type.class6=8 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=8 and mast_school_type.class9=8 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=8 and mast_school_type.class9=8 and mast_school_type.class11=8) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=8 and mast_school_type.class11=8) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=8)) |
+
+((mast_school_type.class1=9 and mast_school_type.class6=0) or (mast_school_type.class1=9 and mast_school_type.class6=9 and mast_school_type.class9=0) or (mast_school_type.class1=9 and mast_school_type.class6=9 and mast_school_type.class9=9 and mast_school_type.class11=0) or (mast_school_type.class1=9 and mast_school_type.class6=9 and mast_school_type.class9=9 and mast_school_type.class11=9) or (mast_school_type.class1=0 and mast_school_type.class6=9 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=9 and mast_school_type.class9=9 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=9 and mast_school_type.class9=9 and mast_school_type.class11=9) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=9 and mast_school_type.class11=9) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=9)) |
+
+((mast_school_type.class1=10 and mast_school_type.class6=0) or (mast_school_type.class1=10 and mast_school_type.class6=10 and mast_school_type.class9=0) or (mast_school_type.class1=10 and mast_school_type.class6=10 and mast_school_type.class9=10 and mast_school_type.class11=0) or (mast_school_type.class1=10 and mast_school_type.class6=10 and mast_school_type.class9=10 and mast_school_type.class11=10) or (mast_school_type.class1=0 and mast_school_type.class6=10 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=10 and mast_school_type.class9=10 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=10 and mast_school_type.class9=10 and mast_school_type.class11=10) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=10 and mast_school_type.class11=10) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=10)) |
+
+((mast_school_type.class1=11 and mast_school_type.class6=0) or (mast_school_type.class1=11 and mast_school_type.class6=11 and mast_school_type.class9=0) or (mast_school_type.class1=11 and mast_school_type.class6=11 and mast_school_type.class9=11 and mast_school_type.class11=0) or (mast_school_type.class1=11 and mast_school_type.class6=11 and mast_school_type.class9=11 and mast_school_type.class11=11) or (mast_school_type.class1=0 and mast_school_type.class6=11 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6=11 and mast_school_type.class9=11 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=11 and mast_school_type.class9=11 and mast_school_type.class11=11) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=11 and mast_school_type.class11=11) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9=0 and mast_school_type.class11=11))"
+
+
+prereq2title = "Level"
+prereq2options = "All Levels | Primary Only | Lower Secondary Only | Secondary Only | Higher Secondary Only"
+prereq2clauses = "(mast_school_type.class1>0 or mast_school_type.class6>0 or mast_school_type.class9>0 or mast_school_type.class11>0) | mast_school_type.class1>0 and mast_school_type.class6=0 | ((mast_school_type.class1>0 and mast_school_type.class6>0 and mast_school_type.class9=0) or (mast_school_type.class1=0 and mast_school_type.class6>0 and mast_school_type.class9=0)) |((mast_school_type.class1>0 and mast_school_type.class6>0 and mast_school_type.class9>0 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6>0 and mast_school_type.class9>0 and mast_school_type.class11=0) or (mast_school_type.class1=0 and mast_school_type.class6=0 and mast_school_type.class9>0 and mast_school_type.class11=0)) | ((mast_school_type.class1>0 and mast_school_type.class11>0) or (class1=0 and class6=0 and mast_school_type.class9>0 and mast_school_type.class11>0) or (class1=0 and class6=0 and class9=0 and mast_school_type.class11>0))"
+
+prereq3title = "Year"
+prereq3options = "2066|2065|2064|2063"
+prereq3clauses = "mast_schoollist.sch_year=2066 and mast_school_type.sch_year=2066|mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063"
+
+
+[tableheader]
+row1 = "Code / Name [2,2] | App. Position | Working under App. Position [3]| Dalit [3] | Janjati [3] | Disabled [3] | Others [3]"
+row2 = "Total | F | M | T | F | M | T | F | M | T | F | M | T | F | M | T"
+
+[row]
+datacheck = "select distinct mast_schoollist.sch_num from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pri_teacher_details_f1 using(sch_num, sch_year) left join lsec_teacher_details_f1 using(sch_num, sch_year) left join sec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query1 = "@select sum(total_a_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pri_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query2 = "@select sum(total_f_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pri_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query3 = "@select sum(total_m_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pri_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query4 = "@select sum(total_t_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pri_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query5 = "@select sum(dalit_f_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pri_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query6 = "@select sum(dalit_m_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pri_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query7 = "@select sum(dalit_t_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pri_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query8 = "@select sum(janjati_f_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pri_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query9 = "@select sum(janjati_m_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pri_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query10 = "@select sum(janjati_t_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pri_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query11 = "@select sum(disabled_f_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pri_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query12 = "@select sum(disabled_m_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pri_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query13 = "@select sum(disabled_t_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pri_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query14 = "@#2-(#5+#8)";
+query15 = "@#3-(#6+#9)";
+query16 = "@#4-(#7+#10)";
+
+
+
+
+query17 = "@select sum(total_a_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join lsec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query18 = "@select sum(total_f_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join lsec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query19 = "@select sum(total_m_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join lsec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query20 = "@select sum(total_t_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join lsec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query21 = "@select sum(dalit_f_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join lsec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query22 = "@select sum(dalit_m_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join lsec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query23 = "@select sum(dalit_t_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join lsec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query24 = "@select sum(janjati_f_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join lsec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query25 = "@select sum(janjati_m_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join lsec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query26 = "@select sum(janjati_t_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join lsec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query27 = "@select sum(disabled_f_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join lsec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query28 = "@select sum(disabled_m_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join lsec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query29 = "@select sum(disabled_t_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join lsec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query30 = "@#18-(#21+#24)";
+query31 = "@#19-(#22+#25)";
+query32 = "@#20-(#23+#26)";
+
+
+
+
+query33 = "@select sum(total_a_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join sec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query34 = "@select sum(total_f_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join sec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query35 = "@select sum(total_m_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join sec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query36 = "@select sum(total_t_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join sec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query37 = "@select sum(dalit_f_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join sec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query38 = "@select sum(dalit_m_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join sec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query39 = "@select sum(dalit_t_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join sec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query40 = "@select sum(janjati_f_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join sec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query41 = "@select sum(janjati_m_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join sec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query42 = "@select sum(janjati_t_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join sec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query43 = "@select sum(disabled_f_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join sec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query44 = "@select sum(disabled_m_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join sec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query45 = "@select sum(disabled_t_teachers) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join sec_teacher_details_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query46 = "@#34-(#37+#40)";
+query47 = "@#35-(#38+#41)";
+query48 = "@#36-(#39+#42)";
+
+query49 = "#1+#17+#33";
+query50 = "#2+#18+#34";
+query51 = "#3+#19+#35";
+query52 = "#4+#20+#36";
+query53 = "#5+#21+#37";
+query54 = "#6+#22+#38";
+query55 = "#7+#23+#39";
+query56 = "#8+#24+#40";
+query57 = "#9+#25+#41";
+query58 = "#10+#26+#42";
+query59 = "#11+#27+#43";
+query60 = "#12+#28+#44";
+query61 = "#13+#29+#45";
+query62 = "#14+#30+#46";
+query63 = "#15+#31+#47";
+query64 = "#16+#32+#48";

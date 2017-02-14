@@ -19,35 +19,34 @@ if (isset($_POST['submit'])){
         $ach=$_POST['ach'];
         $tmis=$_POST['tmis'];
         $excelEMIS=$_POST['excelEMIS'];
-	
         if($districts)
         {
 	foreach($districts as $d){
-		
-		foreach($t as $table){
-			//if ($table=='mast_district' || $table == 'mast_vdc') continue;
-                        if (whichDB($table)==0) continue;
-                        if (whichDB($table)==1 && $f=='') continue;
-                        if (whichDB($table)==2 && $f=='') continue;
-                        if (whichDB($table)==3) continue;
-			
-                        //clear the achievement data
-                        if (whichDB($table)==4 && $ach!=='')
-                        {
-                            if($table!='subjects')
-                            {
-                                mysql_query("delete from `achievement`.`$table` where stu_num like '$d%'");
-                            }
-                            else
-                            {
-                                mysql_query("delete from `achievement`.`$table` where dist_code like '$d%'");
-                            }
-                            continue;
-                        }
-			mysql_query("delete from $table where sch_num like '$d%'");
-			
+		if($ach!=''){
+			foreach($t as $table){
+				//if ($table=='mast_district' || $table == 'mast_vdc') continue;
+							if (whichDB($table)==0) continue;
+							if (whichDB($table)==1 && $f=='') continue;
+							if (whichDB($table)==2 && $f=='') continue;
+							if (whichDB($table)==3) continue;
+				
+							//clear the achievement data
+							if (whichDB($table)==4 && $ach!=='')
+							{
+								if($table!='subjects')
+								{
+									mysql_query("delete from `achievement`.`$table` where stu_num like '$d%'");	
+								}
+								else
+								{
+									mysql_query("delete from `achievement`.`$table` where dist_code like '$d%'");
+								}
+								continue;
+							}
+				mysql_query("delete from $table where sch_num like '$d%'");
+				
+			}
 		}
-		
 		// remove tmis tables		
 		// get all tid's for this district
                 if($tmis!='')
@@ -156,9 +155,9 @@ if (isset($_POST['submit'])){
 ?>
   </p>
   <p align="center">
-  <input type="checkbox" name="flash" id="flash"/><label>Flash</label>
+  <input type="checkbox" name="flash" id="flash" disabled /><label>Flash</label>
   <!--<input type="checkbox" name="flash2" id="flash2"/><label>Flash II</label>-->
-  <input type="checkbox" name="tmis" id="tmis"/><label>Tmis</label>    
+  <input type="checkbox" name="tmis" id="tmis" /><label>Tmis</label>    
   <input type="checkbox" name="ach" id="ach"/><label>Achievement</label>
   <input type="checkbox" name="excelEMIS" id="excelEMIS"/><label>Excel EMIS Data</label>
   </p>

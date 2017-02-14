@@ -77,15 +77,15 @@ if (isset($_POST['import'])){
 					$d['father_name']=$data->val($row,'G');
 					$d['mother_name']=$data->val($row,'H');
 
-					$d['dob_np_y']=$data->val($row,'I');
-					$d['dob_np_m']=$data->val($row,'J');
-					$d['dob_np_d']=$data->val($row,'K');
+					$d['dob_en_y']=$data->val($row,'I');
+					$d['dob_en_m']=$data->val($row,'J');
+					$d['dob_en_d']=$data->val($row,'K');
 					
 					// calculate date in en
-					$ed = $cal->nep_to_eng($d['dob_np_y'],$d['dob_np_m'],$d['dob_np_d']);
-					$d['dob_en_y']=$ed['year'];
-					$d['dob_en_m']=$ed['month'];
-					$d['dob_en_d']=$ed['date'];
+					$ed = $cal->eng_to_nep($d['dob_en_y'],$d['dob_en_m'],$d['dob_en_d']);
+					$d['dob_np_y']=$ed['year'];
+					$d['dob_np_m']=$ed['month'];
+					$d['dob_np_d']=$ed['date'];
 
 					$d['caste_ethnicity']=$hash_caste[$data->val($row,'L')];
 					$d['disability']=$hash_disability[$data->val($row,'M')];

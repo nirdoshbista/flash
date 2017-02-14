@@ -1,0 +1,3 @@
+Total,tot_training_details.rpt
+Dalit,dalit_training_details.rpt
+Janjati,janjati_training_details.rpt

@@ -1,0 +1,3 @@
+Lower Secondary Level Teacher Status Details,lsec_teacher_status/
+Lower Secondary Level Teacher Qualification Details,lsec_teacher_qualification/
+Lower Secondary Level Teacher Training Details,lsec_teacher_training_details/

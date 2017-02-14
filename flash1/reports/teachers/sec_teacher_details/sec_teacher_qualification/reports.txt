@@ -1,0 +1,3 @@
+Total,sec_teacher_qualification_details.rpt
+Dalit,sec_dalit_teacher_qualification_details.rpt
+Janjati,sec_janjati_teacher_qualification_details.rpt

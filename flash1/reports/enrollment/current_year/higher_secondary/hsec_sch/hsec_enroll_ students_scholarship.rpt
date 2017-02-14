@@ -1,0 +1,37 @@
+; Report & Chart data for School for type
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "Higher Secondary Level Special scholarship"
+
+
+[prereq]
+prereq1title = "School Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported | Institutional (All) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Madrassas | Gumbas | Ashrams| SOP"
+prereq1clauses ="mast_school_type.class11<11|mast_school_type.class11=1|mast_school_type.class11=2|mast_school_type.class11=3 | mast_school_type.class11=4 | (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4) | (mast_school_type.class11=5 or mast_school_type.class11=6 or mast_school_type.class11=7) | mast_school_type.class11=5 | mast_school_type.class11=6 | mast_school_type.class11=7 | mast_school_type.class11=8 | mast_school_type.class11=9 | mast_school_type.class11=10 | mast_school_type.class11=11"
+
+
+prereq2title = "Year"
+prereq2options = "2066|2065|2064|2063"
+prereq2clauses = "mast_schoollist.sch_year=2066 and mast_school_type.sch_year=2066|mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063"
+
+[tableheader]
+row1 = "Code / Name [3,2] | Grade 11 [12] | Grade 12 [12] "
+row2 = " Total [3] | Dalit[3] | Janjati [3] | Others [3] | Total [3] | Dalit[3] | Janjati [3] | Others [3]"
+row3 = " G | B | T | G | B | T | G | B| T | G | B | T | G | B | T | G | B | T | G | B | T | G | B| T"
+
+[row]
+datacheck = "select distinct mast_schoollist.sch_num from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join hsec_scholarship_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query1 = "select sum(scholarship_total_f), sum(scholarship_total_m), sum(scholarship_total_t),sum(scholarship_dalit_f),sum(scholarship_dalit_m),sum(scholarship_dalit_t), sum(scholarship_janjati_f), sum(scholarship_janjati_m), sum(scholarship_janjati_t) from mast_schoollist inner join mast_school_type using(sch_num, sch_year) inner join hsec_scholarship_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and hsec_scholarship_f1.class=11 and mast_school_type.flash=1"
+
+query2 = "#1-(#4+#7)";
+query3 = "#2-(#5+#8)";
+query4 = "#3-(#6+#9)";
+
+query5 = "select sum(scholarship_total_f), sum(scholarship_total_m), sum(scholarship_total_t),sum(scholarship_dalit_f),sum(scholarship_dalit_m),sum(scholarship_dalit_t), sum(scholarship_janjati_f), sum(scholarship_janjati_m), sum(scholarship_janjati_t) from mast_schoollist inner join mast_school_type using(sch_num, sch_year) inner join hsec_scholarship_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and hsec_scholarship_f1.class=12 and mast_school_type.flash=1"
+
+query6 = "#13-(#16+#19)";
+query7 = "#14-(#17+#20)";
+query8 = "#15-(#18+#21)";

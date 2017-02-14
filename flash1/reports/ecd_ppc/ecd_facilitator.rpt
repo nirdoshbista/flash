@@ -1,0 +1,72 @@
+; Report & Chart data for ECD/PPC
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "ECD/PPC Facilitator Details"
+
+
+[prereq]
+prereq1title = "ECD Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported | Institutional (All) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Madrassas | Gumbas | Ashrams | Community"
+prereq1clauses ="mast_school_type.ecd>0|mast_school_type.ecd=1|mast_school_type.ecd=2|mast_school_type.ecd=3 | mast_school_type.ecd=4 | (mast_school_type.ecd=1 or mast_school_type.ecd=2 or mast_school_type.ecd=3 or mast_school_type.ecd=4) | (mast_school_type.ecd=4 or mast_school_type.ecd=5 or mast_school_type.ecd=6)| mast_school_type.ecd=5 | mast_school_type.ecd=6 | mast_school_type.ecd=7 | mast_school_type.ecd=8 | mast_school_type.ecd=9 | mast_school_type.ecd=10 | mast_school_type.ecd=12"
+
+
+prereq2title = "Year"
+prereq2options = "2066|2065|2064|2063"
+prereq2clauses = "mast_schoollist.sch_year=2066 and mast_school_type.sch_year=2066|mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063"
+
+[tableheader]
+row1 = "Code / Name [2,2]| Sex [4] | Caste [3] | Educational Status [4]| Training [3] "
+row2 = "Female | Male | N/A | Total | Dalit | Janjati | N/A |  < SLC | SLC | > SLC | N/A | Trained | Untrained | N/A" 
+
+[row]
+datacheck = "select distinct mast_schoollist.sch_num from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query1 = "select count(sex) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.sex=1"
+
+query2 = "select count(sex) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.sex=2"
+
+query3 = "select count(sex) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.sex=0"
+
+query4 = "select count(sex) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query5 = "select count(caste) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.caste=1"
+
+query6 = "select count(caste) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.caste=2"
+
+query7 = "select count(caste) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.caste=0"
+
+query8 = "@select count(less_slc_f) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.less_slc_f=1"
+
+query9 = "@select count(less_slc_m) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.less_slc_m=1"
+
+query10 = "#8+#9";
+
+query11 = "@select count(slc_f) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.slc_f=1"
+
+query12 = "@select count(slc_m) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.slc_m=1"
+
+query13 = "#11+#12";
+
+query14 = "@select count(greater_slc_f) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.greater_slc_f=1"
+
+query15 = "@select count(greater_slc_m) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.greater_slc_m=1"
+
+query16 = "#14+#15";
+
+query17 = "select count(name) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and (ecd_facilitator_f1.greater_slc_f is null and ecd_facilitator_f1.less_slc_f is null and ecd_facilitator_f1.slc_f is null and ecd_facilitator_f1.greater_slc_m is null and ecd_facilitator_f1.less_slc_m is null and ecd_facilitator_f1.slc_m is null)"
+
+query18 = "@select count(trained_f) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.trained_f=1"
+
+query19 = "@select count(trained_m) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.trained_m=1"
+
+query20 = "#18+#19";
+
+query21 = "@select count(untrained_f) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.untrained_f=1"
+
+query22 = "@select count(untrained_m) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd_facilitator_f1.untrained_m=1"
+
+query23 = "#21+#22";
+
+query24 = "select count(name) from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join ecd_facilitator_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and (ecd_facilitator_f1.trained_f is null and ecd_facilitator_f1.untrained_f is null and ecd_facilitator_f1.trained_m is null and ecd_facilitator_f1.untrained_m is null)"

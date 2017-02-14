@@ -1,0 +1,66 @@
+; Report & Chart data for School for type
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "Higher Secondary Level Special scholarship"
+
+
+[prereq]
+prereq1title = "School Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported | Institutional (All) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Madrassas | Gumbas | Ashrams| SOP"
+prereq1clauses ="mast_school_type.class11<11|mast_school_type.class11=1|mast_school_type.class11=2|mast_school_type.class11=3 | mast_school_type.class11=4 | (mast_school_type.class11=1 or mast_school_type.class11=2 or mast_school_type.class11=3 or mast_school_type.class11=4) | (mast_school_type.class11=5 or mast_school_type.class11=6 or mast_school_type.class11=7) | mast_school_type.class11=5 | mast_school_type.class11=6 | mast_school_type.class11=7 | mast_school_type.class11=8 | mast_school_type.class11=9 | mast_school_type.class11=10 | mast_school_type.class11=11"
+
+
+prereq2title = "Year"
+prereq2options = "2066|2065|2064|2063"
+prereq2clauses = "mast_schoollist.sch_year=2066 and mast_school_type.sch_year=2066|mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063"
+
+[tableheader]
+row1 = "Code / Name [3,2] | Grade 11 [12] | Grade 12 [12] "
+row2 = " Total [3] | Dalit[3] | Janjati [3] | Others [3] | Total [3] | Dalit[3] | Janjati [3] | Others [3]"
+row3 = " G | B | T | G | B | T | G | B| T | G | B | T | G | B | T | G | B | T | G | B | T | G | B| T"
+
+[row]
+datacheck = "select distinct mast_schoollist.sch_num from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join hsec_scholarship_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query1 = "@select sum(scholarship_total_f), sum(encourage_total_f), sum(loan_total_f), sum(others_total_f), sum(scholarship_total_m), sum(encourage_total_m), sum(loan_total_m), sum(others_total_m), sum(scholarship_total_t), sum(encourage_total_t), sum(loan_total_t), sum(others_total_t), sum(scholarship_dalit_f), sum(encourage_dalit_f), sum(loan_dalit_f), sum(others_dalit_f), sum(scholarship_dalit_m), sum(encourage_dalit_m), sum(loan_dalit_m), sum(others_dalit_m), sum(scholarship_dalit_t), sum(encourage_dalit_t), sum(loan_dalit_t), sum(others_dalit_t), sum(scholarship_janjati_f), sum(encourage_janjati_f), sum(loan_janjati_f), sum(others_janjati_f), sum(scholarship_janjati_m), sum(encourage_janjati_m), sum(loan_janjati_m), sum(others_janjati_m), sum(scholarship_janjati_t), sum(encourage_janjati_t), sum(loan_janjati_t), sum(others_janjati_t) from mast_schoollist inner join mast_school_type using(sch_num, sch_year) inner join hsec_scholarship_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and hsec_scholarship_f1.class=11 and mast_school_type.flash=1"
+
+
+query2 = "#1+#2+#3+#4";
+query3 = "#5+#6+#7+#8";
+query4 = "#9+#10+#11+#12";
+query5 = "#13+#14+#15+#16";
+query6 = "#17+#18+#19+#20";
+query7 = "#21+#22+#23+#24";
+query8 = "#25+#26+#27+#28";
+query9 = "#29+#30+#31+#32";
+query10 = "#33+#34+#35+#36";
+query11 = "#1+#2+#3+#4-(#13+#14+#15+#16+#25+#26+#27+#28)";
+query12 = "#5+#6+#7+#8-(#17+#18+#19+#20+#29+#30+#31+#32)";
+query13 = "#9+#10+#11+#12-(#21+#22+#23+#24+#33+#34+#35+#36)";
+query14 = "#37+#38+#39+#40";
+query15 = "#41+#42+#43+#44";
+query16 = "#45+#46+#47+#48";
+query17 = "#49+#50+#51+#52";
+
+
+query18 = "select sum(scholarship_total_f), sum(encourage_total_f), sum(loan_total_f), sum(others_total_f), sum(scholarship_total_m), sum(encourage_total_m), sum(loan_total_m), sum(others_total_m), sum(scholarship_total_t), sum(encourage_total_t), sum(loan_total_t), sum(others_total_t), sum(scholarship_dalit_f), sum(encourage_dalit_f), sum(loan_dalit_f), sum(others_dalit_f), sum(scholarship_dalit_m), sum(encourage_dalit_m), sum(loan_dalit_m), sum(others_dalit_m), sum(scholarship_dalit_t), sum(encourage_dalit_t), sum(loan_dalit_t), sum(others_dalit_t), sum(scholarship_janjati_f), sum(encourage_janjati_f), sum(loan_janjati_f), sum(others_janjati_f), sum(scholarship_janjati_m), sum(encourage_janjati_m), sum(loan_janjati_m), sum(others_janjati_m), sum(scholarship_janjati_t), sum(encourage_janjati_t), sum(loan_janjati_t), sum(others_janjati_t) from mast_schoollist inner join mast_school_type using(sch_num, sch_year) inner join hsec_scholarship_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and hsec_scholarship_f1.class=12 and mast_school_type.flash=1"
+
+
+query19 = "#105+#106+#107+#108";
+query20 = "#57+#58+#59+#60";
+query21 = "#61+#62+#63+#64";
+query22 = "#65+#66+#67+#68";
+query23 = "#69+#70+#71+#72";
+query24 = "#73+#74+#75+#76";
+query25 = "#77+#78+#79+#80";
+query26 = "#81+#82+#83+#84";
+query27 = "#85+#86+#87+#88";
+query28 = "#53+#54+#55+#56-(#65+#66+#67+#68+#77+#78+#79+#80)";
+query29 = "#57+#58+#59+#60-(#69+#70+#71+#72+#81+#82+#83+#84)";
+query30 = "#61+#62+#63+#64-(#73+#74+#75+#76+#85+#86+#87+#88)";
+query31 = "#89+#90+#91+#92";
+query32 = "#93+#94+#95+#96";
+query33 = "#97+#98+#99+#100";
+query34 = "#101+#102+#103+#104";

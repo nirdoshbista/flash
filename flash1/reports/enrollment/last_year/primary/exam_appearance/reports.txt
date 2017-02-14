@@ -1,0 +1,5 @@
+Total Appearance,last_pr_tot_app.rpt
+Dalit Appearance,last_pr_dalit_app.rpt
+Janjati Appearance,last_pr_janjati_app.rpt
+Others Appearance,last_pr_others_app.rpt
+Exam Appearance by Social Groups,last_pri_tot_social_status.rpt

@@ -1,0 +1,3 @@
+Higher Secondary Level Student Details,hsec_current_details.rpt
+Higher Secondary Level Graduate Student Details,hsec_total_passed_details.rpt
+Higher Secondary Level Appeared and Passed Student Details,hsec_last_details.rpt

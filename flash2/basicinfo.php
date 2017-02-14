@@ -599,7 +599,7 @@ $link = dbconnect();
 </form>
 
 <div id="backbtn" style="clear:none; float:left"></div>
-<div id="nextbtn" style="clear:none; float:right"></div>
+<!--<div id="nextbtn" style="clear:none; float:right"></div> -->
 <p>&nbsp;</p>
 <script>
 

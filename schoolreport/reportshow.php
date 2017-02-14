@@ -28,7 +28,6 @@ BODY {
 BR.page { page-break-after: always }
 
 h1{font-size: large;}
-
 </style>
 </head>
 <body>
@@ -38,7 +37,7 @@ h1{font-size: large;}
 <?php
 
 $D = $_GET['d'];	// district
-$V = $_GET['v'];	// district
+$V = $_GET['v'];	// vdc
 $S = $_GET['s'];	// school expand or not
 $TN = $_GET['tn'];  // tag name
 $currentyear = $_GET['yr'];
@@ -129,8 +128,8 @@ else{
 
 
 
-/*
 
+/*
 if ($TN!='') {
 
 	include "reportagg.php";
@@ -139,7 +138,7 @@ if ($TN!='') {
 
 	showreport();	
 	
-	die("</body>\n</html>");
+	//die("</body>\n</html>");
 }
 
 if (strlen($S)==9) { 
@@ -212,7 +211,9 @@ if ($D!='' && $V=='0') {
 	showreport();	
 	
 	die("</body>\n</html>"); 
+
 }
+
 */
 ?>
 

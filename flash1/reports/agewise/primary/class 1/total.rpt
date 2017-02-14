@@ -1,0 +1,42 @@
+;
+;
+
+[property]
+schoolwise = 0
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "Class 1 Total Agewise Enrollment"
+
+
+
+[prereq]
+prereq1title = "School Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported | Institutional (All) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Madrassas | Gumbas | Ashrams| SOP"
+prereq1clauses ="mast_school_type.class1<11|mast_school_type.class1=1|mast_school_type.class1=2|mast_school_type.class1=3 | mast_school_type.class1=4 | (mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4) | (mast_school_type.class1=5 or mast_school_type.class1=6 or mast_school_type.class1=7) | mast_school_type.class1=5 | mast_school_type.class1=6 | mast_school_type.class1=7 | mast_school_type.class1=8 | mast_school_type.class1=9 | mast_school_type.class1=10 | mast_school_type.class1=11"
+
+prereq2title = "ECD/PPC Status"
+prereq2options = "All | With ECD | Without ECD"
+prereq2clauses = "mast_school_type.class1<11| mast_school_type.class1<11 and mast_school_type.ecd>0 | mast_school_type.class1<11 and mast_school_type.ecd=0"
+
+prereq3title = "Year"
+prereq3options = "2066|2065|2064|2063"
+prereq3clauses = "mast_schoollist.sch_year=2066 and mast_school_type.sch_year=2066|mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063"
+
+
+[tableheader]
+row1 = "Code / Name [3,2] |Age (s)[15] | Total [2,3]"
+row2 = "<5 [3] |5 [3] | 6[3] | 7-9  [3] |>9[3] "
+row3 = "G|B|T|G|B|T|G|B|T|G|B|T|G|B|T | G | B | T"
+
+
+
+[row]
+datacheck = "select distinct mast_schoollist.sch_num from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join pr_total_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and mast_school_type.class1>0"
+
+query1 = "select sum(pr_total_enroll_age_f1.f_l5), sum(pr_total_enroll_age_f1.m_l5), sum(pr_total_enroll_age_f1.t_l5), sum(pr_total_enroll_age_f1.f_5), sum(pr_total_enroll_age_f1.m_5), sum(pr_total_enroll_age_f1.t_5),sum(pr_total_enroll_age_f1.f_6), sum(pr_total_enroll_age_f1.m_6), sum(pr_total_enroll_age_f1.t_6), sum(pr_total_enroll_age_f1.f_7_9), sum(pr_total_enroll_age_f1.m_7_9), sum(pr_total_enroll_age_f1.t_7_9),sum(pr_total_enroll_age_f1.f_g9), sum(pr_total_enroll_age_f1.m_g9), sum(pr_total_enroll_age_f1.t_g9) from mast_schoollist left join mast_school_type using(sch_num, sch_year) left join pr_total_enroll_age_f1 using(sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and pr_total_enroll_age_f1.class=1"
+
+
+query2="#1+#4+#7+#10+#13";
+query3="#2+#5+#8+#11+#14";
+query4="#3+#6+#9+#12+#15";

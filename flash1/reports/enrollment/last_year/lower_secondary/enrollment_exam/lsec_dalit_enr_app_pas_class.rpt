@@ -1,0 +1,33 @@
+; Report & Chart data for School for type
+;
+
+[property]
+schoolwise = 0
+
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "Last Year Lower Secondary Level Dalit Enrollment, Appeared and Passed in Exam by class"
+
+[prereq]
+prereq1title = "Class wise"
+prereq1options = " Class 6| Class 7| Class 8| Class6-8"
+prereq1clauses = "last_class6_8_enroll_f1.class=6|last_class6_8_enroll_f1.class=7|last_class6_8_enroll_f1.class=8 | (last_class6_8_enroll_f1.class=6 or last_class6_8_enroll_f1.class=7 or last_class6_8_enroll_f1.class=8)"
+
+prereq2title = "School Type"
+prereq2options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported | Institutional (All) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Madrassas | Gumbas | Ashrams| SOP"
+prereq2clauses ="mast_school_type.class6<11|mast_school_type.class6=1|mast_school_type.class6=2|mast_school_type.class6=3 | mast_school_type.class6=4 | (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4) | (mast_school_type.class6=5 or mast_school_type.class6=6 or mast_school_type.class6=7) | mast_school_type.class6=5 | mast_school_type.class6=6 | mast_school_type.class6=7 | mast_school_type.class6=8 | mast_school_type.class6=9 | mast_school_type.class6=10 | mast_school_type.class6=11"
+
+prereq3title = "Year"
+prereq3options = "2066|2065|2064|2063"
+prereq3clauses = "mast_schoollist.sch_year=2066|mast_schoollist.sch_year=2065|mast_schoollist.sch_year=2064|mast_schoollist.sch_year=2063"
+
+[tableheader]
+row1 = "Code / Name [3,2] |Total[9] "
+row2 = "Total Enrollment[3] | Appeared in Exam[3] |passed in exam[3]"
+row3 = "G|B|T | G|B|T | G|B|T "
+
+[row]
+datacheck = "select mast_schoollist.sch_num from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join last_class6_8_enroll_f1 using (sch_num, sch_year) where mast_schoollist.flash=1"
+query1 = "select sum(tot_enroll_dalit_f), sum(tot_enroll_dalit_m), sum(tot_enroll_dalit_t), sum(tot_appeared_exam_dalit_f), sum(tot_appeared_exam_dalit_m), sum(tot_appeared_exam_dalit_t), sum(tot_passed_exam_dalit_f), sum(tot_passed_exam_dalit_m), sum(tot_passed_exam_dalit_t) from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join last_class6_8_enroll_f1 using (sch_num, sch_year) where mast_schoollist.flash=1"
+

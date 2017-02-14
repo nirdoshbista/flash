@@ -1,0 +1,4 @@
+Primary Level,primary/
+Lower Secondary Level,lower_secondary/
+Secondary Level,secondary/
+Higher Secondary Level,higher_secondary/

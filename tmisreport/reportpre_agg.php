@@ -98,8 +98,6 @@ function handlechange(obj, event){
 		ajaxDiv('reportprebe.php?req=schoollist&distcode='+document.getElementById('d').value+'&vdccode='+document.getElementById('v').value+'&y='+document.getElementById('y').value,'selectschool');
 	
 	}
-	
-	
 }
 
 function showreport(){
@@ -113,7 +111,6 @@ function showreport(){
 		reportlink +=('s='+document.getElementById('d').value+document.getElementById('v').value);
 	}
 	
-	
 	reportlink +=('&y='+document.getElementById('y').value);
 	reportlink +=('&r='+document.getElementById('r').value);
 	reportlink +=('&sex='+document.getElementById('sex').value);
@@ -121,13 +118,11 @@ function showreport(){
 	reportlink +=('&level='+document.getElementById('level').value);
 	reportlink +=('&rank='+document.getElementById('rank').value);
 	reportlink +=('&apptype='+document.getElementById('apptype').value);
-	
-	
+	reportlink +=('&schooltype='+document.getElementById('schooltype').value);
+
 	if (document.getElementById('expandteacher').checked==true) reportlink +='&expand=1';
 	
-	window.location = reportlink;
-	
-	
+	window.location = reportlink;	
 }
 
 
@@ -210,11 +205,8 @@ for ($y=$currentyear;$y>=2064;$y--){
 <option value='salary'>Salary</option>
 <option value='award'>Award</option>
 <option value='edu'>Education</option>
-<option value='leave'>Leave</option>
-<option value='med'>Medical Reimbursement</option>
-<option value='pub'>Publication</option>
-<option value='punish'>Punishment</option>
 <option value='train'>Training</option>
+<option value='information'>Information</option>
 </select>
 <br />
 <strong>Filters </strong>
@@ -259,6 +251,12 @@ for ($y=$currentyear;$y>=2064;$y--){
 <option value="8">Temporary Leon</option>
 </select>
 
+<select id="schooltype" name="schooltype">
+<option value="">- School Type -</option>
+<option value="1">Public</option>
+<option value="2">Private</option>
+<option value="3">Religious</option>
+</select>
 
 <br />		   
 <input name="showreport" type="button" id="showreport" value="Show" onclick="showreport()">

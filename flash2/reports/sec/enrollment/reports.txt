@@ -1,0 +1,4 @@
+Secondary Level Total Enrollment,sec_tot_enr.rpt
+Secondary Level Dalit Enrollment,sec_dalit_enr.rpt
+Secondary Level Janjati Enrollment,sec_janjati_enr.rpt
+Secondary Level Enrollment by Social Status,sec_tot_social_status.rpt

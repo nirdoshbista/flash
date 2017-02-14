@@ -30,13 +30,14 @@ if (!$link) {
 $result =mysql_select_db($dbname, $link);
 
 //check if column `center_id` has been added in the `nfe_mast_agency` table of nfec
-$result=  mysql_query("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'nfec' AND TABLE_NAME = 'nfe_mast_agency' AND COLUMN_NAME = 'center_id'");
+$result=  mysql_query("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'flash' AND TABLE_NAME = 'id_students_marks' AND COLUMN_NAME = 's_7'");
 if(!mysql_num_rows($result))
 {
     header("Location: utils/upgradedb.php");
 }
 mysql_query("delete from tmis_sec2 where sch_year is null");
 mysql_query("delete from tmis_sec2 where sch_year not like '20%'");
+mysql_query("update mast_schoollist join attendance on (mast_schoollist.sch_num=attendance.sch_num and mast_schoollist.sch_year=attendance.sch_year) set mast_schoollist.flash2=1 where (attendance.class1>0 or attendance.class6>0 or attendance.class9>0 or attendance.class11>0) and mast_schoollist.sch_year>=2071");
 
 ?>
 
@@ -58,6 +59,8 @@ mysql_query("ALTER TABLE subjects ADD COLUMN sch_year int AFTER id");
 <head>
 <title>Flash - Home</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<!--for the autofill -->
+<script src="utils/js/autofill.js" type="text/javascript"></script>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -219,7 +222,7 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
                                     <a href="javascript:void(0);">Flash</a>
                                     <ul>
                                         <li><a href="flash1/reports.php">Flash I</a></li>
-					<li><a href="flash2/reports.php">Flash II</a></li>
+										<li><a href="flash2/reports.php">Flash II</a></li>
                                     </ul>
                                 </li>
                                 <li class="item-0">
@@ -230,9 +233,7 @@ if ($currentyear != $nepdate['year']) $style = " style='color:red;' "; else $sty
                                     <ul>
                                         <li><a href="districtreport/">District</a></li>
                                         <li><a href="ecdreport/">ECD / SOP</a></li>
-					<li><a href="schoolreport/">School</a></li>
-					<li><a href="tmisreport/reportpre.php">TMIS</a></li>
-                                    </ul>
+									</ul>
                                 </li> 
                                 <li class="item-0">
                                     <a href="javascript:void(0);">NFEC</a>

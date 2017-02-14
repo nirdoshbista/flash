@@ -1,0 +1,8 @@
+Total Enrollment by Class,tot_enr_by_class.rpt
+Dalit Enrollment by Class,dalit_enr_by_class.rpt
+Janjati Enrollment by Class,janjati_enr_by_class.rpt
+Janjati Enrollment in Details,janjatis_details.rpt
+Lower Secondary and Secondary Enrollment by Class,lsec_sec_tot_enr_by_class.rpt
+Lower Secondary and Secondary Dalit Enrollment by Class,lsec_sec_dalit_enr_by_class.rpt
+Lower Secondary and Secondary Janjati Enrollment by Class,lsec_sec_janjati_enr_by_class.rpt
+Total Enrollment and Teachers,tot_enr_by_class_teacher.rpt

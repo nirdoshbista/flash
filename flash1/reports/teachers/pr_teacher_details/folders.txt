@@ -1,0 +1,3 @@
+Primary Teacher Status Details,pr_teacher_status/
+Primary Teacher Qualification Details,pr_teacher_qualification/
+Primary Teacher Training Details,pr_teacher_training_details/

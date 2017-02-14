@@ -1,0 +1,57 @@
+TD {
+	font: 11px/15px Verdana, Arial, Helvetica, sans-serif; color: #202020
+}
+P {
+	font: 11px/15px Verdana, Arial, Helvetica, sans-serif; color: #202020
+}
+DIV {
+	font: 11px/15px Verdana, Arial, Helvetica, sans-serif; color: #202020
+}
+
+TEXTAREA {
+	font: 11px/15px Verdana, Arial, Helvetica, sans-serif; color: #202020
+}
+FORM {
+	font: 11px/15px Verdana, Arial, Helvetica, sans-serif; color: #202020
+}
+BODY {
+	padding-right: 0px; padding-left: 0px; font-weight: normal; font-size: 11px; padding-bottom: 0px; margin: 0px; color: #000000; padding-top: 0px; font-family: Verdana, Arial, Helvetica, sans-serif; background-color: #ffffff
+}
+A:link {
+	font-size: 11px; color: #109428; font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none
+}
+A:visited {
+	font-size: 11px; color: #109428; font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none
+}
+A:hover {
+	font-size: 11px; color: #f88c18; font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none
+}
+A:active {
+	font-size: 11px; color: #f88c18; font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none
+}
+.green {
+	color: #109428;
+}
+.orange{
+	color: #f88c18;
+}
+.blue{
+	color: #183c98;
+}
+.greenbig {
+	color: #109428;font-size: 13px;
+}
+.orangebig{
+	color: #f88c18;font-size: 13px;
+}
+.bluebig{
+	color: #183c98;font-size: 13px;
+}
+.tiny{
+	font-size: 9px;
+}
+
+.tblbdr {
+	background-color: #F8F8F8;
+	border: 1px solid #CCCCCC;
+}

@@ -1,0 +1,29 @@
+; Report & Chart data for School for type
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "Last Year Lower Secondary Level Janjati Enrollment"
+
+[prereq]
+prereq1title = "School Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported | Institutional (All) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Madrassas | Gumbas | Ashrams| SOP"
+prereq1clauses ="mast_school_type.class6<11|mast_school_type.class6=1|mast_school_type.class6=2|mast_school_type.class6=3 | mast_school_type.class6=4 | (mast_school_type.class6=1 or mast_school_type.class6=2 or mast_school_type.class6=3 or mast_school_type.class6=4) | (mast_school_type.class6=5 or mast_school_type.class6=6 or mast_school_type.class6=7) | mast_school_type.class6=5 | mast_school_type.class6=6 | mast_school_type.class6=7 | mast_school_type.class6=8 | mast_school_type.class6=9 | mast_school_type.class6=10 | mast_school_type.class6=11"
+
+prereq2title = "Year"
+prereq2options = "2066|2065|2064|2063"
+prereq2clauses = "mast_schoollist.sch_year=2066 and mast_school_type.sch_year=2066|mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063"
+
+[tableheader]
+row1 = "Code / Name [2,2] | Grade 6 [3] | Grade 7 [3] | Grade 8 [3] | Grade 6-8 [3]"
+row2 = " Girls | Boys | Total | Girls | Boys | Total | Girls | Boys | Total | Girls | Boys | Total "
+
+[row]
+datacheck = "select mast_schoollist.sch_num from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join last_class6_8_enroll_f1 using (sch_num, sch_year) where mast_schoollist.flash=1"
+query1 = "select sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_m), sum(tot_enroll_janjati_t) from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join last_class6_8_enroll_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and class=6"
+
+query2 = "select sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_m), sum(tot_enroll_janjati_t) from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join last_class6_8_enroll_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and class=7"
+
+query3 = "select sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_m), sum(tot_enroll_janjati_t) from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join last_class6_8_enroll_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and class=8"
+
+query4 = "select sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_m), sum(tot_enroll_janjati_t) from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join last_class6_8_enroll_f1 using (sch_num, sch_year) where mast_schoollist.flash=1"

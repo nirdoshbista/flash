@@ -53,8 +53,11 @@ while ($row=mysql_fetch_assoc($result)) {
 	$pass_condition[] = "COALESCE(s{$row['subject_sn']}_theory+s{$row['subject_sn']}_grace,0)>={$row['subject_theory_pass_mark']}";
 	$pass_condition[] = "COALESCE(s{$row['subject_sn']}_practical,0)>={$row['subject_practical_pass_mark']}";
 	
-	$fail_condition[] = "COALESCE(s{$row['subject_sn']}_theory+s{$row['subject_sn']}_grace,0)<{$row['subject_theory_pass_mark']}";
-	$fail_condition[] = "COALESCE(s{$row['subject_sn']}_practical,0)<{$row['subject_practical_pass_mark']}";
+	//$fail_condition[] = "COALESCE(s{$row['subject_sn']}_theory+s{$row['subject_sn']}_grace,0)<{$row['subject_theory_pass_mark']}";
+	//$fail_condition[] = "COALESCE(s{$row['subject_sn']}_practical,0)<{$row['subject_practical_pass_mark']}";
+        
+        $fail_condition[] = "if(COALESCE(s{$row['subject_sn']}_theory+s{$row['subject_sn']}_grace,0)<{$row['subject_theory_pass_mark']},1,0)";
+	$fail_condition[] = "if(COALESCE(s{$row['subject_sn']}_practical,0)<{$row['subject_practical_pass_mark']},1,0)";
 	
 	$total_mark += ((int)$row['subject_theory_full_mark'] + (int)$row['subject_practical_full_mark']);
 
@@ -68,12 +71,18 @@ $third = $total_mark * 0.32;
 if($total_mark>0)
 {
     $pass = " AND (".implode(" AND ", $pass_condition).")";
-    $fail = " AND (".implode(" OR ", $fail_condition).")";
+    $fail=" AND (".implode(" + ", $fail_condition).")>0";
     $dist_condition=" HAVING (total>=$dist)";
     $firstdiv_condition=" HAVING (total>=$first AND total<$dist)";
     $seconddiv_condition=" HAVING (total>=$second AND total<$first)";
     $thirddiv_condition=" HAVING (total>=$third AND total<$second)";
+    $onesubj_fail=" AND (".implode(" + ", $fail_condition).")=1";
+    $twosubj_fail=" AND (".implode(" + ", $fail_condition).")=2";
+    $threesubj_fail=" AND (".implode(" + ", $fail_condition).")=3";
 }
+
+//to retrieve the no of schools
+$no_schools_query="select distinct(sch_num) from (".$query.") as s;";
 
 
 function get_dist_vdc($sch_code){
@@ -223,9 +232,37 @@ function get_total($q){
                                 <?php } ?>
 				<td><?php echo get_total($query.$pass.$thirddiv_condition ); ?></td>
 			</tr>
-			
-			
-
+			<tr>
+				<th>Fail with one subject</th>
+                                <td><?php echo get_total($query.$onesubj_fail." AND sex='1'"); ?></td>
+                                <td><?php echo get_total($query.$onesubj_fail." AND sex='2'"); ?></td>
+                                <?php for ($caste = 1; $caste <= 4; $caste++) { ?>
+                                <td><?php echo get_total($query.$onesubj_fail." AND caste_ethnicity='$caste' "); ?></td>
+                                <?php } ?>
+				<td><?php echo get_total($query.$onesubj_fail); ?></td>
+			</tr>
+                        <tr>
+				<th>Fail with two subjects</th>
+                                <td><?php echo get_total($query.$twosubj_fail." AND sex='1'"); ?></td>
+                                <td><?php echo get_total($query.$twosubj_fail." AND sex='2'"); ?></td>
+                                <?php for ($caste = 1; $caste <= 4; $caste++) { ?>
+                                <td><?php echo get_total($query.$twosubj_fail." AND caste_ethnicity='$caste' "); ?></td>
+                                <?php } ?>
+				<td><?php echo get_total($query.$twosubj_fail); ?></td>
+			</tr>
+                        <tr>
+				<th>Fail with three subjects</th>
+                                 <td><?php echo get_total($query.$threesubj_fail." AND sex='1'"); ?></td>
+                                <td><?php echo get_total($query.$threesubj_fail." AND sex='2'"); ?></td>
+                                <?php for ($caste = 1; $caste <= 4; $caste++) { ?>
+                                <td><?php echo get_total($query.$threesubj_fail." AND caste_ethnicity='$caste' "); ?></td>
+                                <?php } ?>
+				<td><?php echo get_total($query.$threesubj_fail); ?></td>
+			</tr>
+                        <tr>
+				<th>No of Schools</th>
+                                <td colspan="7" style="text-align:center;background-color: #81BF5D;"><?php echo get_total($no_schools_query); ?></td>
+			</tr>
 		</table>
 		</p>
 	

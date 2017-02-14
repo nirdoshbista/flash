@@ -1,0 +1,3 @@
+Total,lsec_teacher_status_details.rpt
+Dalit,lsec_dalit_teacher_status_details.rpt
+Janjati,lsec_janjati_teacher_status_details.rpt

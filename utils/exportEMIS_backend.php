@@ -12,7 +12,6 @@ require_once('../includes/dbfunctions.php');
 $link = dbconnect();
 
 $req=$_GET['req'];
-
 if ($req=='distlist'){
 	$result = mysql_query('select * from mast_district order by dist_name');
 	$rows = mysql_fetch_all($result);
@@ -79,7 +78,6 @@ if ($req=='schoollist'){
 	}
         printf('</select>');
 }
-
 if ($req=='export'){
     $schoolcode=$_GET['schoolcode'];
     $directory="EMIS export";
@@ -113,7 +111,7 @@ if ($req=='export'){
             $schoolNameList[]=$r['name'];
         }
     }
-    
+
     //run the vb6 code in the format script.exe param1,param2,...
     //param1:server i.e localhost
     //param2:database i.e "flash"

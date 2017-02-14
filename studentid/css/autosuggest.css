@@ -1,0 +1,18 @@
+div.suggestions {
+	background-color:#ffffcc;
+    border: 1px solid black;
+    position: absolute;   
+}
+
+div.suggestions div {
+    cursor: default;
+    padding: 0px 3px;
+    background-color: #ffffcc;
+    height:15px;
+}
+
+div.suggestions div.current {
+    background-color: #52617B;
+    color: white;
+    height: 15px;
+}

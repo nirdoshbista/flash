@@ -1,0 +1,4 @@
+Higher Secondary Level Special Scholarship,hsec_enroll_ students_scholarship.rpt
+Higher Secondary Level Incentive Scholarship,hsec_Incentive_ students_scholarship.rpt
+Higher Secondary Level Loan Scholarship,hsec_loan_ students_scholarship.rpt
+Higher Secondary Level Others Scholarship,hsec_others_ students_scholarship.rpt

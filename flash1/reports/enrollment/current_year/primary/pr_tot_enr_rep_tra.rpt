@@ -1,0 +1,53 @@
+; Report & Chart data for School
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "Primary Level Total Enrollment Repeater and Transfer Students"
+
+
+[prereq]
+prereq1title = "School Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported | Institutional (All) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Madrassas | Gumbas | Ashrams| SOP"
+prereq1clauses ="mast_school_type.class1<11|mast_school_type.class1=1|mast_school_type.class1=2|mast_school_type.class1=3 | mast_school_type.class1=4 | (mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4) | (mast_school_type.class1=5 or mast_school_type.class1=6 or mast_school_type.class1=7) | mast_school_type.class1=5 | mast_school_type.class1=6 | mast_school_type.class1=7 | mast_school_type.class1=8 | mast_school_type.class1=9 | mast_school_type.class1=10 | mast_school_type.class1=11"
+
+prereq2title = "ECD/PPC Status"
+prereq2options = "All | With ECD | Without ECD"
+prereq2clauses = "mast_school_type.class1<11| mast_school_type.class1<11 and mast_school_type.ecd>0 | mast_school_type.class1<11 and mast_school_type.ecd=0"
+
+prereq3title = "Class"
+prereq3options = "Class 1 | Class 2 | Class 3 | Class 4 | Class 5 | Class 1-5"
+prereq3clauses ="enr_rep_mig_class1_5_f1.class=1| enr_rep_mig_class1_5_f1.class=2|enr_rep_mig_class1_5_f1.class=3|enr_rep_mig_class1_5_f1.class=4|enr_rep_mig_class1_5_f1.class=5 |enr_rep_mig_class1_5_f1.class>0"
+
+
+prereq4title = "Year"
+prereq4options = "2066|2065|2064|2063"
+prereq4clauses = "mast_schoollist.sch_year=2066 and mast_school_type.sch_year=2066|mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063"
+
+[tableheader]
+row1 = "Code / Name [4,2] | Grade [48]"
+row2 = " Total  [12] | Dalit  [12] |  Janjati [12] | Others [12]"
+row3 = "Total Enrollment[3]|Repeaters[3]| Net Enrollment[3]| Migrants[3]| Total Enrollment[3]|Repeaters[3]| Net Enrollment[3]| Migrants[3]|  Total Enrollment[3]|Repeaters[3]| Net Enrollment[3]| Migrants[3] | Total Enrollment[3]|Repeaters[3]| Net Enrollment[3]| Migrants[3]"
+row4 = "G|B|T | G|B|T | G|B|T | G|B|T | G|B|T | G|B|T | G|B|T | G|B|T | G|B|T | G|B|T | G|B|T | G|B|T | G|B|T | G|B|T | G|B|T | G|B|T"
+
+
+[row]
+datacheck = "select distinct mast_schoollist.sch_num from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query1 = "select sum(tot_enroll_total_f), sum(tot_enroll_total_m), sum(tot_enroll_total_t) from mast_schoollist inner join mast_school_type  using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query2 = "select sum(tot_rep_total_f), sum(tot_rep_total_m), sum(tot_rep_total_t) from mast_schoollist inner join mast_school_type  using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+query3 = "select sum(tot_new_enroll_total_f), sum(tot_new_enroll_total_m), sum(tot_new_enroll_total_t) from mast_schoollist inner join mast_school_type  using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+query4 = "select sum(tot_tran_total_f), sum(tot_tran_total_m), sum(tot_tran_total_t) from mast_schoollist inner join mast_school_type  using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+query5 = "select sum(tot_enroll_dalit_f), sum(tot_enroll_dalit_m), sum(tot_enroll_dalit_t) from mast_schoollist inner join mast_school_type  using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+query6 = "select sum(tot_rep_dalit_f), sum(tot_rep_dalit_m), sum(tot_rep_dalit_t) from mast_schoollist inner join mast_school_type  using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+query7 = "select sum(tot_new_enroll_dalit_f), sum(tot_new_enroll_dalit_m), sum(tot_new_enroll_dalit_t) from mast_schoollist inner join mast_school_type  using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+query8 = "select sum(tot_tran_dalit_f), sum(tot_tran_dalit_m), sum(tot_tran_dalit_t) from mast_schoollist inner join mast_school_type  using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+query9 = "select sum(tot_enroll_janjati_f), sum(tot_enroll_janjati_m), sum(tot_enroll_janjati_t) from mast_schoollist inner join mast_school_type  using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+query10 = "select sum(tot_rep_janjati_f), sum(tot_rep_janjati_m), sum(tot_rep_janjati_t) from mast_schoollist inner join mast_school_type  using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+query11 = "select sum(tot_new_enroll_janjati_f), sum(tot_new_enroll_janjati_m), sum(tot_new_enroll_janjati_t) from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+query12 = "select sum(tot_tran_janjati_f), sum(tot_tran_janjati_m), sum(tot_tran_janjati_t) from mast_schoollist inner join mast_school_type  using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+query13 = "select sum(tot_enroll_others_f), sum(tot_enroll_others_m), sum(tot_enroll_others_t) from mast_schoollist inner join mast_school_type  using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+query14 = "select sum(tot_rep_others_f), sum(tot_rep_others_m), sum(tot_rep_others_t) from mast_schoollist inner join mast_school_type  using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+query15 = "select sum(tot_new_enroll_others_f), sum(tot_new_enroll_others_m), sum(tot_new_enroll_others_t) from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+query16 = "select sum(tot_tran_others_f), sum(tot_tran_others_m), sum(tot_tran_others_t) from mast_schoollist inner join mast_school_type  using (sch_num, sch_year) inner join enr_rep_mig_class1_5_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"

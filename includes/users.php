@@ -1,8 +1,4 @@
 <?php
-$pageuser="admin";
-$pagepass="admin";
-$computerid="main";
-
-
-//this is an importnant line of code
-
+$pageuser="nirdoshbista";
+$pagepass="123456";
+$computerid="Bista";

@@ -3,6 +3,7 @@ Basic Level Education Student Reports,basic education/
 Secondary Level Student Reports,secondary education/
 Agewise Reports,agewise/
 Agewise 2066 Reports,agewise_2066/
+Genderwise Reports,genderwise/
 Alternate Schooling,alternate_schooling/
 Disability,disability/
 Languages,languages/

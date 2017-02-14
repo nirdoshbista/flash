@@ -137,8 +137,8 @@ function idata($table, $data){
 	{
 		echo mysql_error()."-".$query;
 	}
-	echo2file(mysql_error());
-	echo2file($query);
+	//echo2file(mysql_error());
+	//echo2file($query);
 	
 }
 

@@ -1,0 +1,43 @@
+; Report & Chart data for School for type
+;
+
+[property]
+schoolwise = 0
+
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "Last Year Primary Level Total Enrollment, Appeared and Passed in Exam by class"
+
+[prereq]
+prereq1title = "Classwise Retention Details"
+prereq1options = " Class 1| Class 2| Class 3| Class 4| Class 5 | Class 1-5"
+prereq1clauses = "last_class1_5_enroll_f1.class=1|last_class1_5_enroll_f1.class=2|last_class1_5_enroll_f1.class=3|last_class1_5_enroll_f1.class=4|last_class1_5_enroll_f1.class=5 | (last_class1_5_enroll_f1.class=1 or last_class1_5_enroll_f1.class=2 or last_class1_5_enroll_f1.class=3 or last_class1_5_enroll_f1.class=4 or last_class1_5_enroll_f1.class=5)"
+
+
+prereq2title = "School Type"
+prereq2options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported | Institutional (All) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Madrassas | Gumbas | Ashrams| SOP"
+prereq2clauses ="mast_school_type.class1<11|mast_school_type.class1=1|mast_school_type.class1=2|mast_school_type.class1=3 | mast_school_type.class1=4 | (mast_school_type.class1=1 or mast_school_type.class1=2 or mast_school_type.class1=3 or mast_school_type.class1=4) | (mast_school_type.class1=5 or mast_school_type.class1=6 or mast_school_type.class1=7) | mast_school_type.class1=5 | mast_school_type.class1=6 | mast_school_type.class1=7 | mast_school_type.class1=8 | mast_school_type.class1=9 | mast_school_type.class1=10 | mast_school_type.class1=11"
+
+
+prereq3title = "Year"
+prereq3options = "2063|2062"
+prereq3clauses = "mast_schoollist.sch_year=2063|mast_schoollist.sch_year=2062"
+
+[tableheader]
+row1 = "Code / Name [2,2] |Enrollment [3] | Exam Appearance [3]| Passed In Exam[3] | Retention Rate [3] | Promotion Rate [3] | Retention Groupings [4] | Promotion Rate Groupings [4]"
+row3 = "G|B|T | G|B|T | G|B|T| G|B|T |G|B|T | <30% | 30-60% | 60-80% | 80-100% | <30% | 30-60% | 60-80% | 80-100%"
+
+[row]
+datacheck = "select mast_schoollist.sch_num from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join last_class1_5_enroll_f1 using (sch_num, sch_year) where mast_schoollist.flash=1"
+query1 = "select sum(tot_enroll_total_f), sum(tot_enroll_total_m), sum(tot_enroll_total_t), sum(tot_appeared_exam_total_f), sum(tot_appeared_exam_total_m), sum(tot_appeared_exam_total_t), sum(tot_passed_exam_total_f), sum(tot_passed_exam_total_m), sum(tot_passed_exam_total_t) from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join last_class1_5_enroll_f1 using (sch_num, sch_year) where mast_schoollist.flash=1"
+query2 = "select sum(tot_appeared_exam_total_f)/sum(tot_enroll_total_f)*100, sum(tot_appeared_exam_total_m)/sum(tot_enroll_total_m)*100, sum(tot_appeared_exam_total_t)/sum(tot_enroll_total_t)*100 from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join last_class1_5_enroll_f1 using(sch_num, sch_year) where mast_schoollist.flash=1"
+query3 = "select sum(tot_passed_exam_total_f)/sum(tot_enroll_total_f)*100, sum(tot_passed_exam_total_m)/sum(tot_enroll_total_m)*100, sum(tot_passed_exam_total_t)/sum(tot_enroll_total_t)*100 from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join last_class1_5_enroll_f1 using(sch_num, sch_year) where mast_schoollist.flash=1"
+query4 = "#12<30"
+query5 = "(#12>29 and #12<60)"
+query6 = "(#12>59 and #12<80)"
+query7 = "(#12>79)"
+query8 = "#15<30"
+query9 = "(#15>29 and #15<60)"
+query10 = "(#15>59 and #15<80)"
+query11 = "(#15>79)"

@@ -1,0 +1,5 @@
+Total Repeaters,lsec_repeaters.rpt
+Dalit Repeaters,lsec_dalit_repeaters.rpt
+Janjati Repeaters,lsec_janjati_repeaters.rpt
+Others Repeaters,lsec_others_repeaters.rpt
+Repeaters by Social Groups,lsec_tot_social_groups.rpt

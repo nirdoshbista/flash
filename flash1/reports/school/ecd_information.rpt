@@ -1,0 +1,40 @@
+; Report & Chart data for School by grade - Extra Information
+;
+
+[header]
+; you can write as many titles as title1, title2, ... 
+title1 = "ECD Information"
+
+[prereq]
+
+prereq1title = "ECD Information"
+prereq1options = "All ECDs | School Based ECDs | Community Based ECDs | ECD/PPC Only"
+prereq1clauses = "mast_school_type.ecd>0 | (mast_school_type.ecd>0 and mast_school_type.ecd<12 and class1 or class6 or class9 or class11) | (mast_school_type.ecd>0 and mast_school_type.ecd<11 and !class1 and !class6 and !class9 and !class11) | mast_school_type.ecd=12"
+
+
+prereq2title = "School Type"
+prereq2options = "All | Government Aided | Community Managed | Quota Teacher | Government Unaided | Government Supported | Institutional (All) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Madrassas | Gumbas | Ashrams"
+prereq2clauses = "mast_school_type.ecd>0| mast_school_type.ecd=1
+| mast_school_type.ecd=2 | mast_school_type.ecd=3 | mast_school_type.ecd=4 | (mast_school_type.ecd=1 or mast_school_type.ecd=2 or mast_school_type.ecd=3 or mast_school_type.ecd=4) | (mast_school_type.ecd=5 or mast_school_type.ecd=6 or mast_school_type.ecd=7) | mast_school_type.ecd=5 | mast_school_type.ecd=6 | mast_school_type.ecd=7 | mast_school_type.ecd=8 | mast_school_type.ecd=9 | mast_school_type.ecd=10 | mast_school_type.ecd=11" 
+
+prereq3title = "Year"
+prereq3options = "2066|2065|2064|2063"
+prereq3clauses = "mast_schoollist.sch_year=2066 and mast_school_type.sch_year=2066|mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063"
+
+[tableheader]
+row1 = "Code / Name [2]| Total ECDs | Ward | Location | Telephone | Email "
+
+[row]
+datacheck = "select distinct (mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query1 = "select count(mast_schoollist.sch_num) from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and ecd>0"
+
+query2 = "select mast_schoollist.wardno from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query3 = "select mast_schoollist.location from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query4 = "select mast_schoollist.telno from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+query5 = "select mast_schoollist.email from mast_schoollist left join mast_school_type using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1"
+
+

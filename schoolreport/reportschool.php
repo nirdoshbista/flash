@@ -1,7 +1,6 @@
 <?php
 
 $nbuffer = array();
-
 function showreport(){
 	global $sch_num, $wc, $nbuffer, $currentyear;
 	
@@ -111,6 +110,7 @@ $distinfo['75']=array('Mountain','Far-western','Mahakali');
           <td width="100" align="left"><img src="images/npflag.png" width="74" height="90"></td>
           <td><h1 style="font-size:x-large">School Profile (<?php echo $currentyear; ?>)</h1>
               <h2 style="font-size:large">School: <?php echo $ginfo['nm_sch'].'<br><br> Code:  ' .$ginfo['sch_num'].''; ?></h2>
+			   
           </td>
           <td width="100" align="right"><img src="images/Nepal_gov_logo.png" width="108" height="90"></td>
 </table>

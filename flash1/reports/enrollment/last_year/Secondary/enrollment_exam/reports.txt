@@ -1,0 +1,4 @@
+Total Students,sec_total_enr_app_pas_class.rpt
+Dalit Students,sec_dalit_enr_app_pas_class.rpt
+Janjati Students,sec_janjati_enr_app_pas_class.rpt
+Other Students,sec_others_enr_app_pas_class.rpt

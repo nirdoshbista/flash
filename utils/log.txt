@@ -1,0 +1,8 @@
+
+insert into mast_schoollist (dist_code,vdc_code,sch_code,sch_year,nm_sch,wardno,location,post_office,telno,email,region,sch_num,flash,tmis,entry_timestamp) values ('69','001','0001','2065','Jalpa Devi Pra V','3','Bataligaun',null,null,null,'1','690010003','2',null,'2009-06-13 14:25:54')
+
+insert into mast_schoollist (dist_code,vdc_code,sch_code,sch_year,nm_sch,wardno,location,post_office,telno,email,region,sch_num,flash,tmis,entry_timestamp) values ('69','002','0002','2065','Baidyanath Bed Bidyashram Ni Ma V','2','Baiddaynath',null,null,null,'1','690020002','2',null,'2009-06-13 14:32:51')
+
+insert into mast_schoollist (dist_code,vdc_code,sch_code,sch_year,nm_sch,wardno,location,post_office,estd_date,telno,email,region,sch_num,flash,tmis,entry_timestamp) values ('01','003','0002','2066','Katike Pra V','7','Katike',null,null,'993245045',null,'1','010030002','1',null,'2009-09-16 07:28:03')
+
+insert into mast_schoollist (dist_code,vdc_code,sch_code,sch_year,nm_sch,wardno,location,post_office,estd_date,telno,email,region,sch_num,flash,tmis,entry_timestamp) values ('01','003','0001','2066','Chaksibote Ma V','4','Chaksibte',null,null,null,null,'1','010030001','1',null,'2009-09-16 07:30:30')

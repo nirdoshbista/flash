@@ -118,7 +118,7 @@ Sort by
 <form action="basicinfo.php" method="get" style='padding-right:10px; margin-top:-10px;'>
 <p align='right'>
 <input type="hidden" name="s" id='s'>
-<div style="float:right"><input type='submit' value="Next >>" id='submitbtn' disabled></div>
+<div style="float:right"><input type='submit' value="Next " id='submitbtn' disabled></div>
 
 <div style="float:left; margin-left: 10px;">
 	<input type='button' value='Close' id='sch_close' onclick="schoolClose()" disabled />

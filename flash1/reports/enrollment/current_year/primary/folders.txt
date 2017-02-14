@@ -1,0 +1,4 @@
+Enrollment,enrollment/
+Repeaters,repeaters/
+Tranfer Ins,transfers/
+New Enrollment,new_enrollment/

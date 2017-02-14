@@ -1,0 +1,5 @@
+Total New Enrollment,pr_new_enrollment.rpt
+Dalit New Enrollment,pr_dalit_new_enrollment.rpt
+Janjati New Enrollment,pr_janjati_new_enrollment.rpt
+Others New Enrollment,pr_others_new_enrollment.rpt
+Net New Enrollment by Social Groups,pri_tot_social_groups.rpt

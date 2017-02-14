@@ -87,7 +87,6 @@ Sort by
 </div>
 
 
-
 <div id='existingschool'>
 
 
@@ -96,7 +95,7 @@ Sort by
 <tr>
 <td>
 <p><b>Not-Entered</b></p>
-<div id="schoollist_ne">
+<div "id="schoollist_ne">
 
 <select size="20" style="width:300px;">
 </select>

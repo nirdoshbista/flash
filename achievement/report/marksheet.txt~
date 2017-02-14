@@ -1,0 +1,50 @@
+# Marksheet Format
+# 
+# Format:
+# 	text~r,c,l,a
+# 	r=row, c=column
+# 	l=length allocated
+# 	a=alignment (values: l, r, c)
+#
+# Enclose text by {} to represent variable
+# Row value is relative in [repeat] section
+
+# Printer options, refer to PHP's printer_set_option()
+[printer-option]
+row=60
+col=95
+
+[non-repeat]
+{full_name}~1,1,40,l
+{dob_np}~2,1,40,l
+{nm_sch}~3,1,40,l
+{s1_theory}~4,1,40,l
+{s1_practical}~5,1,40,l
+{s1}~6,1,40,l
+{s2_theory}~7,1,40,l
+{s2_practical}~8,1,40,l
+{s2}~9,1,40,l
+{s3_theory}~10,1,40,l
+{s3_practical}~11,1,40,l
+{s3}~12,1,40,l
+{s4_theory}~13,1,40,l
+{s4_practical}~14,1,40,l
+{s4}~15,1,40,l
+{s5_theory}~16,1,40,l
+{s5_practical}~17,1,40,l
+{s5}~18,1,40,l
+{s6_theory}~19,1,40,l
+{s6_practical}~20,1,40,l
+{s6}~21,1,40,l
+{s7_theory}~22,1,40,l
+{s7_practical}~23,1,40,l
+{s7}~24,1,40,l
+{s8_theory}~25,1,40,l
+{s8_practical}~26,1,40,l
+{s8}~27,1,40,l
+{s9_theory}~28,1,40,l
+{s9_practical}~29,1,40,l
+{s9}~30,1,40,l
+{total}~31,1,40,l
+{result}~32,1,40,l
+

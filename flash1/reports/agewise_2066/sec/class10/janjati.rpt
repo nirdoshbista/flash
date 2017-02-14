@@ -1,0 +1,23 @@
+
+[header]
+title1 = "Class 10 Janjati Agewise Enrollment"
+
+[prereq]
+prereq1title = "School Type"
+prereq1options = "All | Government Aided | Community Managed | Quota Teachers | Government Unaided | Government Supported | Institutional (All) | Institutional but Private Trust | Institutional but Public Trust | Institutional but Company | Madrassas | Gumbas | Ashrams| SOP"
+prereq1clauses = "mast_school_type.class9<11|mast_school_type.class9=1|mast_school_type.class9=2|mast_school_type.class9=3 | mast_school_type.class9=4 | (mast_school_type.class9=1 or mast_school_type.class9=2 or mast_school_type.class9=3 or mast_school_type.class9=4) | (mast_school_type.class9=5 or mast_school_type.class9=6 or mast_school_type.class9=7) | mast_school_type.class9=5 | mast_school_type.class9=6 | mast_school_type.class9=7 | mast_school_type.class9=8 | mast_school_type.class9=9 | mast_school_type.class9=10 | mast_school_type.class9=11"
+
+prereq2title = "Year"
+prereq2options = "2066|2065|2064|2063"
+prereq2clauses = "mast_schoollist.sch_year=2066 and mast_school_type.sch_year=2066|mast_schoollist.sch_year=2065 and mast_school_type.sch_year=2065|mast_schoollist.sch_year=2064 and mast_school_type.sch_year=2064|mast_schoollist.sch_year=2063 and mast_school_type.sch_year=2063"
+[tableheader]
+row1 = "Code / Name [3,2] | Class 10 [18] | Total [2,3]"
+row2 = " Less than 14 [3]  |  14 years [3]  |  15 years [3]  |  16 years [3]  |  17 years [3]  |  More than 17 [3] "
+row3 = "G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T|G|B|T"
+
+[row]
+datacheck = "select distinct mast_schoollist.sch_num from mast_schoollist left join mast_school_type using (sch_num, sch_year) left join sec_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and mast_school_type.flash=1 and mast_school_type.class9>0"
+query1 = "SELECT sum(f_l14),sum(m_l14),sum(t_l14),sum(f_14),sum(m_14),sum(t_14),sum(f_15),sum(m_15),sum(t_15),sum(f_16),sum(m_16),sum(t_16),sum(f_17),sum(m_17),sum(t_17),sum(f_g17),sum(m_g17),sum(t_g17)  from mast_schoollist inner join mast_school_type using (sch_num, sch_year) inner join sec_janjati_enroll_age_f1 using (sch_num, sch_year) where mast_schoollist.flash=1 and sec_janjati_enroll_age_f1.class=10"
+query2 = "#1+#4+#7+#10+#13+#16"
+query3 = "#2+#5+#8+#11+#14+#17"
+query4 = "#3+#6+#9+#12+#15+#18"

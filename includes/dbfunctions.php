@@ -133,12 +133,15 @@ function idata($table, $data){
 	
 	$query=str_replace("''","null",$query);
 	mysql_query($query);
+        /*
 	if (mysql_error())
 	{
 		echo mysql_error()."-".$query;
 	}
 	echo2file(mysql_error());
 	echo2file($query);
+         * 
+         */
 	
 }
 
@@ -401,11 +404,29 @@ function whichDB($table){
  * @param type $tablename
  * @param type $condition 
  */
-function deleteRows($tablename,$condition)
+function deleteRows($tablename,$condition=NULL)
 { 
-    if (mysql_query("DELETE FROM $tablename WHERE $condition;"))    return TRUE;
+    $query="DELETE FROM ".$tablename;
+    if($condition!==NULL)   $query.=" WHERE $condition;";
+    else $query.=";";
+    if (mysql_query($query))    return TRUE;
     return FALSE;
 }
+
+/** function that empties all the records imported from excel emis in the id_% tables
+ */
+function emptyIDtables()
+{
+    deleteRows("`id_students_main`");
+    deleteRows("`id_students_scholarship`");
+    deleteRows("`id_students_track`");
+    deleteRows("`id_students_marks`");
+    deleteRows("`id_students_subject`");
+    deleteRows("`id_physical_details`");
+    deleteRows("`id_students_subject`");
+}
+
+
 
 //for upgrading the database structure
 function importsql($sqlpath){

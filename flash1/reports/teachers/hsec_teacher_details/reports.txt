@@ -1,0 +1,2 @@
+Higher Secondary Teacher Details,hsec_teacher_details.rpt
+Higher Secondary Teacher Training Details,hsec_training_details.rpt

@@ -1,0 +1,5 @@
+Total Student Details,last_sec_tot_enr.rpt
+Dalit Student Details,last_sec_dalit_enr.rpt
+Janjati Student Details,last_sec_janjati_enr.rpt
+Other Student Details,last_sec_others_enr.rpt
+Enrollment by Social Groups,last_sec_tot_social_status.rpt

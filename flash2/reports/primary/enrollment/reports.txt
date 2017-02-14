@@ -1,0 +1,4 @@
+Primary Level Total Enrollment,pr_tot_enr.rpt
+Primary Level Dalit Enrollment,pr_dalit_enr.rpt
+Primary Level Janjati Enrollment,pr_janjati_enr.rpt
+Primary Level Enrollment by Social Groups,pri_tot_social_status.rpt

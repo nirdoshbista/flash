@@ -24,7 +24,7 @@ echo "Initializing the NFEC database...";
 importsql($nfecblank);
 
 // check if db upgrade is required for flash
-$result=  mysql_query("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'flash' AND TABLE_NAME = 'id_physical_details' AND COLUMN_NAME = 'sch_num'");
+$result=  mysql_query("SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'flash' AND TABLE_NAME = 'id_students_marks' AND COLUMN_NAME = 's_7'");
 if(!mysql_num_rows($result))
 {
 
